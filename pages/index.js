@@ -42,7 +42,7 @@ export default function Index({ allPosts, preview }) {
       <NavigationBar />
       <HeroPage />
 
-      {/* <InternShips /> */}
+      <InternShips />
       <InternShips2 />
       <CareerOpportunities />
       <Career2 />
