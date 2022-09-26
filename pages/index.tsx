@@ -45,12 +45,12 @@ export default function Index({ allPosts, preview }) {
       <HeroPage />
       <WomenListSlide />
 
-      {/* <InternShips /> */}
+      <InternShips />
       <InternShips2 />
-      <CareerOpportunities />
+      {/* <CareerOpportunities /> */}
       <Career2 />
       <ContactUs />
-      <Footer/>
+      <Footer />
     </>
   )
 }

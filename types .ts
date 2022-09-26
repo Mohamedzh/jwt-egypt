@@ -6,3 +6,9 @@ export interface WomenListType {
     imageAlt: string
     color?: string
 }
+
+export interface VacancyType {
+    title: string
+    department: string
+    description: string
+}
