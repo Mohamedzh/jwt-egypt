@@ -19,7 +19,6 @@ function WomenListTest({ }: Props) {
     let j = 0
     for (let i = 0; i < womenList.length; i++) {
         womenList[i].color = colors[j]
-        console.log(j, colors.length);
         j++
         if (j === colors.length) {
             j = 0
@@ -27,7 +26,7 @@ function WomenListTest({ }: Props) {
     }
     return (
         <>
-            <p className='text-6xl font-black mt-32 mb-10 text-center'>Meet the team</p>
+            <p className='text-6xl font-black mt-32 mb-10 text-center'>Meet our WunderWomen</p>
 
             <div className='grid grid-cols-2 mx-10 pb-72'>
                 {womenList.map((woman, idx) =>
