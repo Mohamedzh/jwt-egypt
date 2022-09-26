@@ -8,6 +8,10 @@ import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import NavigationBar from '../components/NavigatoinBar'
 import HeroPage from '../components/HeroPage'
+import InternShips from '../components/InternShips'
+import InternShips2 from '../components/InternShips2'
+import CareerOpportunities from '../components/CareerOpportunities'
+import Career2 from '../components/Career2'
 import ContactUs from '../components/contactUs'
 import WomenListSlide from '../components/womenListSlide'
 
@@ -40,6 +44,10 @@ export default function Index({ allPosts, preview }) {
       <HeroPage />
       <WomenListSlide />
 
+      {/* <InternShips /> */}
+      <InternShips2 />
+      <CareerOpportunities />
+      <Career2 />
       <ContactUs />
     </>
   )
