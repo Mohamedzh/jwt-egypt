@@ -4,16 +4,16 @@ const HeroPage = () => {
   return (
     <>
       <div className={`${style.gradient} pt-24`}>
-        <div className="container mx-auto flex flex-col flex-wrap items-center px-3 md:flex-row">
+        <div className="container mx-auto flex flex-col flex-wrap items-center px-14 md:flex-row">
           {/* Left Col */}
           <div className="flex w-full flex-col items-start justify-center text-center md:w-2/5 md:text-left">
-            <p className="tracking-loose w-full uppercase">
+            <p className="tracking-loose w-full uppercase text-wtImperial">
               What business are you?
             </p>
-            <h1 className="my-4 text-5xl font-bold leading-tight">
-              Main Hero Message to sell yourself!
+            <h1 className="my-4 text-5xl font-bold leading-tight text-wtImperial">
+              WUNDERMAN THOMPSON WOMEN
             </h1>
-            <p className="mb-8 text-2xl leading-normal">
+            <p className="mb-8 text-2xl leading-normal text-wtImperial">
               Sub-hero message, not too long and not too short. Make it just
               right!
             </p>
