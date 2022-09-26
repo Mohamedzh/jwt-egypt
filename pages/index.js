@@ -8,6 +8,7 @@ import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import NavigationBar from '../components/NavigatoinBar'
 import HeroPage from '../components/HeroPage'
+import ContactUs from '../components/contactUs'
 
 export default function Index({ allPosts, preview }) {
   // const heroPost = allPosts[0]
@@ -36,6 +37,8 @@ export default function Index({ allPosts, preview }) {
 
       <NavigationBar />
       <HeroPage />
+
+      <ContactUs />
     </>
   )
 }
