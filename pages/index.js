@@ -13,6 +13,8 @@ import InternShips2 from '../components/InternShips2'
 import CareerOpportunities from '../components/CareerOpportunities'
 import Career2 from '../components/Career2'
 import ContactUs from '../components/contactUs'
+import Footer from '../components/footerTab'
+import WomenListSlide from '../components/womenListSlide'
 
 export default function Index({ allPosts, preview }) {
   // const heroPost = allPosts[0]
@@ -41,12 +43,14 @@ export default function Index({ allPosts, preview }) {
 
       <NavigationBar />
       <HeroPage />
+      <WomenListSlide />
 
       <InternShips />
       <InternShips2 />
       <CareerOpportunities />
       <Career2 />
       <ContactUs />
+      <Footer/>
     </>
   )
 }
