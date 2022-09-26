@@ -12,6 +12,7 @@ import InternShips from '../components/InternShips'
 import InternShips2 from '../components/InternShips2'
 import CareerOpportunities from '../components/CareerOpportunities'
 import Career2 from '../components/Career2'
+import ContactUs from '../components/contactUs'
 
 export default function Index({ allPosts, preview }) {
   // const heroPost = allPosts[0]
@@ -45,6 +46,7 @@ export default function Index({ allPosts, preview }) {
       <InternShips2 />
       <CareerOpportunities />
       <Career2 />
+      <ContactUs />
     </>
   )
 }
