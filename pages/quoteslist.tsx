@@ -1,15 +1,14 @@
 import React from 'react'
+import NavigationBar from '../components/NavigatoinBar'
 import WomenList from '../components/womenList'
-import WomenListSlide from '../components/womenListSlide'
 
 type Props = {}
 
 function Test({ }: Props) {
     return (
-        <div>
+        <div className='bg-gradient-to-r from-wtCyan to-wtViolet'>
+            <NavigationBar />
             <WomenList />
-
-            <WomenListSlide />
         </div>
     )
 }

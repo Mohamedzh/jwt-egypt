@@ -1,118 +1,56 @@
 import React from 'react'
 import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im'
+import { WomenListType } from '../types '
 
 type Props = {}
 
-function WomenList({ }: Props) {
+function WomenListTest({ }: Props) {
 
+    let womenList: WomenListType[] = [
+        { name: 'Mai Azzmy', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
+        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
+        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
+        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
+        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
+        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' }
+    ]
+    let colors = ['bg-wtFlameRed', 'bg-wtGreenSheen', 'bg-wtYellow', 'bg-wtBlue', 'bg-wtTango', 'bg-wtOrange']
+
+    let j = 0
+    for (let i = 0; i < womenList.length; i++) {
+        womenList[i].color = colors[j]
+        console.log(j, colors.length);
+        j++
+        if (j === colors.length) {
+            j = 0
+        }
+    }
     return (
         <>
+            <p className='text-6xl font-black mt-32 mb-10 text-center'>Meet the team</p>
 
-            {/* <div className='grid grid-cols-2'> */}
-
-            {/* <div className='text-center'>description here</div> */}
-
-            <div className="card rounded-full bg-base-100 shadow-xl image-full m-10">
-                <figure className='bg-red-500'>
-                    {/* <img src="https://placeimg.com/400/225/arch" alt="Shoes" /> */}
-                </figure>
-                <div className="card-body grid grid-cols-6	place-items-center	">
-                    <div className='col-span-4'>
-                        <p className='border-dashed border-2 border-gray-900 p-3'>
-                            This is a qoute. qoute contents will be here.
-                            This is a qoute. qoute contents will be here.
-                            This is a qoute. qoute contents will be here.
-                        </p>
+            <div className='grid grid-cols-2 mx-10 pb-72'>
+                {womenList.map((woman, idx) =>
+                    <div className={`${woman.color} rounded-lg shadow-xl image-full h-80 -mb-48 ${(idx % 2 == 0 ? 'mr-7' : 'ml-7 mt-64')}`}>
+                        <div className="card-body grid grid-cols-6	place-items-center	h-3/4">
+                            <div className='col-span-4 flex flex-col'>
+                                <ImQuotesLeft className='h-5 w-5' />
+                                <p className='p-1'>
+                                    {woman.quote}
+                                </p>
+                                <ImQuotesRight className='place-self-end h-5 w-5' />
+                            </div>
+                            <div className='col-span-2 flex flex-col items-center'>
+                                <img className="aspect-auto " src="/woman.png" />
+                                <h2 className="card-title mt-5 text-2xl italic">{woman.name}</h2>
+                                <p className=" text-lg italic">{woman.dep}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className='col-span-2 flex flex-col items-center'>
-                        <img className="aspect-auto h-72 w-52 " src="/woman.png" />
-                        <h2 className="card-title my-3">someone @ jwt</h2>
-                    </div>
-                </div>
+                )}
             </div>
-
-            {/* <div className='text-center'> description here</div> */}
-
-            <div className='grid grid-cols-2 mx-10'>
-                <div>
-                    <div className="bg-red-500 rounded-lg shadow-xl image-full h-80 mr-5">
-                        <div className="card-body grid grid-cols-6	place-items-center	h-3/4">
-                            <div className='col-span-2 flex flex-col items-center'>
-                                <img className="aspect-auto " src="/woman.png" />
-                                <h2 className="card-title my-3">someone @ jwt</h2>
-                            </div>
-                            <div className='col-span-4 flex flex-col'>
-                                <ImQuotesLeft className='h-5 w-5' />
-                                <p className='p-1'>
-                                    This is a qoute. qoute contents will be here.
-                                    This is a qoute. qoute contents will be here.
-                                    This is a qoute. qoute contents will be here.
-                                </p>
-                                <ImQuotesRight className='place-self-end h-5 w-5' />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="bg-yellow-500 rounded-lg shadow-xl image-full h-80 mt-32 mr-5">
-                        <div className="card-body grid grid-cols-6	place-items-center	h-3/4">
-                            <div className='col-span-2 flex flex-col items-center'>
-                                <img className="aspect-auto " src="/woman.png" />
-                                <h2 className="card-title my-3">someone @ jwt</h2>
-                            </div>
-                            <div className='col-span-4 flex flex-col'>
-                                <ImQuotesLeft className='h-5 w-5' />
-                                <p className='p-1'>
-                                    This is a qoute. qoute contents will be here.
-                                    This is a qoute. qoute contents will be here.
-                                    This is a qoute. qoute contents will be here.
-                                </p>
-                                <ImQuotesRight className='place-self-end h-5 w-5' />
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div className="bg-green-500 rounded-lg shadow-xl image-full h-80 mt-56 mr-5">
-                        <div className="card-body grid grid-cols-6	place-items-center	h-3/4">
-                            <div className='col-span-4 flex flex-col'>
-                                <ImQuotesLeft className='h-5 w-5' />
-                                <p className='p-1'>
-                                    This is a qoute. qoute contents will be here.
-                                    This is a qoute. qoute contents will be here.
-                                    This is a qoute. qoute contents will be here.
-                                </p>
-                                <ImQuotesRight className='place-self-end h-5 w-5' />
-                            </div>
-                            <div className='col-span-2 flex flex-col items-center'>
-                                <img className="aspect-auto " src="/woman.png" />
-                                <h2 className="card-title my-3">someone @ jwt</h2>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="bg-blue-500 rounded-lg shadow-xl image-full h-80 mt-32 mr-5">
-                        <div className="card-body grid grid-cols-6	place-items-center	h-3/4">
-                            <div className='col-span-4 flex flex-col'>
-                                <ImQuotesLeft className='h-5 w-5' />
-                                <p className='p-1'>
-                                    This is a qoute. qoute contents will be here.
-                                    This is a qoute. qoute contents will be here.
-                                    This is a qoute. qoute contents will be here.
-                                </p>
-                                <ImQuotesRight className='place-self-end h-5 w-5' />
-                            </div>
-                            <div className='col-span-2 flex flex-col items-center'>
-                                <img className="aspect-auto " src="/woman.png" />
-                                <h2 className="card-title my-3">someone @ jwt</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </>
     )
 }
 
-export default WomenList
+export default WomenListTest

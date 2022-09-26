@@ -9,6 +9,7 @@ import { CMS_NAME } from '../lib/constants'
 import NavigationBar from '../components/NavigatoinBar'
 import HeroPage from '../components/HeroPage'
 import ContactUs from '../components/contactUs'
+import WomenListSlide from '../components/womenListSlide'
 
 export default function Index({ allPosts, preview }) {
   // const heroPost = allPosts[0]
@@ -37,6 +38,7 @@ export default function Index({ allPosts, preview }) {
 
       <NavigationBar />
       <HeroPage />
+      <WomenListSlide />
 
       <ContactUs />
     </>

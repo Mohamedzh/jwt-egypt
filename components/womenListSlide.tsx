@@ -1,8 +1,9 @@
 import React from 'react'
 import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im'
+import { WomenListType } from '../types '
 
 
-let womenList = [
+let womenList: WomenListType[] = [
     { name: 'Mai Azzmy', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
     { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
     { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
@@ -22,7 +23,6 @@ for (let i = 0; i < womenList.length; i++) {
         j = 0
     }
 }
-console.log(womenList)
 
 
 function WomenListSlide() {
@@ -62,27 +62,6 @@ function WomenListSlide() {
                         </div>
                     </div>
                 )}
-                {/* <div id="slide2" className="carousel-item relative w-full">
-                    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" className="btn btn-circle">❮</a>
-                        <a href="#slide3" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide3" className="carousel-item relative w-full">
-                    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" className="btn btn-circle">❮</a>
-                        <a href="#slide4" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide4" className="carousel-item relative w-full">
-                    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide3" className="btn btn-circle">❮</a>
-                        <a href="#slide1" className="btn btn-circle">❯</a>
-                    </div>
-                </div> */}
             </div>
         </div>
     )
