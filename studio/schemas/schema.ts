@@ -15,6 +15,8 @@ import quotes from './quotes'
 import jobs from './jobs'
 import department from './departments'
 import color from './colors'
+import story from './story'
+import contactUs from './contactUs'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,6 +28,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     post,
+    story,
     author,
     category,
     person,
@@ -37,7 +40,7 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     blockContent,
     comment,
-
+    contactUs,
 
   ]),
 })

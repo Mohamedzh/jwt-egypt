@@ -16,8 +16,9 @@ import InspiringStories from '../components/InspiringStories'
 // import InternShips2 from '../components/InternShips2'
 import CareerOpportunities from '../components/CareerOpportunities'
 import Career2 from '../components/Career2'
+import { getClient } from '../lib/sanity'
 
-export default function Index({ allPosts, preview }) {
+export default function Index({ allPosts, preview, data }) {
   // const heroPost = allPosts[0]
   // const morePosts = allPosts.slice(1)
   return (
@@ -52,8 +53,8 @@ export default function Index({ allPosts, preview }) {
 
       <Career2 />
 
-      <ContactUs />
-      <Footer />
+      <ContactUs data={data} />
+      <Footer data={data} />
     </>
   )
 }
@@ -65,3 +66,17 @@ export default function Index({ allPosts, preview }) {
 //     revalidate: 1,
 //   }
 // }
+
+export async function getStaticProps() {
+  //   const contactUsFields = `
+  // address,
+  // governorate,
+  // postalCode,
+  // phone,
+  // email
+
+  // `
+  const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
+
+  return { props: { data: { JWTContact } } }
+}
