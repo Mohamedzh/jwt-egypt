@@ -23,18 +23,12 @@ export type InspStories = {
   jobDisc: string
   contact: Contact[]
 }
-<<<<<<< HEAD
 
 export interface VacancyType {
   title: string
   department: string
   description: string
-=======
+}
   
 
-export interface VacancyType {
-    title: string
-    department: string
-    description: string
->>>>>>> 1aa2f087a0fd0060b227c730148f1441f56e7db1
-}
+
