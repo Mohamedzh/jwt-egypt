@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { BsFacebook } from 'react-icons/bs'
 import { InspStories } from '../types '
 
+
 const InspiringStory = ({ inspStory }: { inspStory: InspStories }) => {
   return (
     <div
