@@ -24,9 +24,11 @@ export type InspStories = {
     contact: Contact[]
 }
 
-
 export interface VacancyType {
-    title: string
-    department: string
-    description: string
+  title: string
+  department: string
+  description: string
 }
+  
+
+

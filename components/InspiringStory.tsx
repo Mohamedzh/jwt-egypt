@@ -27,7 +27,7 @@ const InspiringStory = ({ inspStory }: { inspStory: InspStories }) => {
           </p>
           <div className="flex w-full justify-center pt-5 pb-5">
             {inspStory.contact.map((contact, idx) => (
-              <a href="javascript:void(0)" key={idx} className="mx-5">
+              <a href={contact.url} key={idx} className="mx-5">
                 <div aria-label={contact.name} role="img">
                   <svg
                     xmlns={contact.url}
