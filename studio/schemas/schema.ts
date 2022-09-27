@@ -13,6 +13,7 @@ import comment from './comment'
 import person from './women'
 import quotes from './quotes'
 import story from './story'
+import contactUs from './contactUs'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -33,6 +34,7 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     blockContent,
     comment,
+    contactUs,
     
   ]),
 })
