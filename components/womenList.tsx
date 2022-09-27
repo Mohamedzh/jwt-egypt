@@ -4,17 +4,72 @@ import { WomenListType } from '../types '
 
 type Props = {}
 
-function WomenListTest({ }: Props) {
+function WomenListTest({}: Props) {
+  let womenList: WomenListType[] = [
+    {
+      name: 'Mai Azzmy',
+      dep: 'Marketing',
+      quote:
+        'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.',
+      imageSrc: '',
+      imageAlt: 'alt',
+    },
+    {
+      name: 'Name Name',
+      dep: 'Marketing',
+      quote:
+        'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.',
+      imageSrc: '',
+      imageAlt: 'alt',
+    },
+    {
+      name: 'Name Name',
+      dep: 'Marketing',
+      quote:
+        'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.',
+      imageSrc: '',
+      imageAlt: 'alt',
+    },
+    {
+      name: 'Name Name',
+      dep: 'Marketing',
+      quote:
+        'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.',
+      imageSrc: '',
+      imageAlt: 'alt',
+    },
+    {
+      name: 'Name Name',
+      dep: 'Marketing',
+      quote:
+        'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.',
+      imageSrc: '',
+      imageAlt: 'alt',
+    },
+    {
+      name: 'Name Name',
+      dep: 'Marketing',
+      quote:
+        'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.',
+      imageSrc: '',
+      imageAlt: 'alt',
+    },
+  ]
+  let colors = [
+    'bg-wtFlameRed',
+    'bg-wtGreenSheen',
+    'bg-wtYellow',
+    'bg-wtBlue',
+    'bg-wtTango',
+    'bg-wtOrange',
+  ]
 
-    let womenList: WomenListType[] = [
-        { name: 'Mai Azzmy', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
-        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
-        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
-        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
-        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' },
-        { name: 'Name Name', dep: "Marketing", quote: 'There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.', imageSrc: '', imageAlt: 'alt' }
-    ]
-    let colors = ['bg-wtFlameRed', 'bg-wtGreenSheen', 'bg-wtYellow', 'bg-wtBlue', 'bg-wtTango', 'bg-wtOrange']
+  return (
+    <>
+      <p className="mt-32 mb-10 text-center text-6xl font-black">
+        Meet the team
+      </p>
+
 
     let j = 0
     for (let i = 0; i < womenList.length; i++) {
@@ -48,8 +103,11 @@ function WomenListTest({ }: Props) {
                     </div>
                 )}
             </div>
-        </>
-    )
+          </div>
+        ))}
+      </div>
+    </>
+  )
 }
 
 export default WomenListTest

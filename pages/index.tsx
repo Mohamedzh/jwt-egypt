@@ -9,12 +9,13 @@ import { CMS_NAME } from '../lib/constants'
 import NavigationBar from '../components/NavigatoinBar'
 import HeroPage from '../components/HeroPage'
 import InternShips from '../components/InternShips'
-import InternShips2 from '../components/InternShips2'
-import CareerOpportunities from '../components/CareerOpportunities'
-import Career2 from '../components/Career2'
 import ContactUs from '../components/contactUs'
 import Footer from '../components/footerTab'
 import WomenListSlide from '../components/womenListSlide'
+import InspiringStories from '../components/InspiringStories'
+import InternShips2 from '../components/InternShips2'
+import CareerOpportunities from '../components/CareerOpportunities'
+import Career2 from '../components/Career2'
 
 export default function Index({ allPosts, preview }) {
   // const heroPost = allPosts[0]
@@ -44,7 +45,7 @@ export default function Index({ allPosts, preview }) {
       <NavigationBar />
       <HeroPage />
       <WomenListSlide />
-
+    
       <InternShips />
       <InternShips2 />
       {/* <CareerOpportunities /> */}
