@@ -1,5 +1,6 @@
 import { InspStories } from '../types '
 
+
 const InspiringStory = ({ inspStory }: { inspStory: InspStories }) => {
   return (
     <div
