@@ -18,7 +18,6 @@ function Careers() {
             setFiltered(vacancies)
         } else
             setFiltered(vacancies.filter(job => job.department === department))
-
     }
 
     return (
