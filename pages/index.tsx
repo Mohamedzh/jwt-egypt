@@ -44,6 +44,11 @@ export default function Index({ allPosts, preview }) {
       <WomenListSlide />
       <InternShips />
       <InspiringStories />
+
+      <InternShips />
+
+      {/* <CareerOpportunities /> */}
+
       <ContactUs />
       <Footer />
     </>
