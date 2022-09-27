@@ -10,11 +10,20 @@ export default {
             name: 'name',
             title: 'Name',
             type: 'string',
+            validation: rule => rule.required()
         },
         {
             name: 'job_title',
-            title: 'Job_title',
+            title: 'Job title',
             type: 'string',
+            validation: rule => rule.required()
+        },
+        {
+            name: 'department',
+            title: 'Department',
+            type: 'reference',
+            to: [{ type: 'department' }],
+            validation: rule => rule.required()
         },
         {
             name: 'image',
@@ -23,6 +32,7 @@ export default {
             options: {
                 hotspot: true,
             },
+            validation: rule => rule.required()
         },
     ],
 }

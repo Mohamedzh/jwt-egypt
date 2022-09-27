@@ -12,6 +12,9 @@ import author from './author'
 import comment from './comment'
 import person from './women'
 import quotes from './quotes'
+import jobs from './jobs'
+import department from './departments'
+import color from './colors'
 import story from './story'
 import contactUs from './contactUs'
 
@@ -30,11 +33,14 @@ export default createSchema({
     category,
     person,
     quotes,
+    jobs,
+    department,
+    color,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
     comment,
     contactUs,
-    
+
   ]),
 })
