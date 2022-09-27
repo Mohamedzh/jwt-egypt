@@ -8,8 +8,12 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import 'yup-phone'
 import { BsPerson } from 'react-icons/bs'
+import client, { getClient, previewClient } from '../lib/sanity'
 
-export default function ContactUs() {
+export default function ContactUs({ data }) {
+  const address = data.JWTContact[0]
+  console.log(address)
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -77,8 +81,9 @@ export default function ContactUs() {
                   <div>
                     <dt className="sr-only">Postal address</dt>
                     <dd>
-                      <p>6 Ibn Zinky St, Al Gabalayah, Zamalek, </p>
-                      <p>Cairo Governorate 4270131</p>
+                      <p>{address.address} </p>
+                      <p>{address.governorate}Governorate</p>
+                      <p>{address.postalCode}</p>
                     </dd>
                   </div>
                   <div className="mt-6">
@@ -88,7 +93,7 @@ export default function ContactUs() {
                         className="h-6 w-6 flex-shrink-0 text-black"
                         aria-hidden="true"
                       />
-                      <span className="ml-3">+1 (555) 123-4567</span>
+                      <span className="ml-3">{address.phone}</span>
                     </dd>
                   </div>
                   <div className="mt-3">
@@ -98,7 +103,7 @@ export default function ContactUs() {
                         className="black h-6 w-6 flex-shrink-0"
                         aria-hidden="true"
                       />
-                      <span className="ml-3">support@example.com</span>
+                      <span className="ml-3">{address.email}</span>
                     </dd>
                   </div>
                 </dl>
@@ -238,3 +243,4 @@ export default function ContactUs() {
     </>
   )
 }
+
