@@ -48,7 +48,7 @@ export default function Index({ allPosts, preview }) {
       <InternShips />
       <InspiringStories />
 
-      <InternShips />
+      <Career2 />
 
       {/* <CareerOpportunities /> */}
 
