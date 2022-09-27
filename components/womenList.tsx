@@ -69,6 +69,7 @@ function WomenListTest({}: Props) {
       <p className="mt-32 mb-10 text-center text-6xl font-black">
         Meet the team
       </p>
+      
 
 
     let j = 0
@@ -103,11 +104,8 @@ function WomenListTest({}: Props) {
                     </div>
                 )}
             </div>
-          </div>
-        ))}
-      </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default WomenListTest
