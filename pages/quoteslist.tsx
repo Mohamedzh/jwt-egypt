@@ -20,21 +20,18 @@ function Test({ data }: Props) {
 export default Test
 
 export async function getStaticProps() {
-    const postFields = `
-  _id,
-  name,
-  title,
-  'date': publishedAt,
-  excerpt,
-  'slug': slug.current,
-  'coverImage': mainImage,
-  'author': author->{name, 'picture': image.asset->url},
-`
+    //     const postFields = `
+    //   _id,
+    //   name,
+    //   title,
+    //   'date': publishedAt,
+    //   excerpt,
+    //   'slug': slug.current,
+    //   'coverImage': mainImage,
+    //   'author': author->{name, 'picture': image.asset->url},
+    // `
     const data = await getClient(false).fetch(
-        `*[_type == "post"] | order(publishedAt desc){
-      ${postFields}
-      body
-    }`)
+        `*[_type == "quote"]`)
     console.log(data);
 
     return { props: { data } }
