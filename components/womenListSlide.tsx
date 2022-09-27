@@ -17,7 +17,6 @@ let colors = ['bg-wtFlameRed', 'bg-wtGreenSheen', 'bg-wtYellow', 'bg-wtBlue']
 let j = 0
 for (let i = 0; i < womenList.length; i++) {
     womenList[i].color = colors[j]
-    console.log(j, colors.length);
     j++
     if (j === colors.length) {
         j = 0
