@@ -12,6 +12,7 @@ import author from './author'
 import comment from './comment'
 import person from './women'
 import quotes from './quotes'
+import story from './story'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -23,6 +24,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     post,
+    story,
     author,
     category,
     person,
