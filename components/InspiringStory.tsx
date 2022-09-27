@@ -30,8 +30,8 @@ const InspiringStory = ({ inspStory }: { inspStory: InspStories }) => {
           </p>
           <div className="flex w-full justify-center pt-5 pb-5">
             {inspStory.contact.map((contact, idx) => (
-              <Link href={contact.url}>
-                <a key={idx} className="mx-5">
+              <Link href={contact.url} key={idx}>
+                <a  className="mx-5">
                   <div aria-label={contact.name} role="img">
                     <contact.icon className="h-6 w-6" aria-hidden="true"/>
                   </div>
