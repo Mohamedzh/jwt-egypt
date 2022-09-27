@@ -71,6 +71,7 @@ function WomenListTest({}: Props) {
       </p>
       
 
+
     let j = 0
     for (let i = 0; i < womenList.length; i++) {
         womenList[i].color = colors[j]

@@ -13,6 +13,9 @@ import ContactUs from '../components/contactUs'
 import Footer from '../components/footerTab'
 import WomenListSlide from '../components/womenListSlide'
 import InspiringStories from '../components/InspiringStories'
+// import InternShips2 from '../components/InternShips2'
+import CareerOpportunities from '../components/CareerOpportunities'
+import Career2 from '../components/Career2'
 
 export default function Index({ allPosts, preview }) {
   // const heroPost = allPosts[0]
