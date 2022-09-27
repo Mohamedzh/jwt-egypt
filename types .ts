@@ -1,3 +1,5 @@
+import { ReactElement } from "react"
+
 export interface WomenListType {
     name: string
     dep: string
@@ -14,6 +16,7 @@ export type Image = {
 export type Contact = {
     name: string
     url: string
+    icon: (props) => ReactElement<SVGAElement>
 }
 
 export type InspStories = {
@@ -22,13 +25,14 @@ export type InspStories = {
     job: string
     jobDisc: string
     contact: Contact[]
+
 }
 
 export interface VacancyType {
-  title: string
-  department: string
-  description: string
+    title: string
+    department: string
+    description: string
 }
-  
+
 
 
