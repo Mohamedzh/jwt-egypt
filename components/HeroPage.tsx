@@ -1,9 +1,11 @@
 import style from '../styles/heroPage.module.css'
 
-const HeroPage = () => {
+const HeroPage = ({ data }) => {
+  console.log(data.themeColors);
+
   return (
     <>
-      <div className={`${style.gradient} pt-24`}>
+      <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }} className='pt-24'>
         <div className="container mx-auto flex flex-col flex-wrap items-center px-14 md:flex-row">
           {/* Left Col */}
           <div className="flex w-full flex-col items-start justify-center text-center md:w-2/5 md:text-left">
@@ -18,7 +20,7 @@ const HeroPage = () => {
               right!
             </p>
             <button className="focus:shadow-outline mx-auto my-6 transform rounded-full bg-white py-4 px-8 font-bold text-gray-800 shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:underline focus:outline-none lg:mx-0">
-              Subscribe
+              Explore
             </button>
           </div>
           {/* Right Col */}
@@ -30,8 +32,8 @@ const HeroPage = () => {
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <defs>
           <linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style={{ stopColor: '#d53369' }} />
-            <stop offset="100%" style={{ stopColor: '#daae51' }} />
+            <stop offset="0%" style={{ stopColor: `${data.themeColors[0].firstColor.color_code}` }} />
+            <stop offset="100%" style={{ stopColor: `${data.themeColors[0].secondColor.color_code}` }} />
           </linearGradient>
         </defs>
         <path
