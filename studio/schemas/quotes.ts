@@ -9,7 +9,7 @@ export default {
         {
             name: 'body',
             title: 'Body',
-            type: 'blockContent',
+            type: 'string',
             description: 'The quote text',
             validation: rule => rule.required()
         },
