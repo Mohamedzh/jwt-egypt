@@ -19,6 +19,7 @@ import Career2 from '../components/Career2'
 import { getClient } from '../lib/sanity'
 
 export default function Index({ allPosts, preview, data }) {
+  console.log('stories: ', data.stories)
   // const heroPost = allPosts[0]
   // const morePosts = allPosts.slice(1)
   return (
@@ -47,12 +48,11 @@ export default function Index({ allPosts, preview, data }) {
       <HeroPage />
       <WomenListSlide />
       <InternShips />
-      <InspiringStories />
+      <InspiringStories data={data} />
 
       {/* <CareerOpportunities /> */}
 
       <Career2 />
-
       <ContactUs data={data} />
       <Footer data={data} />
     </>
@@ -77,6 +77,7 @@ export async function getStaticProps() {
 
   // `
   const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
+  const stories = await getClient(false).fetch(`*[_type == "story"]{name->{name},"image":image.asset->url,story,facebook,instagram,twitter}`)
 
-  return { props: { data: { JWTContact } } }
+  return { props: { data: { JWTContact, stories } } }
 }

@@ -1,8 +1,14 @@
 import Link from 'next/link'
-import { BsFacebook } from 'react-icons/bs'
+import { BsFacebook, BsTwitter } from 'react-icons/bs'
+import { AiFillInstagram } from 'react-icons/ai'
 import { InspStories } from '../types '
 
-const InspiringStory = ({ inspStory }: { inspStory: InspStories }) => {
+const InspiringStory = ({ story }: { story: InspStories }) => {
+  // function urlFor(source: string) {
+  //   const builder = imageUrlBuilder(sanityClient);
+  //   return builder.image(source);
+  // }
+
   return (
     <div
       role="listitem"
@@ -12,8 +18,7 @@ const InspiringStory = ({ inspStory }: { inspStory: InspStories }) => {
         <div className="absolute -mt-20 flex w-full justify-center">
           <div className="h-32 w-32">
             <img
-              src={inspStory.image.img}
-              alt={inspStory.image.alt}
+              src={story.image}
               role="img"
               className="h-full w-full rounded-full object-cover shadow-md"
             />
@@ -21,22 +26,34 @@ const InspiringStory = ({ inspStory }: { inspStory: InspStories }) => {
         </div>
         <div className="mt-16 px-6">
           <h1 className="mb-1 text-center text-3xl font-bold">
-            {inspStory.name}
+            {story.name.name}
           </h1>
-          <p className="text-center text-sm text-gray-800">{inspStory.job}</p>
+          <p className="text-center text-sm text-gray-800">{story.job}</p>
           <p className="pt-3 text-center text-base font-normal text-gray-600">
-            {inspStory.jobDisc}
+            {story.story}
           </p>
           <div className="flex w-full justify-center pt-5 pb-5">
-            {inspStory.contact.map((contact, idx) => (
-              <Link key={idx} href={contact.url}>
-                <a className="mx-5">
-                  <div aria-label={contact.name} role="img">
-                    <contact.icon className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                </a>
-              </Link>
-            ))}
+            <Link href={story.facebook}>
+              <a className="mx-5">
+                <div aria-label={story.facebook} role="img">
+                  <BsFacebook />
+                </div>
+              </a>
+            </Link>
+            <Link href={story.twitter}>
+              <a className="mx-5">
+                <div aria-label={story.twitter} role="img">
+                  <BsTwitter />
+                </div>
+              </a>
+            </Link>
+            <Link href={story.instagram}>
+              <a className="mx-5">
+                <div aria-label={story.instagram} role="img">
+                  <AiFillInstagram />
+                </div>
+              </a>
+            </Link>
           </div>
         </div>
       </div>
