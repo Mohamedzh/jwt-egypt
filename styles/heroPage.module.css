@@ -1,8 +1,8 @@
-.gradient {
+/* .gradient {
     background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
-  }
+  } */
 
-  .wave {
+.wave {
     position: absolute;
     bottom: 0;
     left: 0;

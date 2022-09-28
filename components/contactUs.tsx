@@ -45,7 +45,7 @@ export default function ContactUs({ data }) {
 
   return (
     <>
-      <div className="contactBorder">
+      <div className="wavyBorderTop">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -54,8 +54,8 @@ export default function ContactUs({ data }) {
         >
           <defs>
             <linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style={{ stopColor: '#d53369' }} />
-              <stop offset="100%" style={{ stopColor: '#daae51' }} />
+              <stop offset="0%" style={{ stopColor: `${data.themeColors[0].firstColor.color_code}` }} />
+              <stop offset="100%" style={{ stopColor: `${data.themeColors[0].secondColor.color_code}` }} />
             </linearGradient>
           </defs>
           <path
@@ -66,8 +66,8 @@ export default function ContactUs({ data }) {
         </svg>
       </div>
 
-      <div className="gradientbg  p-14">
-        <div className="relative">
+      <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }} className="">
+        <div className="relative p-14">
           <div className="absolute inset-0">
             <div className="absolute inset-y-0 left-0 w-1/2 bg-none" />
           </div>
@@ -111,7 +111,7 @@ export default function ContactUs({ data }) {
             </div>
 
             <div className="rounded-full bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
-              <div className="mx-auto max-w-lg p-8 lg:max-w-none">
+              <div className="mx-auto max-w-lg p-10 lg:max-w-none">
                 <form className="grid grid-cols-1 gap-y-6">
                   <div>
                     <label
@@ -229,7 +229,8 @@ export default function ContactUs({ data }) {
                     <button
                       type="button"
                       onClick={() => formik.handleSubmit()}
-                      className="gradientbg inline-flex justify-center rounded-full border  border-transparent py-3 px-6 text-base font-medium text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 "
+                      className="inline-flex justify-center rounded-full border  border-transparent py-3 px-6 text-base font-medium text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 "
+                      style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }}
                     >
                       Submit
                     </button>
