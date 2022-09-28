@@ -1,5 +1,5 @@
 import React from 'react'
-import NavigationBar from '../components/NavigatoinBar'
+import NavigationBar from '../components/NavigationBar'
 import WomenList from '../components/womenList'
 import client, { getClient, previewClient } from '../lib/sanity'
 
@@ -12,7 +12,7 @@ function Test({ quoteList }: Props) {
     return (
         <div className='bg-gradient-to-r from-wtCyan to-wtViolet'>
             <NavigationBar />
-            <WomenList quoteList={quoteList}/>
+            <WomenList quoteList={quoteList} />
         </div>
     )
 }

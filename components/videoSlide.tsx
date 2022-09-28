@@ -1,15 +1,16 @@
 import React from 'react'
 import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im'
-import { WomenListType } from '../types '
+import VideoPlayer from './videoSection'
 
-
-function WomenListSlide({ data }) {
+function VideoSlide({ data }) {
     return (
-        <div style={{ backgroundColor: "#e2e2d0"}} className='m-5'>
+        <div style={{ backgroundColor: "#e2e2d0" }} className='m-5'>
             <div className="carousel w-full">
                 {data.quoteList.map((quote, idx) =>
-                    <div key={idx} id={`slide ${idx}`} className="carousel-item relative w-full">
-                        <div className='rounded-lg shadow-xl mr-5'>
+                    <div key={idx} id={`slide ${idx}`} className="carousel-item h-96 relative w-full">
+                        <VideoPlayer />
+
+                        {/* <div className='rounded-lg shadow-xl mr-5'>
                             <div className=" grid grid-cols-6 place-items-center h-3/4">
                                 <div className='col-span-2 flex flex-col items-center px-24 py-10'>
                                     <img className="aspect-auto w-72" src={quote.person.imageUrl} />
@@ -25,7 +26,7 @@ function WomenListSlide({ data }) {
                                     <ImQuotesRight className='place-self-end h-5 w-5' />
                                 </div>
                             </div>
-                        </div>
+                </div>*/}
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                             <a
                                 href={`#slide ${(idx === 0 ? data.quoteList.length - 1 : idx - 1)}`}
@@ -46,4 +47,4 @@ function WomenListSlide({ data }) {
     )
 }
 
-export default WomenListSlide
+export default VideoSlide
