@@ -38,7 +38,7 @@ export default function Index({ allPosts, preview, data }) {
         </Container>
       </Layout> */}
 
-      <NavigationBar />
+      <NavigationBar data={data} />
       <HeroPage data={data} />
       <NewWomenSlide data={data} />
       <VideoSlide data={data} />
@@ -75,3 +75,5 @@ export async function getStaticProps() {
   return { props: { data: { JWTContact, quoteList, vacancies, stories, themeColors, header } } }
 
 }
+
+
