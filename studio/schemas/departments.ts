@@ -1,4 +1,4 @@
-import { AiOutlineApartment } from 'react-icons/AI'
+import { AiOutlineApartment } from 'react-icons/ai'
 
 export default {
     name: 'department',
