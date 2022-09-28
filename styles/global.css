@@ -1,10 +1,12 @@
 /* purgecss start ignore */
 @tailwind base;
 @tailwind components;
+
 article a {
   color: rgb(49, 49, 182);
   text-decoration: underline;
 }
+
 /* purgecss end ignore */
 @tailwind utilities;
 
@@ -12,24 +14,26 @@ article a {
   background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
 } */
 
-.gradientbg {
+/* .gradientbg {
     background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
-  }
+  } */
 
 .contactBorder {
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
 }
+
 .contactBorder svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 74px;
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 74px;
 }
+
 .contactBorder .shape-fill {
-    /* fill: white; */
-    background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  /* fill: white; */
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
 }

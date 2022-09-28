@@ -53,7 +53,7 @@ export default function Footer({ data }) {
 
   return (
     <>
-      <footer className="gradientbg bg-white">
+      <footer style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }} className="bg-white">
         <hr className="my-0 border-b border-gray-100 py-0 opacity-25" />
         <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8 ">
           <nav
