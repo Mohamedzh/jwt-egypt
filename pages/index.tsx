@@ -73,3 +73,5 @@ export async function getStaticProps() {
   return { props: { data: { JWTContact, quoteList, vacancies, stories, themeColors } } }
 
 }
+
+
