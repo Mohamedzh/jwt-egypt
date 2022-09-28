@@ -45,7 +45,7 @@ export default function ContactUs({ data }) {
 
   return (
     <>
-      <div className="contactBorder">
+      <div className="wavyBorderTop">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -66,8 +66,8 @@ export default function ContactUs({ data }) {
         </svg>
       </div>
 
-      <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }} className="p-14">
-        <div className="relative">
+      <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }} className="">
+        <div className="relative p-14">
           <div className="absolute inset-0">
             <div className="absolute inset-y-0 left-0 w-1/2 bg-none" />
           </div>
@@ -111,7 +111,7 @@ export default function ContactUs({ data }) {
             </div>
 
             <div className="rounded-full bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
-              <div className="mx-auto max-w-lg p-8 lg:max-w-none">
+              <div className="mx-auto max-w-lg p-10 lg:max-w-none">
                 <form className="grid grid-cols-1 gap-y-6">
                   <div>
                     <label

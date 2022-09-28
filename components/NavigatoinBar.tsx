@@ -1,16 +1,20 @@
 import Link from 'next/link'
 import React from 'react'
 
-const NavigationBar = () => {
+const NavigationBar = ({data}) => {
   return (
-    <nav id="header" className="fixed top-0 z-30 w-full text-white">
+    // <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }}></div>
+    <nav
+      id="header"
+      className="fixed top-0 z-30 w-full text-white "
+      style={{
+        background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
+      }}
+    >
       <div className="container mx-auto mt-0 flex w-full flex-wrap items-center justify-between py-2 px-7">
         <div className="flex max-h-2 items-center pl-4">
           <Link href="/">
-            <a
-              className="toggleColour text-2xl font-bold text-white no-underline hover:no-underline lg:text-4xl"
-             
-            >
+            <a className="toggleColour text-2xl font-bold text-white no-underline hover:no-underline lg:text-4xl">
               {/* Icon from: http://www.potlabicons.com/  */}
               {/* <svg className="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
             <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />

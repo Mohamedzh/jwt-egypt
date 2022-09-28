@@ -40,7 +40,7 @@ export default function Index({ allPosts, preview, data }) {
         </Container>
       </Layout> */}
 
-      <NavigationBar />
+      <NavigationBar data={data} />
       <HeroPage data={data} />
       <WomenListSlide data={data} />
       <InternShips />

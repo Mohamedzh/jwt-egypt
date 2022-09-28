@@ -18,7 +18,7 @@ article a {
     background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
   } */
 
-.contactBorder {
+.wavyBorderTop {
   top: 0;
   left: 0;
   width: 100%;
@@ -26,14 +26,25 @@ article a {
   line-height: 0;
 }
 
-.contactBorder svg {
+.wavyBorderTop svg {
   position: relative;
   display: block;
-  width: calc(100% + 1.3px);
-  height: 74px;
+  width: calc(126% + 1.3px);
+  height: 77px;
 }
 
-.contactBorder .shape-fill {
-  /* fill: white; */
-  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+.wavyBorderBottom {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wavyBorderBottom svg {
+  position: relative;
+  display: block;
+  width: calc(126% + 1.3px);
+  height: 77px;
 }
