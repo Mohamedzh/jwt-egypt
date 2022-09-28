@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import NavigationBar from '../components/NavigatoinBar';
+import NavigationBar from '../components/NavigationBar';
 import { VacancyType } from '../types ';
 
 const vacancies = [

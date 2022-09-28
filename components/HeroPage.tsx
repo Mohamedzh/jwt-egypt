@@ -1,7 +1,7 @@
 import style from '../styles/heroPage.module.css'
 
 const HeroPage = ({ data }) => {
-  console.log(data.themeColors);
+  console.log(data.header);
 
   return (
     <>
@@ -10,22 +10,22 @@ const HeroPage = ({ data }) => {
           {/* Left Col */}
           <div className="flex w-full flex-col items-start justify-center text-center md:w-2/5 md:text-left">
             <p className="tracking-loose w-full uppercase text-wtImperial">
-              What business are you?
+              {data.header[0].heading}
             </p>
             <h1 className="my-4 text-5xl font-bold leading-tight text-wtImperial">
-              WUNDERMAN THOMPSON WOMEN
+              {data.header[0].title}
             </h1>
             <p className="mb-8 text-2xl leading-normal text-wtImperial">
-              Sub-hero message, not too long and not too short. Make it just
-              right!
+              {data.header[0].subtitle}
             </p>
             <button className="focus:shadow-outline mx-auto my-6 transform rounded-full bg-white py-4 px-8 font-bold text-gray-800 shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:underline focus:outline-none lg:mx-0">
-              Explore
+              {data.header[0].buttonText}
             </button>
           </div>
           {/* Right Col */}
           <div className="w-full py-6 text-center md:w-3/5">
-            <img className="z-50 w-full md:w-4/5" src="./assets/hero.png" />
+            <img className="z-50 w-full md:w-4/5" src={data.header[0].imageUrl}
+            />
           </div>
         </div>
       </div>
