@@ -23,27 +23,19 @@ export default {
       type: 'image',
     },
     {
-      name: 'contact',
-      title: 'Contact',
-      type: 'array',
-      of: [       
-        {
-          title: 'Contact',
-          type: 'object',
-          fields: [
-            {
-              title: 'Name',
-              name: 'name',
-              type: 'string',
-            },{
-                title: 'URL',
-                name: 'url',
-                type: 'string',
-              }
-            
-          ],
-        },
-      ],
+      name: 'facebook',
+      title: 'Facebook',
+      type: 'url',
+    },
+    {
+      name: 'twitter',
+      title: 'Twitter',
+      type: 'url',
+    },
+    {
+      name: 'instagram',
+      title: 'Instagram',
+      type: 'url',
     },
   ],
 }
