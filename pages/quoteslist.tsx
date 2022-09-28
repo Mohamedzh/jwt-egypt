@@ -4,15 +4,15 @@ import WomenList from '../components/womenList'
 import client, { getClient, previewClient } from '../lib/sanity'
 
 type Props = {
-    data: any
+    quoteList: any
 }
 
-function Test({ data }: Props) {
-    console.log(data)
+function Test({ quoteList }: Props) {
+    console.log(quoteList)
     return (
         <div className='bg-gradient-to-r from-wtCyan to-wtViolet'>
             <NavigationBar />
-            <WomenList />
+            <WomenList quoteList={quoteList}/>
         </div>
     )
 }
@@ -30,9 +30,9 @@ export async function getStaticProps() {
     //   'coverImage': mainImage,
     //   'author': author->{name, 'picture': image.asset->url},
     // `
-    const data = await getClient(false).fetch(
-        `*[_type == "quote"]`)
-    console.log(data);
+    const quoteList = await getClient(false).fetch(
+        `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}}`)
+    console.log(quoteList);
 
-    return { props: { data } }
+    return { props: { quoteList } }
 }

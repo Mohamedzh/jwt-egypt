@@ -15,7 +15,7 @@ import WomenListSlide from '../components/womenListSlide'
 import InspiringStories from '../components/InspiringStories'
 // import InternShips2 from '../components/InternShips2'
 import CareerOpportunities from '../components/CareerOpportunities'
-import Career2 from '../components/Career2'
+import CareerSection from '../components/careerSection'
 import { getClient } from '../lib/sanity'
 
 export default function Index({ allPosts, preview, data }) {
@@ -45,13 +45,13 @@ export default function Index({ allPosts, preview, data }) {
 
       <NavigationBar />
       <HeroPage />
-      <WomenListSlide />
+      <WomenListSlide data={data} />
       <InternShips />
       <InspiringStories />
 
       {/* <CareerOpportunities /> */}
 
-      <Career2 />
+      <CareerSection data={data}/>
 
       <ContactUs data={data} />
       <Footer data={data} />
@@ -68,15 +68,11 @@ export default function Index({ allPosts, preview, data }) {
 // }
 
 export async function getStaticProps() {
-  //   const contactUsFields = `
-  // address,
-  // governorate,
-  // postalCode,
-  // phone,
-  // email
-
-  // `
+  
   const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
+  const quoteList = await getClient(false).fetch(
+    `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}}`)    
+  const vacancies = await getClient(false).fetch(`*[_type == "job"]{location, title, type, details}`)
 
-  return { props: { data: { JWTContact } } }
+  return { props: { data: { JWTContact, quoteList, vacancies } } }
 }

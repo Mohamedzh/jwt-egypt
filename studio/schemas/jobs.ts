@@ -39,5 +39,11 @@ export default {
             description: 'The job details',
             validation: rule => rule.required()
         },
+        {
+            name: 'type',
+            title: 'Type',
+            type: 'string',
+            description: 'Full-time / Part-time'
+        }
     ],
 }

@@ -38,7 +38,7 @@ const vacancies = [
   { title: "account manager", department: "Accounting", description: "account manager needed to perform accounting operations in the accounting deraptment" }
 ]
 
-const Career2 = () => {
+const CareerSection = ({ data }) => {
 
 
   return (
@@ -69,8 +69,8 @@ const Career2 = () => {
       </p>
       <div className="overflow-hidden bg-white shadow sm:rounded-md">
         <ul role="list" className="divide-y divide-gray-200">
-          {positions.map((position) => (
-            <li key={position.id}>
+          {positions.map((position, idx) => (
+            <li key={idx}>
               <a href="#" className="block hover:bg-gray-50">
                 <div className="px-4 py-4 sm:px-6">
                   <div className="flex items-center justify-between">
@@ -116,4 +116,4 @@ const Career2 = () => {
   )
 }
 
-export default Career2
+export default CareerSection
