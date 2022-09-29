@@ -98,9 +98,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // console.log(params)
   let { id } = params
-  console.log(id)
   const stories = await getClient(false).fetch(
-    `*[_type == "story" && _id.current =="2e7d86e0-67ae-4c25-ac8b-e7cb34da78c4"]`
+    `*[_type == "story" && _id =="2e7d86e0-67ae-4c25-ac8b-e7cb34da78c4"]`
   )
   console.log('from story: ', stories)
 

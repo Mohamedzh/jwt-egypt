@@ -38,14 +38,27 @@ export default function Index({ data }) {
 // }
 
 export async function getStaticProps() {
-  const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
+  const JWTContact = await getClient(false).fetch(
+    `*[_type == "contactUs"]`)
+
   const quoteList = await getClient(false).fetch(
     `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}} [0...4]`)
-  const vacancies = await getClient(false).fetch(`*[_type == "job"]{location, title, type, details}`)
-  const stories = await getClient(false).fetch(`*[_type == "story"]{name->{name},"image":image.asset->url,story,facebook,instagram,twitter}`)
-  const themeColors = await getClient(false).fetch(`*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`)
-  const header = await getClient(false).fetch(`*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url}`)
-  const videos = await getClient(false).fetch(`*[_type== 'video']{videoName, videoId, description}`)
+
+  const vacancies = await getClient(false).fetch(
+    `*[_type == "job"]{location, title, type, details}`)
+
+  const stories = await getClient(false).fetch(
+    `*[_type == "story"]{name->{name, _id, facebook, twitter, instagram, "image":image.asset->url}}`)
+
+  const themeColors = await getClient(false).fetch(
+    `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`)
+
+  const header = await getClient(false).fetch(
+    `*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url}`)
+
+  const videos = await getClient(false).fetch(
+    `*[_type== 'video']{videoName, videoId, description}`)
+
   const internShips = await getClient(false).fetch(
     `*[_type == "internShip"]{name->{name,_id,"image":image.asset->url},story}`
   )
