@@ -4,7 +4,7 @@ export default {
     title: 'Website Theme',
     icon: IoMdColorWand,
     type: 'document',
-    // __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
+    __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
     fields: [
         {
             name: 'firstColor',
@@ -23,11 +23,11 @@ export default {
             validation: (field) => field.required()
         },
         {
-            name: 'headerColor',
-            title: 'Header color',
+            name: 'quotesSectionColor',
+            title: 'Quotes section color',
             type: 'reference',
             to: [{ type: 'color' }],
-            description: "Choose the background color of the header of the website. (Edit-only field).  To change the color, click on the 3-dots menu on the right and choose 'Replace'",
+            description: "Choose the background color of the quotes section of the website. (Edit-only field).  To change the color, click on the 3-dots menu on the right and choose 'Replace'",
             validation: (field) => field.required()
         },
         {
@@ -36,6 +36,22 @@ export default {
             type: 'reference',
             to: [{ type: 'color' }],
             description: "Choose the background color of the video section of the website. (Edit-only field).  To change the color, click on the 3-dots menu on the right and choose 'Replace'",
+            validation: (field) => field.required()
+        },
+        {
+            name: 'storiesSectionColor',
+            title: 'Stories section color',
+            type: 'reference',
+            to: [{ type: 'color' }],
+            description: "Choose the background color of the stories section of the website. (Edit-only field).  To change the color, click on the 3-dots menu on the right and choose 'Replace'",
+            validation: (field) => field.required()
+        },
+        {
+            name: 'internSectionColor',
+            title: 'Interns section color',
+            type: 'reference',
+            to: [{ type: 'color' }],
+            description: "Choose the background color of the Interns section of the website. (Edit-only field).  To change the color, click on the 3-dots menu on the right and choose 'Replace'",
             validation: (field) => field.required()
         },
         {

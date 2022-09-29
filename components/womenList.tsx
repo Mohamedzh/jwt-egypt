@@ -7,7 +7,6 @@ type Props = {
 }
 
 function WomenList({ data }: Props) {
-console.log(data.quoteList[0].person.imageUrl)
     return (
         <>
             <p className='text-6xl font-black mt-32 mb-10 text-center'>

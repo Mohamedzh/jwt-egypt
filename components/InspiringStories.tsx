@@ -294,9 +294,9 @@ import { RiInstagramFill } from 'react-icons/ri'
 // ]
 
 const InspiringStories = ({ data }) => {
-  const { stories } = data
+  const { stories, themeColors } = data
   return (
-    <div className="mb-16">
+    <div style={{backgroundColor: `${data.themeColors[0].storiesSectionColor.color_code}`}} className="mb-16">
       <div className="container mx-auto flex justify-center pt-16">
         <div>
           <p className="pb-3 text-center text-lg font-normal text-gray-500">
@@ -307,7 +307,9 @@ const InspiringStories = ({ data }) => {
           </h1>
         </div>
       </div>
-      <div className="w-full bg-gray-100 px-10 pt-10">
+      <div 
+      style={{backgroundColor: `${data.themeColors[0].storiesSectionColor.color_code}`}}
+      className="w-full px-10 pt-10">
         <div className="container mx-auto">
           <div
             role="list"

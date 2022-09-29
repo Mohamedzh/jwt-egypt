@@ -10,13 +10,14 @@ import CareerSection from '../components/careerSection'
 import NewWomenSlide from '../components/newSlide'
 import VideoSlide from '../components/videoSlide'
 import { getClient } from '../lib/sanity'
+import axios from 'axios'
 
 export default function Index({ data }) {
   return (
     <>
       <NavigationBar data={data} />
       <HeroPage data={data} />
-      <NewWomenSlide data={data} />
+      <WomenListSlide data={data} />
       <InspiringStories data={data} />
       <VideoSlide data={data} />
 
@@ -53,9 +54,15 @@ export async function getStaticProps() {
   )
 
   const themeColors = await getClient(false).fetch(
-    `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`
+    `*[_type == "siteTheme"]{firstColor->{color_code},
+     secondColor->{color_code},
+     quotesSectionColor->{color_code},
+     videoSectionColor->{color_code},
+     storiesSectionColor->{color_code},
+     internSectionColor->{color_code},
+     careerSectionColor->{color_code}
+    }`
   )
-
   const header = await getClient(false).fetch(
     `*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url}`
   )
@@ -63,6 +70,8 @@ export async function getStaticProps() {
   const videos = await getClient(false).fetch(
     `*[_type== 'video']{videoName, videoId, description}`
   )
+  const listener = getClient(false).listen(
+    `*[_type == "department"]`).subscribe(() => { axios.get('http://localhost:3000/api/revalidate'); console.log('there') })
 
   const internShips = await getClient(false).fetch(
     `*[_type == "internship"]{name->{name,_id,"image":image.asset->url},story}`
