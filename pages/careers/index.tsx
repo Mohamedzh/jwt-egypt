@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import NavigationBar from '../../components/NavigationBar'
 import { VacancyType } from '../../types '
-import client, { getClient, previewClient } from '../../lib/sanity'
+import { getClient } from '../../lib/sanity'
 import * as Yup from 'yup'
 import 'yup-phone'
 import { useFormik } from 'formik'
@@ -55,7 +55,7 @@ const formik = useFormik({
     // message: Yup.string(),
   }),
   onSubmit: (values) => {
-    // console.log(values)
+    console.log(values)
     //api call
     // formik.resetForm
     //navigate to top or show a pop up message
