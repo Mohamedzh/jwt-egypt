@@ -31,12 +31,13 @@ export interface WomenListType {
 
 export type InspStories = {
   name: any
-  image: string
-  job: string
   story: string
-  facebook: string
-  instagram: string
-  twitter: string
+}
+
+export type InternShip = {
+  name: any
+  story: string
+  image: string
 }
 
 export interface VacancyType {

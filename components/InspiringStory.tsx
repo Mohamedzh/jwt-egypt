@@ -18,42 +18,44 @@ const InspiringStory = ({ story }: { story: InspStories }) => {
         <div className="absolute -mt-20 flex w-full justify-center">
           <div className="h-32 w-32">
             <img
-              src={story.image}
+              src={story.name.image}
               role="img"
               className="h-full w-full rounded-full object-cover shadow-md"
             />
           </div>
         </div>
         <div className="mt-16 px-6">
-          <Link href={`/story/${story.name.name}`}>
+          <Link href={`/story/${story.name._id}`}>
             <a>
               <h1 className="mb-1 text-center text-3xl font-bold">
                 {story.name.name}
               </h1>
-              <p className="text-center text-sm text-gray-800">{story.job}</p>
+              <p className="text-center text-sm text-gray-800">
+                {story.name.job}
+              </p>
               <p className="pt-3 text-center text-base font-normal text-gray-600">
                 {story.story}
               </p>
             </a>
           </Link>
           <div className="flex w-full justify-center pt-5 pb-5">
-            <Link href={story.facebook}>
+            <Link href={story.name.facebook}>
               <a className="mx-5">
-                <div aria-label={story.facebook} role="img">
+                <div aria-label={story.name.facebook} role="img">
                   <BsFacebook />
                 </div>
               </a>
             </Link>
-            <Link href={story.twitter}>
+            <Link href={story.name.twitter}>
               <a className="mx-5">
-                <div aria-label={story.twitter} role="img">
+                <div aria-label={story.name.twitter} role="img">
                   <BsTwitter />
                 </div>
               </a>
             </Link>
-            <Link href={story.instagram}>
+            <Link href={story.name.instagram}>
               <a className="mx-5">
-                <div aria-label={story.instagram} role="img">
+                <div aria-label={story.name.instagram} role="img">
                   <AiFillInstagram />
                 </div>
               </a>
