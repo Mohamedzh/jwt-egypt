@@ -32,6 +32,7 @@ export interface WomenListType {
 export type InspStories = {
   name: any
   story: string
+  _id: string
 }
 
 export type InternShip = {
