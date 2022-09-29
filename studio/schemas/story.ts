@@ -17,25 +17,5 @@ export default {
       title: 'Story',
       type: 'text',
     },
-    {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-    },
-    {
-      name: 'facebook',
-      title: 'Facebook',
-      type: 'url',
-    },
-    {
-      name: 'twitter',
-      title: 'Twitter',
-      type: 'url',
-    },
-    {
-      name: 'instagram',
-      title: 'Instagram',
-      type: 'url',
-    },
   ],
 }

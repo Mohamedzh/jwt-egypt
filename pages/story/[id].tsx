@@ -41,11 +41,11 @@ const Story = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M15 19l-7-7 7-7"
                     />
                   </svg>
@@ -58,11 +58,11 @@ const Story = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M9 5l7 7-7 7"
                     />
                   </svg>
@@ -80,12 +80,12 @@ export default Story
 
 export async function getStaticPaths() {
   const stories = await getClient(false).fetch(
-    `*[_type == "story"]{name->{name},"image":image.asset->url,story,facebook,instagram,twitter}`
+    `*[_type == "story"]{name->{_id}}`
   )
   const paths = stories.map((story: InspStories) => {
     return {
       params: {
-        name: story.name.name,
+        id: story.name._id,
       },
     }
   })
@@ -96,10 +96,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params)
-  let fName = params.name
+  // console.log(params)
+  let { id } = params
+  console.log(id)
   const stories = await getClient(false).fetch(
-    `*[_type == "article" && name match '${fName}*' ]{name->{name},story}`
+    `*[_type == "story" && _id.current =="2e7d86e0-67ae-4c25-ac8b-e7cb34da78c4"]`
   )
   console.log('from story: ', stories)
 

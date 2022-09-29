@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/story/[name].tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/story/[id].tsx"],
   "exclude": ["node_modules"]
 }
