@@ -17,10 +17,10 @@ export default function Index({ data }) {
       <NavigationBar data={data} />
       <HeroPage data={data} />
       <NewWomenSlide data={data} />
+      <InspiringStories data={data} />
       <VideoSlide data={data} />
 
       <InternShips data={data} />
-      <InspiringStories data={data} />
 
       <CareerSection data={data} />
       <ContactUs data={data} />
@@ -51,7 +51,7 @@ export async function getStaticProps() {
     `*[_type == "story"]{_id, name->{name, _id, facebook, twitter, instagram, "image":image.asset->url, job_title}}`)
 
   const themeColors = await getClient(false).fetch(
-    `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`)
+    `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}, "image":image.asset->url}`)
 
   const header = await getClient(false).fetch(
     `*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url}`)
