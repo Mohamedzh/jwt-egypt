@@ -3,10 +3,9 @@ import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im'
 import VideoPlayer from './videoSection'
 
 function VideoSlide({ data }) {
-    console.log(data.videos);
 
     return (
-        <div className='mx-48 h-96 my-20 mb-36'>
+        <div className='mx-24 h-96 my-20 mb-36'>
 
             <div className="carousel w-full">
                 {data.videos.map((video, idx) =>
