@@ -25,13 +25,13 @@ const InspiringStory = ({ story }: { story: InspStories }) => {
           </div>
         </div>
         <div className="mt-16 px-6">
-          <Link href={`/story/${story.name._id}`}>
+          <Link href={`/story/${story._id}`}>
             <a>
               <h1 className="mb-1 text-center text-3xl font-bold">
                 {story.name.name}
               </h1>
               <p className="text-center text-sm text-gray-800">
-                {story.name.job}
+                {story.name.job_title}
               </p>
               <p className="pt-3 text-center text-base font-normal text-gray-600">
                 {story.story}

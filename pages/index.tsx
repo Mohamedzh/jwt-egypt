@@ -48,7 +48,7 @@ export async function getStaticProps() {
     `*[_type == "job"]{location, title, type, details}`)
 
   const stories = await getClient(false).fetch(
-    `*[_type == "story"]{name->{name, _id, facebook, twitter, instagram, "image":image.asset->url}}`)
+    `*[_type == "story"]{_id, name->{name, _id, facebook, twitter, instagram, "image":image.asset->url, job_title}}`)
 
   const themeColors = await getClient(false).fetch(
     `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`)
