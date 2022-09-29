@@ -2,12 +2,13 @@ import { InternShip } from '../types '
 
 const InternShips = ({ data }) => {
   const { internShips } = data
+  console.log(internShips)
   return (
     <div className="container mx-auto bg-white p-4 lg:p-12">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        {internShips.map((internShip: InternShip) => {
-          ;<div className="overflow-hidden rounded-2xl bg-blue-50 p-4 lg:p-12">
-            {/* <div className="flex items-center text-blue-500">
+        {internShips.map((internShip: InternShip) => (
+          <div className="overflow-hidden rounded-2xl bg-blue-50 p-4 lg:p-12">
+            <div className="flex items-center text-blue-500">
               <p className="text-sm font-bold uppercase">
                 Feature 1 & Feature 2
               </p>
@@ -26,7 +27,7 @@ const InternShips = ({ data }) => {
                   d="M9 5l7 7-7 7"
                 />
               </svg>
-            </div> */}
+            </div>
 
             <h2 className="mt-4 text-3xl font-semibold text-slate-800">
               {internShip.name.name}
@@ -147,7 +148,7 @@ const InternShips = ({ data }) => {
               </svg>
             </div>
           </div>
-        })}
+        ))}
       </div>
     </div>
   )

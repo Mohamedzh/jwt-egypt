@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const NavigationBar = ({data}:{data?:any}) => {
+const NavigationBar = ({ data }: { data?: any }) => {
   return (
     // <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }}></div>
     <nav
@@ -52,7 +52,7 @@ const NavigationBar = ({data}:{data?:any}) => {
                 className="inline-block py-2 px-4 font-bold text-black no-underline"
                 href="#"
               >
-                Active
+                Stories
               </a>
             </li>
             <li className="mr-3">
@@ -60,7 +60,7 @@ const NavigationBar = ({data}:{data?:any}) => {
                 className="hover:text-underline inline-block py-2 px-4 text-black no-underline hover:text-gray-800"
                 href="#"
               >
-                link
+                Careers
               </a>
             </li>
             <li className="mr-3">
@@ -68,7 +68,7 @@ const NavigationBar = ({data}:{data?:any}) => {
                 className="hover:text-underline inline-block py-2 px-4 text-black no-underline hover:text-gray-800"
                 href="#"
               >
-                link
+                Media library
               </a>
             </li>
           </ul>

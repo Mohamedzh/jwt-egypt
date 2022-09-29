@@ -1,6 +1,6 @@
 export default {
   name: 'internship',
-  title: 'Intern Ship',
+  title: 'Internship',
   icon: '',
   type: 'document',
   fields: [
@@ -13,7 +13,7 @@ export default {
     },
     {
       name: 'story',
-      title: 'Intern Ship Story',
+      title: 'Internship Story',
       type: 'string',
       description: 'write your intern ship journey',
     },
