@@ -17,10 +17,10 @@ export default function Index({ data }) {
       <NavigationBar data={data} />
       <HeroPage data={data} />
       <NewWomenSlide data={data} />
+      <InspiringStories data={data} />
       <VideoSlide data={data} />
 
       <InternShips data={data} />
-      <InspiringStories data={data} />
 
       <CareerSection data={data} />
       <ContactUs data={data} />
