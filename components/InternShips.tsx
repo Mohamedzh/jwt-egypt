@@ -1,3 +1,4 @@
+import story from '../studio/schemas/story'
 import { InternShip } from '../types '
 
 const InternShips = ({ data }) => {
@@ -35,8 +36,8 @@ const InternShips = ({ data }) => {
 
             <p className="mt-4 text-lg text-slate-600">{internShip.story}</p>
 
-            <div className="mt-12 flex transform items-center justify-center transition-transform duration-150 ease-in-out hover:scale-125">
-              <svg
+            <div className="mt-12 flex transform items-center justify-center transition-transform duration-150 ease-in-out hover:scale-110">
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-auto w-[300px]"
                 viewBox="0 0 511.56264 532.44842"
@@ -145,7 +146,15 @@ const InternShips = ({ data }) => {
                   d="M493.53827,196.17181l-48.54724-23.22339s-1.94983-15.5437-11.05402-21.08789c-1.54779-3.6925-3.32855-7.74908-4.94598-10.96332-4-7.94879,2-22.94879-3-22.94879s-12.39122,15.77543-12,20c.30031,3.24292,2.98059,8.90472,3.5343,13.8609-6.09709,2.29949-11.01564,6.24084-14.24964,9.37903-2.79865,2.71575-3.8385,6.76755-2.74475,10.51073,3.16948,10.84703,11.09153,33.24933,22.46008,33.24933,15,0,19-3,19-3,0,0,31,39,54,42s-2.45276-47.77661-2.45276-47.77661Z"
                   fill="#ffb6b6"
                 />
-              </svg>
+              </svg> */}
+              <div className="">
+                <img
+                  // className='overflow:"hidden"
+                  style={{ width: '500px', height: '300px' }}
+                  src={internShip.name.image}
+                  alt="photo"
+                />
+              </div>
             </div>
           </div>
         ))}

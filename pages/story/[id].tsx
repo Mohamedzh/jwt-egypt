@@ -8,13 +8,13 @@ const Story = ({ data }: { data: any }) => {
       <section className="bg-white dark:bg-gray-900">
         <div className="container mx-auto px-6 py-10">
           <div className="lg:-mx-6 lg:flex lg:items-center">
-            <div className='image-border w-full lg:w-1/2 mr-10'>
               <img
                 className="h-96 w-full rounded-lg object-cover object-center lg:mx-6 lg:h-[36rem] "
                 src={story[0].name.image}
                 alt="alt"
               />
-            </div>
+            {/* <div className='image-border w-full lg:w-1/2 mr-10'>
+            </div> */}
             {/* <div className='border border-solid h-screen mx-5'></div> */}
             <div className="mt-8 lg:mt-0 lg:w-1/2 lg:px-6">
               {/* <p className="text-5xl font-semibold text-blue-500 ">“</p> */}
