@@ -54,8 +54,14 @@ export default function ContactUs({ data }) {
         >
           <defs>
             <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style={{ stopColor: `${data.themeColors[0].firstColor.color_code}` }} />
-              <stop offset="100%" style={{ stopColor: `${data.themeColors[0].secondColor.color_code}` }} />
+              <stop
+                offset="0%"
+                stopColor={`${data.themeColors[0].firstColor.color_code}`}
+              />
+              <stop
+                offset="80%"
+                stopColor={`${data.themeColors[0].secondColor.color_code}`}
+              />
             </linearGradient>
           </defs>
           <path
@@ -66,10 +72,15 @@ export default function ContactUs({ data }) {
         </svg>
       </div>
 
-      <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }} className="">
+      <div
+        style={{
+          background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
+        }}
+        className=""
+      >
         <div className="relative p-14">
           <div className="absolute inset-0">
-            <div className="absolute inset-y-0 left-0 w-1/2 bg-none" />
+            <div className="absolute inset-y-0 left-0 w-1/2 bg-none sm:border-none" />
           </div>
           <div className="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
             <div className="bg-none py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
@@ -131,7 +142,7 @@ export default function ContactUs({ data }) {
                         type="text"
                         name="name"
                         id="name"
-                        className="block w-full rounded-full  border-gray-300 bg-gray-50 pl-10 text-black focus:border-black focus:ring-black sm:text-sm"
+                        className="block w-full rounded-full border-gray-300 bg-gray-50 pl-10 text-black focus:border-black focus:ring-black sm:text-sm"
                         placeholder="Full Name"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -230,7 +241,9 @@ export default function ContactUs({ data }) {
                       type="button"
                       onClick={() => formik.handleSubmit()}
                       className="inline-flex justify-center rounded-full border  border-transparent py-3 px-6 text-base font-medium text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 "
-                      style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }}
+                      style={{
+                        background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
+                      }}
                     >
                       Submit
                     </button>
@@ -244,4 +257,3 @@ export default function ContactUs({ data }) {
     </>
   )
 }
-
