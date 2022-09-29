@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import NavigationBar from '../../components/NavigationBar'
 import { VacancyType } from '../../types '
 import client, { getClient, previewClient } from '../../lib/sanity'
+import * as Yup from 'yup'
+import 'yup-phone'
+import { useFormik } from 'formik'
 
 const vacancies = [
   {
@@ -30,6 +33,35 @@ const vacancies = [
   },
 ]
 
+const formik = useFormik({
+  initialValues: {
+    name: '',
+    // email: '',
+    // number: '',
+    // message: '',
+  },
+  validationSchema: Yup.object({
+    name: Yup.string().required('Required'),
+    // email: Yup.string()
+    //   .email('Please enter a valid email address')
+    //   .required('Required'),
+    // number: Yup.string()
+    //   .phone(
+    //     'Egypt',
+    //     true,
+    //     'Please enter a valid mobile number starting with your region code (ex. +20 ) '
+    //   )
+    //   .required('Required'),
+    // message: Yup.string(),
+  }),
+  onSubmit: (values) => {
+    // console.log(values)
+    //api call
+    // formik.resetForm
+    //navigate to top or show a pop up message
+  },
+})
+
 function Careers({ data }) {
   const [filteredJobs, setFiltered] = useState<VacancyType[]>(vacancies)
   const filter = (department: string) => {
@@ -43,7 +75,7 @@ function Careers({ data }) {
       <NavigationBar data={data} />
 
       <div className="p-10">
-        <div className="grid grid-cols-1 mt-24 gap-4 pt-5 sm:grid-cols-2">
+        <div className="mt-24 grid grid-cols-1 gap-4 pt-5 sm:grid-cols-2">
           <div>
             <div className="mx-20  sm:w-auto">
               <label className="min-w-max pt-2 font-bold" htmlFor="jobs">
@@ -89,26 +121,35 @@ function Careers({ data }) {
           </div>
 
           <div className="">
-            <form action="#" method="POST">
+            <form className="grid grid-cols-1 gap-y-6">
               <div className="overflow-hidden shadow sm:rounded-md">
                 <div className="bg-white px-4 py-5 sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-6 sm:col-span-3">
+                    <div>
                       <label
-                        htmlFor="first-name"
-                        className="block text-sm font-medium text-gray-700"
+                        htmlFor="name"
+                        className="ml-px block  pl-4 text-sm font-medium text-gray-700"
                       >
-                        First name
+                        Name
                       </label>
-                      <input
-                        type="text"
-                        name="first-name"
-                        id="first-name"
-                        autoComplete="given-name"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
+                      <div className="relative mt-1 rounded-full shadow-sm">
+                        <input
+                          type="text"
+                          name="name"
+                          id="name"
+                          className="block w-full rounded-full border-gray-300 bg-gray-50 pl-10 text-black focus:border-black focus:ring-black sm:text-sm"
+                          placeholder="Full Name"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.name}
+                        />
+                      </div>
+                      <div className="ml-px block  pl-4 text-sm  text-red-700">
+                        {formik.touched.name ? (
+                          <p>{formik.errors.name}</p>
+                        ) : null}
+                      </div>
                     </div>
-
                     <div className="col-span-6 sm:col-span-3">
                       <label
                         htmlFor="last-name"
@@ -227,8 +268,9 @@ function Careers({ data }) {
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
-                    type="submit"
+                    type="button"
                     className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    onClick={() => formik.handleSubmit()}
                   >
                     Save
                   </button>

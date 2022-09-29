@@ -53,23 +53,34 @@ export default function ContactUs({ data }) {
           preserveAspectRatio="none"
         >
           <defs>
-            <linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style={{ stopColor: `${data.themeColors[0].firstColor.color_code}` }} />
-              <stop offset="100%" style={{ stopColor: `${data.themeColors[0].secondColor.color_code}` }} />
+            <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop
+                offset="0%"
+                stopColor={`${data.themeColors[0].firstColor.color_code}`}
+              />
+              <stop
+                offset="80%"
+                stopColor={`${data.themeColors[0].secondColor.color_code}`}
+              />
             </linearGradient>
           </defs>
           <path
             d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
             className="shape-fill"
-            fill="url(#wave)"
+            fill="url(#wave2)"
           ></path>
         </svg>
       </div>
 
-      <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }} className="">
+      <div
+        style={{
+          background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
+        }}
+        className=""
+      >
         <div className="relative p-14">
           <div className="absolute inset-0">
-            <div className="absolute inset-y-0 left-0 w-1/2 bg-none" />
+            <div className="absolute inset-y-0 left-0 w-1/2 bg-none sm:border-none" />
           </div>
           <div className="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
             <div className="bg-none py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
@@ -131,7 +142,7 @@ export default function ContactUs({ data }) {
                         type="text"
                         name="name"
                         id="name"
-                        className="block w-full rounded-full  border-gray-300 bg-gray-50 pl-10 text-black focus:border-black focus:ring-black sm:text-sm"
+                        className="block w-full rounded-full border-gray-300 bg-gray-50 pl-10 text-black focus:border-black focus:ring-black sm:text-sm"
                         placeholder="Full Name"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -230,7 +241,9 @@ export default function ContactUs({ data }) {
                       type="button"
                       onClick={() => formik.handleSubmit()}
                       className="inline-flex justify-center rounded-full border  border-transparent py-3 px-6 text-base font-medium text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 "
-                      style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }}
+                      style={{
+                        background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
+                      }}
                     >
                       Submit
                     </button>
@@ -244,4 +257,3 @@ export default function ContactUs({ data }) {
     </>
   )
 }
-
