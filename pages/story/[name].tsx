@@ -99,7 +99,7 @@ export async function getStaticProps({ params }) {
   console.log(params)
   let fName = params.name
   const stories = await getClient(false).fetch(
-    `*[_type == "article" && name match '${fName}*' ]{name->{name},story}`
+    `*[_type == "article" && fName == '${fName}*' ]{name->{name},story}`
   )
   console.log('from story: ', stories)
 

@@ -42,8 +42,6 @@ export default function Index({ allPosts, preview, data }) {
       <HeroPage data={data} />
       <NewWomenSlide data={data} />
       <VideoSlide data={data} />
-
-      <WomenListSlide data={data} />
       <InternShips />
       <InspiringStories data={data} />
 
@@ -72,7 +70,8 @@ export async function getStaticProps() {
   const stories = await getClient(false).fetch(`*[_type == "story"]{name->{name},"image":image.asset->url,story,facebook,instagram,twitter}`)
   const themeColors = await getClient(false).fetch(`*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`)
   const header = await getClient(false).fetch(`*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url}`)
-  return { props: { data: { JWTContact, quoteList, vacancies, stories, themeColors, header } } }
+  const videos = await getClient(false).fetch(`*[_type== 'video']{videoName, videoId, description}`)  
+  return { props: { data: { JWTContact, quoteList, vacancies, stories, themeColors, header, videos } } }
 
 }
 
