@@ -19,7 +19,6 @@ export default function Index({ data }) {
       <NewWomenSlide data={data} />
       <VideoSlide data={data} />
 
-      <WomenListSlide data={data} />
       <InternShips data={data} />
       <InspiringStories data={data} />
 
@@ -41,35 +40,14 @@ export default function Index({ data }) {
 export async function getStaticProps() {
   const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
   const quoteList = await getClient(false).fetch(
-    `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}} [0...4]`
-  )
-  const vacancies = await getClient(false).fetch(
-    `*[_type == "job"]{location, title, type, details}`
-  )
+    `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}} [0...4]`)
+  const vacancies = await getClient(false).fetch(`*[_type == "job"]{location, title, type, details}`)
+  const stories = await getClient(false).fetch(`*[_type == "story"]{name->{name},"image":image.asset->url,story,facebook,instagram,twitter}`)
+  const themeColors = await getClient(false).fetch(`*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`)
+  const header = await getClient(false).fetch(`*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url}`)
+  const videos = await getClient(false).fetch(`*[_type== 'video']{videoName, videoId, description}`)
   const internShips = await getClient(false).fetch(
     `*[_type == "internShip"]{name->{name,_id,"image":image.asset->url},story}`
   )
-
-  const stories = await getClient(false).fetch(
-    `*[_type == "story"]{name->{name,_id,"image":image.asset->url,facebook,instagram,twitter},story}`
-  )
-  const themeColors = await getClient(false).fetch(
-    `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`
-  )
-  const header = await getClient(false).fetch(
-    `*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url}`
-  )
-  return {
-    props: {
-      data: {
-        JWTContact,
-        quoteList,
-        vacancies,
-        internShips,
-        stories,
-        themeColors,
-        header,
-      },
-    },
-  }
+  return { props: { data: { JWTContact, quoteList, vacancies, internShips, stories, themeColors, header, videos } } }
 }

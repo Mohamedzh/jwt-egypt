@@ -17,6 +17,7 @@ import contactUs from './contactUs'
 import siteTheme from './siteTheme'
 import header from './header'
 import navbarTheme from './navbarControl'
+import video from './video'
 import internShip from './internShip'
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -36,6 +37,7 @@ export default createSchema({
     siteTheme,
     header,
     navbarTheme,
+    video,
     internShip,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

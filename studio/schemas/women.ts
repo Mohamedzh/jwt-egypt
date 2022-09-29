@@ -34,5 +34,20 @@ export default {
             },
             validation: rule => rule.required()
         },
+        {
+            name: 'facebook',
+            title: 'Facebook',
+            type: 'url',
+        },
+        {
+            name: 'twitter',
+            title: 'Twitter',
+            type: 'url',
+        },
+        {
+            name: 'instagram',
+            title: 'Instagram',
+            type: 'url',
+        },
     ],
 }

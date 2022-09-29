@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const NavigationBar = ({data}) => {
+const NavigationBar = ({data}:{data?:any}) => {
   return (
     // <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }}></div>
     <nav
