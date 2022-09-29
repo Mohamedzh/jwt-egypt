@@ -8,7 +8,7 @@ type Props = {
 }
 
 function Test({ quoteList }: Props) {
-    console.log(quoteList)
+    // console.log(quoteList)
     return (
         <div className='bg-gradient-to-r from-wtCyan to-wtViolet'>
             <NavigationBar />
@@ -32,7 +32,7 @@ export async function getStaticProps() {
     // `
     const quoteList = await getClient(false).fetch(
         `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}}`)
-    console.log(quoteList);
+    // console.log(quoteList);
 
     return { props: { quoteList } }
 }

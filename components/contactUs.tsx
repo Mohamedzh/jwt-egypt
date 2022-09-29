@@ -12,7 +12,7 @@ import client, { getClient, previewClient } from '../lib/sanity'
 
 export default function ContactUs({ data }) {
   const address = data.JWTContact[0]
-  console.log(address)
+  // console.log(address)
 
   const formik = useFormik({
     initialValues: {
@@ -36,7 +36,7 @@ export default function ContactUs({ data }) {
       message: Yup.string(),
     }),
     onSubmit: (values) => {
-      console.log(values)
+      // console.log(values)
       //api call
       // formik.resetForm
       //navigate to top or show a pop up message

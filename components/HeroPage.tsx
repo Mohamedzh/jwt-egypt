@@ -1,8 +1,8 @@
 import style from '../styles/heroPage.module.css'
 
 const HeroPage = ({ data }) => {
-  console.log(data.header);
-  console.log(data.themeColors)
+  // console.log(data.header);
+  // console.log(data.themeColors)
 
   return (
     <>
