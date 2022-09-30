@@ -147,13 +147,18 @@ const InternShips = ({ data }) => {
                   fill="#ffb6b6"
                 />
               </svg> */}
-              <div className="">
-                <img
-                  // className='overflow:"hidden"
-                  style={{ width: '500px', height: '300px' }}
-                  src={internShip.name.image}
-                  alt="photo"
-                />
+              <div
+                className=""
+                style={{
+                  width: '500px',
+                  height: '300px',
+                  backgroundImage: `url(${internShip.name.image})`,
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                }}
+              >
+                {/* <img src={internShip.name.image} alt="photo" /> */}
               </div>
             </div>
           </div>
