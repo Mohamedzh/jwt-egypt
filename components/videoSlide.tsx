@@ -5,8 +5,9 @@ import VideoPlayer from './videoSection'
 function VideoSlide({ data }) {
 
     return (
-        <div className='mx-24 h-96 my-20 mb-36'>
-
+        <div
+            style={{ backgroundColor: `${data.themeColors[0].videoSectionColor.color_code}`, height: '600px' }}
+            className='my-20 mb-36'>
             <div className="carousel w-full">
                 {data.videos.map((video, idx) =>
                     <div key={idx} className="carousel-item relative w-full flex flex-col">
@@ -20,8 +21,9 @@ function VideoSlide({ data }) {
                                 {video.videoName}
                             </p>
                         </div>
-                        <VideoPlayer url={video.videoId} />
-
+                        <div>
+                            <VideoPlayer url={video.videoId} />
+                        </div>
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                             <a
                                 href={`#slide ${(idx === 0 ? data.quoteList.length - 1 : idx - 1)}`}
