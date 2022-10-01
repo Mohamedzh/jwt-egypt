@@ -18,8 +18,8 @@ const NavigationBar = ({ data }: { data?: any }) => {
             <a className="toggleColour text-2xl font-bold text-white no-underline hover:no-underline lg:text-4xl">
               {logo ? <p id="logo" style={{ fontFamily: 'wtGothic,sans-serif' }} className='text-lg'>{logo}<br></br> Thompson</p> :
                 <img src="/logo2.png" className="inline h-20 fill-current" />
-
-              }              {/* Icon from: http://www.potlabicons.com/  */}
+              }             
+               {/* Icon from: http://www.potlabicons.com/  */}
               {/* <svg className="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
             <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
             <path
