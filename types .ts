@@ -46,3 +46,16 @@ export interface VacancyType {
   department: string
   description: string
 }
+
+export type ThemeColor = {
+  color_code: string
+}
+export interface ThemeType {
+  careerSectionColor: ThemeColor
+  firstColor: ThemeColor
+  secondColor: ThemeColor
+  internSectionColor: ThemeColor
+  quotesSectionColor: ThemeColor
+  storiesSectionColor: ThemeColor
+  videoSectionColor: ThemeColor
+}

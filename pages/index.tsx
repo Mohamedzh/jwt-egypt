@@ -12,7 +12,9 @@ import VideoSlide from '../components/videoSlide'
 import { getClient } from '../lib/sanity'
 import axios from 'axios'
 
+
 export default function Index({ data }) {
+
   return (
     <>
       <NavigationBar data={data} />

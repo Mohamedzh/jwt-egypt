@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Footer({ data }) {
+export default function Footer({ data }:{data?:any}) {
   const socials = data.JWTContact[0]
 
   const navigation = {
