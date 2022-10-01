@@ -21,7 +21,7 @@ export default function Index({ data }) {
     validateData(getClient)
   }, [])
   return (
-    <>
+    <div>
       <NavigationBar data={data} />
       <HeroPage data={data} />
       <WomenListSlide data={data} />
@@ -33,7 +33,7 @@ export default function Index({ data }) {
       <CareerSection data={data} />
       <ContactUs data={data} />
       <Footer data={data} />
-    </>
+    </div>
   )
 }
 
@@ -71,7 +71,7 @@ export async function getStaticProps() {
     }`
   )
   const header = await getClient(false).fetch(
-    `*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url}`
+    `*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url, textColor->}`
   )
 
   const videos = await getClient(false).fetch(
@@ -83,6 +83,11 @@ export async function getStaticProps() {
   const internShips = await getClient(false).fetch(
     `*[_type == "internship"]{name->{name,_id,"image":image.asset->url},story}`
   )
+
+  const navbarTheme = await getClient(false).fetch(
+    `*[_type == "navbarTheme"]{"logo":logo.asset->url, buttonText, logoTextColor->{color_code}, menuTextColor->{color_code}, altText}`
+  )
+
   return {
     props: {
       data: {
@@ -94,6 +99,7 @@ export async function getStaticProps() {
         themeColors,
         header,
         videos,
+        navbarTheme
       },
     },
   }
