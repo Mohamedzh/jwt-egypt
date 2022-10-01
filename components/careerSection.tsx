@@ -42,7 +42,9 @@ const CareerSection = ({ data }) => {
 
 
   return (
-    <div className="mx-20">
+    <div
+      style={{ backgroundColor: `${data.themeColors[0].careerSectionColor.color_code}` }}
+      className="px-20 pb-5">
       {/* <div className="collapse mx-20 my-10">
         <input type="checkbox" className="peer" />
         <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
@@ -55,15 +57,9 @@ const CareerSection = ({ data }) => {
           <p>Media</p>
         </div>
       </div> */}
-
-
-
-
-
       <p className="m-5 text-left text-2xl font-bold text-wtTango">
         Join our WunderWomen team
       </p>
-
       <p className="m-5 text-left text-lg font-bold text-wtPink flex">
         Latest vacancies
       </p>
