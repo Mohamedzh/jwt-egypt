@@ -1,3 +1,5 @@
+import Footer from '../../components/footerTab'
+import NavigationBar from '../../components/NavigationBar'
 import { getClient } from '../../lib/sanity'
 import { InspStories } from '../../types '
 
@@ -5,14 +7,15 @@ const Story = ({ data }: { data: any }) => {
   const { story } = data
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900">
+      <NavigationBar data={data} />
+      <section className="bg-white dark:bg-gray-900 p-24">
         <div className="container mx-auto px-6 py-10">
           <div className="lg:-mx-6 lg:flex lg:items-center">
-              <img
-                className="h-96 w-full rounded-lg object-cover object-center lg:mx-6 lg:h-[36rem] "
-                src={story[0].name.image}
-                alt="alt"
-              />
+            <img
+              className="h-96 w-full rounded-lg object-cover object-center lg:mx-6 lg:h-[36rem] "
+              src={story[0].name.image}
+              alt="alt"
+            />
             {/* <div className='image-border w-full lg:w-1/2 mr-10'>
             </div> */}
             {/* <div className='border border-solid h-screen mx-5'></div> */}
@@ -74,6 +77,7 @@ const Story = ({ data }: { data: any }) => {
           </div>
         </div>
       </section>
+      <Footer data={data} />
     </div>
   )
 }
@@ -103,6 +107,17 @@ export async function getStaticProps({ params }) {
   const story = await getClient(false).fetch(
     `*[_type == "story" && _id == $id]{story, name->{name, job_title, department->{title}, facebook, twitter, instagram, "image":image.asset->url}}`, { id }
   )
+  const themeColors = await getClient(false).fetch(
+    `*[_type == "siteTheme"]{firstColor->{color_code},
+     secondColor->{color_code},
+     quotesSectionColor->{color_code},
+     videoSectionColor->{color_code},
+     storiesSectionColor->{color_code},
+     internSectionColor->{color_code},
+     careerSectionColor->{color_code}
+    }`
+  )
+  const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
 
-  return { props: { data: { story } } }
+  return { props: { data: { story, themeColors, JWTContact } } }
 }
