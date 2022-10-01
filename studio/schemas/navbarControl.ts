@@ -23,5 +23,18 @@ export default {
             },
             validation: rule => rule.required()
         },
+        {
+            name: 'altText',
+            title: 'Alt text',
+            type: 'string',
+            description: 'Alternative text to display instead of the logo',
+        },
+        {
+            name: 'textColor',
+            title: 'Logo text color',
+            type: 'reference',
+            to: [{ type: 'color' }],
+            description: 'The navbar button text',
+        },
     ],
 }
