@@ -40,16 +40,14 @@ export default function DropDown({ navigation }) {
                         {navigation.map((item, idx) =>
                             <Menu.Item key={idx}>
                                 {({ active }) => (
-                                    <Link href={`/#${item.id}`}>
-                                        <a
-                                            className={classNames(
-                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                'block px-4 py-2 text-sm hover:text-wtDarkCerulian font-semibold'
-                                            )}
-                                        >
-                                            {item.name}
-                                        </a>
-                                    </Link>
+                                    <p
+                                        className={classNames(
+                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                            'block px-4 py-2 text-sm hover:text-wtDarkCerulian font-semibold cursor-pointer'
+                                        )}
+                                    >
+                                        {item.name}
+                                    </p>
                                 )}
                             </Menu.Item>
                         )}

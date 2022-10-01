@@ -305,7 +305,7 @@ function Careers({ data }) {
               </div>
             </form>
           </div>
-                    
+
         </div>
       </div>
     </div>
@@ -328,8 +328,11 @@ export async function getStaticProps() {
   const themeColors = await getClient(false).fetch(
     `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`
   )
+  const navbarTheme = await getClient(false).fetch(
+    `*[_type == "navbarTheme"]{"logo":logo.asset->url, buttonText, logoTextColor->{color_code}, menuTextColor->{color_code}, altText}`
+  )
 
   return {
-    props: { data: { JWTContact, quoteList, vacancies, stories, themeColors } },
+    props: { data: { JWTContact, quoteList, vacancies, stories, themeColors, navbarTheme } },
   }
 }

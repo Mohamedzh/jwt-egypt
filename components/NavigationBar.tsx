@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { scrollToSection } from '../lib/functions'
 import DropDown from './dropdown'
 
 const navigation = [
@@ -11,9 +13,14 @@ const navigation = [
   { name: 'Contact Us', id: 'contact' },
 ]
 
+
+
 const NavigationBar = ({ data }: { data?: any }) => {
 
   const [logo, setLogo] = useState<string>()
+  const router = useRouter()
+  console.log(router.asPath);
+
 
   useEffect(() => {
     if (data.navbarTheme[0].altText) {
@@ -50,34 +57,34 @@ const NavigationBar = ({ data }: { data?: any }) => {
         <div className="block pr-4 lg:hidden">
           <DropDown navigation={navigation} />
         </div>
-        <div
-          className="z-20 mt-2 hidden w-full flex-grow bg-white p-4 text-black lg:mt-0 lg:flex lg:w-auto lg:items-center lg:bg-transparent lg:p-0"
-          id="nav-content"
-        >
-          <ul
-            className="list-reset flex-1 items-center justify-end lg:flex">
-            {navigation.map((item, idx) =>
-
-              <li
-                key={idx}
-                className="mr-3">
-                <a
+        {router.asPath === '/' &&
+          <div
+            className="z-20 mt-2 hidden w-full flex-grow bg-white p-4 text-black lg:mt-0 lg:flex lg:w-auto lg:items-center lg:bg-transparent lg:p-0"
+            id="nav-content"
+          >
+            <ul
+              className="list-reset flex-1 items-center justify-end lg:flex">
+              {navigation.map((item, idx) =>
+                <li
+                  key={idx}
+                  // className="mr-3"
                   style={{ color: `${data.navbarTheme[0].menuTextColor.color_code}` }}
-                  className="hover:text-underline inline-block py-2 px-4 text-black no-underline hover:text-gray-800"
-                  href={`#${item.id}`}
+                  className="cursor-pointer hover:underline underline-offset-1 inline-block py-2 px-4 hover:text-gray-800"
+                  onClick={() => scrollToSection(item.id)}
                 >
                   {item.name}
-                </a>
-              </li>
-            )}
-          </ul>
-          {/* <button
+
+                </li>
+              )}
+            </ul>
+            {/* <button
             id="navAction"
             className="focus:shadow-outline mx-auto mt-4 transform rounded-full bg-white py-4 px-8 font-bold text-gray-800 opacity-75 shadow transition duration-300 ease-in-out hover:scale-105 hover:underline focus:outline-none lg:mx-0 lg:mt-0"
           >
             Action
           </button> */}
-        </div>
+          </div>
+        }
       </div>
       <hr className="my-0 border-b border-gray-100 py-0 opacity-25" />
     </nav>
