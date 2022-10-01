@@ -12,10 +12,14 @@ import VideoSlide from '../components/videoSlide'
 import { getClient } from '../lib/sanity'
 import axios from 'axios'
 import { validateData } from '../lib/functions'
+import { useEffect } from 'react'
 
 
 export default function Index({ data }) {
 
+  useEffect(() => {
+    validateData(getClient)
+  }, [])
   return (
     <>
       <NavigationBar data={data} />
@@ -75,8 +79,6 @@ export async function getStaticProps() {
   )
   // const listener = getClient(false).listen(
   //   `*[_type == "siteTheme"]`).subscribe(() => { axios.get('http://localhost:3000/api/revalidate') })
-
-  validateData(getClient)
 
   const internShips = await getClient(false).fetch(
     `*[_type == "internship"]{name->{name,_id,"image":image.asset->url},story}`
