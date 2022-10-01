@@ -5,11 +5,25 @@ const InternShips = ({ data }) => {
   const { internShips } = data
   return (
     <div
+      id="intern"
       style={{
         backgroundColor: `${data.themeColors[0].internSectionColor.color_code}`,
       }}
     >
       <div className="container mx-auto w-full p-4 lg:p-12">
+        <h1
+          // id={`slide ${idx}`}
+          style={{
+            marginBottom: '20px',
+            // color: 'black',
+            fontSize: '45px',
+            fontWeight: 'bold',
+            textAlign: 'center',
+          }}
+          className=" text-wtTango"
+        >
+          Meet our Internship
+        </h1>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {internShips.map((internShip: InternShip, idx) => (
             <div
@@ -44,19 +58,22 @@ const InternShips = ({ data }) => {
               <p className="mt-4 text-lg text-slate-600">{internShip.story}</p>
 
               <div className="mt-12 flex transform items-center justify-center transition-transform duration-150 ease-in-out hover:scale-110">
-               
                 <div
-                  // className=""
-                  // style={{
-                  //   width: '500px',
-                  //   height: '300px',
-                  //   backgroundImage: `url(${internShip.name.image})`,
-                  //   backgroundPosition: 'center',
-                  //   backgroundRepeat: 'no-repeat',
-                  //   backgroundSize: 'cover',
-                  // }}
+                // className=""
+                // style={{
+                //   width: '500px',
+                //   height: '300px',
+                //   backgroundImage: `url(${internShip.name.image})`,
+                //   backgroundPosition: 'center',
+                //   backgroundRepeat: 'no-repeat',
+                //   backgroundSize: 'cover',
+                // }}
                 >
-                  <img className='aspect-auto h-80' src={internShip.name.image} alt="photo" />
+                  <img
+                    className="aspect-auto h-80"
+                    src={internShip.name.image}
+                    alt="photo"
+                  />
                 </div>
               </div>
             </div>
