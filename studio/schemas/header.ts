@@ -45,5 +45,13 @@ export default {
             },
             validation: rule => rule.required()
         },
+        {
+            name: 'textColor',
+            title: 'Text Color',
+            type: 'reference',
+            to: [{ type: 'color' }],
+            description: 'The color of the text in the header',
+            validation: rule => rule.required()
+        },
     ],
 }

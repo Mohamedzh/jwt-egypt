@@ -30,11 +30,18 @@ export default {
             description: 'Alternative text to display instead of the logo',
         },
         {
-            name: 'textColor',
+            name: 'logoTextColor',
             title: 'Logo text color',
             type: 'reference',
             to: [{ type: 'color' }],
-            description: 'The navbar button text',
+            description: 'The navbar logo text color',
+        },
+        {
+            name: 'menuTextColor',
+            title: 'Menu text color',
+            type: 'reference',
+            to: [{ type: 'color' }],
+            description: 'The navbar menu text color',
         },
     ],
 }

@@ -6,7 +6,7 @@ import { WomenListType } from '../types '
 
 function WomenListSlide({ data }) {
     return (
-        <div id='quot' style={{ backgroundColor: `${data.themeColors[0].quotesSectionColor.color_code}` }} className='pt-20'>
+        <div id='quote' style={{ backgroundColor: `${data.themeColors[0].quotesSectionColor.color_code}` }} className='pt-20'>
 
             <div className="carousel w-full">
                 {data.quoteList.map((quote, idx) =>

@@ -2,7 +2,6 @@ import style from '../styles/heroPage.module.css'
 
 const HeroPage = ({ data }) => {
   // console.log(data.header);
-  // console.log(data.themeColors)
 
   return (
     <>
@@ -15,13 +14,19 @@ const HeroPage = ({ data }) => {
         <div className="container mx-auto flex flex-col flex-wrap items-center px-14 md:flex-row">
           {/* Left Col */}
           <div className="flex w-full flex-col items-start justify-center text-center md:w-2/5 md:text-left">
-            <p className="tracking-loose w-full uppercase text-wtImperial">
+            <p
+              style={{ color: `${data.header[0].textColor.color_code}` }}
+              className="tracking-loose w-full uppercase">
               {data.header[0].heading}
             </p>
-            <h1 className="my-4 text-5xl font-bold leading-tight text-wtImperial">
+            <p
+              style={{ color: `${data.header[0].textColor.color_code}` }}
+              className="my-4 text-5xl font-bold leading-tight">
               {data.header[0].title}
-            </h1>
-            <p className="mb-8 text-2xl leading-normal text-wtImperial">
+            </p>
+            <p
+              style={{ color: `${data.header[0].textColor.color_code}` }}
+              className="mb-8 text-2xl leading-normal">
               {data.header[0].subtitle}
             </p>
             {/* <button className="focus:shadow-outline mx-auto my-6 transform rounded-full bg-white py-4 px-8 font-bold text-gray-800 shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:underline focus:outline-none lg:mx-0">
