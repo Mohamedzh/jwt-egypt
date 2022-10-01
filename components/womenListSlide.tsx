@@ -6,7 +6,7 @@ import { WomenListType } from '../types '
 function WomenListSlide({ data }) {
   return (
     <div
-      id="quot"
+      id="quote"
       style={{
         backgroundColor: `${data.themeColors[0].quotesSectionColor.color_code}`,
       }}
@@ -49,18 +49,16 @@ function WomenListSlide({ data }) {
               </div>
               <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                 <a
-                  href={`#slide ${
-                    idx === 0 ? data.quoteList.length - 1 : idx - 1
-                  }`}
+                  href={`#slide ${idx === 0 ? data.quoteList.length - 1 : idx - 1
+                    }`}
                   className="btn btn-circle"
                 >
                   ❮
                 </a>
 
                 <a
-                  href={`#slide ${
-                    idx === data.quoteList.length - 1 ? 0 : idx + 1
-                  }`}
+                  href={`#slide ${idx === data.quoteList.length - 1 ? 0 : idx + 1
+                    }`}
                   className="btn btn-circle mr-5"
                 >
                   ❯
