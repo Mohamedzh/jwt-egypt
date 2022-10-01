@@ -12,8 +12,8 @@ const NavigationBar = ({ data }: { data?: any }) => {
         background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
       }}
     >
-      <div className="container mx-auto mt-0 flex w-full flex-wrap items-center justify-between py-2 px-7">
-        <div className="flex max-h-2 items-center pl-4">
+      <div className="container mx-auto mt-0 flex w-full flex-wrap items-center justify-between py-5 px-7">
+        <div className="flex max-h-2 items-center  pl-4">
           <Link href="/">
             <a className="toggleColour text-2xl font-bold text-white no-underline hover:no-underline lg:text-4xl">
               {logo ? <p id="logo" style={{ fontFamily: 'wtGothic,sans-serif' }} className='text-lg'>{logo}<br></br> Thompson</p> :
@@ -52,8 +52,16 @@ const NavigationBar = ({ data }: { data?: any }) => {
           <ul className="list-reset flex-1 items-center justify-end lg:flex">
             <li className="mr-3">
               <a
-                className="inline-block py-2 px-4 font-bold text-black no-underline"
-                href="#"
+                className="inline-block py-2 px-4 text-black no-underline"
+                href="#quot"
+              >
+                WounderWomen
+              </a>
+            </li>
+            <li className="mr-3">
+              <a
+                className="hover:text-underline inline-block py-2 px-4 text-black no-underline hover:text-gray-800"
+                href="#story"
               >
                 Stories
               </a>
@@ -61,7 +69,23 @@ const NavigationBar = ({ data }: { data?: any }) => {
             <li className="mr-3">
               <a
                 className="hover:text-underline inline-block py-2 px-4 text-black no-underline hover:text-gray-800"
-                href="#"
+                href="#media"
+              >
+                Media library
+              </a>
+            </li>
+            <li className="mr-3">
+              <a
+                className="hover:text-underline inline-block py-2 px-4 text-black no-underline hover:text-gray-800"
+                href="#intern"
+              >
+                InternShip
+              </a>
+            </li>
+            <li className="mr-3">
+              <a
+                className="hover:text-underline inline-block py-2 px-4 text-black no-underline hover:text-gray-800"
+                href="#career"
               >
                 Careers
               </a>
@@ -69,18 +93,18 @@ const NavigationBar = ({ data }: { data?: any }) => {
             <li className="mr-3">
               <a
                 className="hover:text-underline inline-block py-2 px-4 text-black no-underline hover:text-gray-800"
-                href="#"
+                href="#contact"
               >
-                Media library
+                ContactUs
               </a>
             </li>
           </ul>
-          <button
+          {/* <button
             id="navAction"
             className="focus:shadow-outline mx-auto mt-4 transform rounded-full bg-white py-4 px-8 font-bold text-gray-800 opacity-75 shadow transition duration-300 ease-in-out hover:scale-105 hover:underline focus:outline-none lg:mx-0 lg:mt-0"
           >
             Action
-          </button>
+          </button> */}
         </div>
       </div>
       <hr className="my-0 border-b border-gray-100 py-0 opacity-25" />
