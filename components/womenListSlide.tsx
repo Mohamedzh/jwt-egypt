@@ -14,18 +14,18 @@ function WomenListSlide({ data }) {
                         <h1 id={`slide ${idx}`} className="mb-5 text-5xl font-bold text-gray-900 sm:text-center">
                             Meet our WunderWomen
                         </h1>
-                        <div className="border-gray-500 border-2 border-dashed">
+                        <div className="">
                             <div className='rounded-lg mr-5'>
                                 <div className=" grid grid-cols-6 place-items-center h-3/4">
                                     <div className='col-span-2 flex flex-col items-center px-24 py-10'>
                                         <img className="aspect-auto w-72" src={quote.person.imageUrl} />
-                                        <p className="my-5 text-4xl italic">{quote.person.name}</p>
-                                        <p className=" text-xl italic">{quote.person.job_title}</p>
-                                        <p className="text-xl italic">{quote.person.department.title}</p>
+                                        <p className="mt-5 text-2xl font-semibold">{quote.person.name}</p>
+                                        <p className=" text-lg ">{quote.person.job_title}</p>
+                                        <p className="text-lg ">{quote.person.department.title}</p>
                                     </div>
                                     <div className='col-span-4 flex flex-col w-4/6'>
                                         <ImQuotesLeft className='h-5 w-5' />
-                                        <p className='p-1 text-3xl text-center	'>
+                                        <p className='p-1 text-3xl text-center italic font-semibold'>
                                             {quote.body}
                                         </p>
                                         <ImQuotesRight className='place-self-end h-5 w-5' />
@@ -49,13 +49,13 @@ function WomenListSlide({ data }) {
                     </div>
                 )}
             </div>
-            <Link href="/quoteslist">
+            {/* <Link href="/quoteslist">
                 <a >
                     <p className="text-2xl mx-20 text-wtBlue font-bold flex">
                         See the whole team <ImArrowRight className="mt-1.5 ml-2" />
                     </p>
                 </a>
-            </Link>
+            </Link> */}
         </div>
     )
 }

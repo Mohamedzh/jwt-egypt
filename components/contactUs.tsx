@@ -123,7 +123,7 @@ export default function ContactUs({ data }) {
               </div>
             </div>
 
-            <div className="rounded-full bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
+            <div className="rounded-lg bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
               <div className="mx-auto max-w-lg p-10 lg:max-w-none">
                 <form className="grid grid-cols-1 gap-y-6">
                   <div>

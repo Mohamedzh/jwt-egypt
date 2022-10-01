@@ -20,11 +20,5 @@ export default {
             to: [{ type: 'person' }],
             validation: rule => rule.required()
         },
-        {
-            name: 'color',
-            title: 'Color',
-            type: 'reference',
-            to: [{ type: 'color' }]
-        }
     ],
 }
