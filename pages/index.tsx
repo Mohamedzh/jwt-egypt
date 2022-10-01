@@ -11,6 +11,7 @@ import NewWomenSlide from '../components/newSlide'
 import VideoSlide from '../components/videoSlide'
 import { getClient } from '../lib/sanity'
 import axios from 'axios'
+import { validateData } from '../lib/functions'
 
 
 export default function Index({ data }) {
@@ -72,8 +73,10 @@ export async function getStaticProps() {
   const videos = await getClient(false).fetch(
     `*[_type== 'video']{videoName, videoId, description}`
   )
-  const listener = getClient(false).listen(
-    `*[_type == "department"]`).subscribe(() => { axios.get('http://localhost:3000/api/revalidate'); console.log('there') })
+  // const listener = getClient(false).listen(
+  //   `*[_type == "siteTheme"]`).subscribe(() => { axios.get('http://localhost:3000/api/revalidate') })
+
+  validateData(getClient)
 
   const internShips = await getClient(false).fetch(
     `*[_type == "internship"]{name->{name,_id,"image":image.asset->url},story}`
