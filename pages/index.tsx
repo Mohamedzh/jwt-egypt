@@ -46,7 +46,7 @@ export default function Index({ data }) {
 // }
 
 export async function getStaticProps() {
-  const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
+  const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]{..., textColor->{color_code}}`)
 
   const quoteList = await getClient(false).fetch(
     `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}} [0...4]`

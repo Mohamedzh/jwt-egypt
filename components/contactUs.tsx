@@ -88,36 +88,50 @@ export default function ContactUs({ data }) {
           <div className="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
             <div className="bg-none py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
               <div className="mx-auto max-w-lg">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                <h2
+                  style={{ color: `${address.textColor.color_code}` }}
+                  className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                   Get in touch
                 </h2>
                 <dl className="mt-8 text-base text-black">
                   <div>
                     <dt className="sr-only">Postal address</dt>
                     <dd>
-                      <p>{address.address} </p>
-                      <p>{address.governorate}Governorate</p>
-                      <p>{address.postalCode}</p>
+                      <p
+                        style={{ color: `${address.textColor.color_code}` }}
+                      >{address.address} </p>
+                      <p
+                        style={{ color: `${address.textColor.color_code}` }}
+                      >{address.governorate}Governorate</p>
+                      <p
+                        style={{ color: `${address.textColor.color_code}` }}
+                      >{address.postalCode}</p>
                     </dd>
                   </div>
                   <div className="mt-6">
                     <dt className="sr-only">Phone number</dt>
                     <dd className="flex">
                       <PhoneIcon
+                        style={{ color: `${address.textColor.color_code}` }}
                         className="h-6 w-6 flex-shrink-0 text-black"
                         aria-hidden="true"
                       />
-                      <span className="ml-3">{address.phone}</span>
+                      <span
+                        style={{ color: `${address.textColor.color_code}` }}
+                        className="ml-3">{address.phone}</span>
                     </dd>
                   </div>
                   <div className="mt-3">
                     <dt className="sr-only">Email</dt>
                     <dd className="flex">
                       <EnvelopeIcon
+                        style={{ color: `${address.textColor.color_code}` }}
                         className="black h-6 w-6 flex-shrink-0"
                         aria-hidden="true"
                       />
-                      <span className="ml-3">{address.email}</span>
+                      <span
+                        style={{ color: `${address.textColor.color_code}` }}
+                        className="ml-3">{address.email}</span>
                     </dd>
                   </div>
                 </dl>

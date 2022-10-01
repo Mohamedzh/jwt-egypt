@@ -69,5 +69,13 @@ export default {
       validation: (field) => field.required()
 
     },
+    {
+      name: 'textColor',
+      title: 'Text color',
+      type: 'reference',
+      to: [{ type: 'color' }],
+      description: 'Choose the text color',
+      validation: (field) => field.required()
+    },
   ],
 }
