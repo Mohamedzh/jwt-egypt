@@ -14,7 +14,6 @@ const navigation = [
 const NavigationBar = ({ data }: { data?: any }) => {
 
   const [logo, setLogo] = useState<string>()
-  console.log(data.navbarTheme[0]);
 
   useEffect(() => {
     if (data.navbarTheme[0].altText.length > 0) {
