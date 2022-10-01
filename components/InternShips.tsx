@@ -16,11 +16,8 @@ const InternShips = ({ data }) => {
           style={{
             marginBottom: '20px',
             // color: 'black',
-            fontSize: '45px',
-            fontWeight: 'bold',
-            textAlign: 'center',
           }}
-          className=" text-wtTango"
+          className=" font-bold text-center text-3xl text-wtTango"
         >
           Meet our Internship
         </h1>
@@ -31,9 +28,9 @@ const InternShips = ({ data }) => {
               className="overflow-hidden rounded-2xl bg-blue-50 p-4 lg:p-12"
             >
               <div className="flex items-center text-blue-500">
-                <p className="text-sm font-bold uppercase">
+                {/* <p className="text-sm font-bold uppercase">
                   Feature 1 & Feature 2
-                </p>
+                </p> */}
 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

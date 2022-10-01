@@ -12,7 +12,7 @@ function VideoSlide({ data }) {
                 {data.videos.map((video, idx) =>
                     <div key={idx} className="carousel-item relative w-full flex flex-col">
                         <div className="mb-10" id={`slide ${idx}`}>
-                            <p className="text-5xl font-bold tracking-tight text-gray-900 sm:text-center">
+                            <p className="text-3xl font-bold tracking-tight  text-wtTango sm:text-center">
                                 Video Section
                             </p>
                         </div>

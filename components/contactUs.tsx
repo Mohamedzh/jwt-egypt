@@ -45,7 +45,7 @@ export default function ContactUs({ data }) {
 
   return (
     <>
-      <div id="contact" className="wavyBorderTop">
+      <div id="contact" className="wavyBorderTop ">
         <svg
           style={{
             backgroundColor: `${data.themeColors[0].careerSectionColor.color_code}`,
