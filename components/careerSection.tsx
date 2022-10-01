@@ -54,7 +54,7 @@ const vacancies = [
     title: 'account manager',
     department: 'Accounting',
     description:
-      'account manager needed to perform accounting operations in the accounting deraptment',
+      'account manager needed to perform accounting operations in the accounting department',
   },
 ]
 
@@ -79,7 +79,7 @@ const CareerSection = ({ data }) => {
           <p>Media</p>
         </div>
       </div> */}
-      <p className="m-5 text-left text-2xl font-bold text-wtTango">
+      <p className="m-5 py-6 text-center text-3xl font-bold text-wtTango ">
         Join our WunderWomen team
       </p>
       <p className="m-5 flex text-left text-lg font-bold text-wtPink">
