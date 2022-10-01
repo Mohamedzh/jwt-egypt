@@ -14,7 +14,7 @@ function WomenList({ data }: Props) {
             </p>
 
             <div className='grid grid-cols-2 mx-10 pb-72'>
-                {data.quoteList.map((quote, idx) =>
+                {/* {data.quoteList.map((quote, idx) =>
                     <div style={{ backgroundColor: `${quote.color.color_code}` }} className={`rounded-lg shadow-xl image-full h-80 -mb-48 ${(idx % 2 == 0 ? 'mr-7' : 'ml-7 mt-64')}`} key={idx}>
                         <div className="card-body grid grid-cols-6	place-items-center	h-3/4">
                             <div className='col-span-4 flex flex-col'>
@@ -32,7 +32,7 @@ function WomenList({ data }: Props) {
                             </div>
                         </div>
                     </div>
-                )}
+                )} */}
             </div>
         </>
     )
