@@ -408,6 +408,7 @@ function Careers({ data }) {
               </div>
             </form>
           </div>
+
         </div>
       </div>
     </div>
@@ -431,6 +432,9 @@ export async function getStaticProps() {
   const themeColors = await getClient(false).fetch(
     `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`
   )
+  const navbarTheme = await getClient(false).fetch(
+    `*[_type == "navbarTheme"]{"logo":logo.asset->url, buttonText, logoTextColor->{color_code}, menuTextColor->{color_code}, altText}`
+  )
 
   const department = await getClient(false).fetch(
     `*[_type == "department"]{title}`
@@ -444,7 +448,9 @@ export async function getStaticProps() {
         stories,
         themeColors,
         department,
+        navbarTheme
       },
     },
+   
   }
 }

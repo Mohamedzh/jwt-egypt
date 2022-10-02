@@ -29,6 +29,9 @@ export async function getStaticProps() {
         `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`)
 
     const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
+    const navbarTheme = await getClient(false).fetch(
+        `*[_type == "navbarTheme"]{"logo":logo.asset->url, buttonText, logoTextColor->{color_code}, menuTextColor->{color_code}, altText}`
+        )
 
-    return { props: { data: { quoteList, themeColors, JWTContact } } }
+    return { props: { data: { quoteList, themeColors, JWTContact, navbarTheme } } }
 }

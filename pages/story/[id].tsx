@@ -8,7 +8,7 @@ const Story = ({ data }: { data: any }) => {
   return (
     <div>
       <NavigationBar data={data} />
-      <section className="bg-white dark:bg-gray-900 p-24">
+      <section className="bg-white dark:bg-gray-900 md:px-24 lg:px24 py-24">
         <div className="container mx-auto px-6 py-10">
           <div className="lg:-mx-6 lg:flex lg:items-center">
             <img
@@ -118,6 +118,8 @@ export async function getStaticProps({ params }) {
     }`
   )
   const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
-
-  return { props: { data: { story, themeColors, JWTContact } } }
+  const navbarTheme = await getClient(false).fetch(
+    `*[_type == "navbarTheme"]{"logo":logo.asset->url, buttonText, logoTextColor->{color_code}, menuTextColor->{color_code}, altText}`
+  )
+  return { props: { data: { story, themeColors, JWTContact, navbarTheme } } }
 }

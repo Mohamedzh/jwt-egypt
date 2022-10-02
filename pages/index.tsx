@@ -11,10 +11,16 @@ import NewWomenSlide from '../components/newSlide'
 import VideoSlide from '../components/videoSlide'
 import { getClient } from '../lib/sanity'
 import axios from 'axios'
+import { validateData } from '../lib/functions'
+import { useEffect } from 'react'
 
 export default function Index({ data }) {
+
+  useEffect(() => {
+    validateData(getClient)
+  }, [])
   return (
-    <>
+    <div>
       <NavigationBar data={data} />
       <HeroPage data={data} />
       <WomenListSlide data={data} />
@@ -26,7 +32,7 @@ export default function Index({ data }) {
       <CareerSection data={data} />
       <ContactUs data={data} />
       <Footer data={data} />
-    </>
+    </div>
   )
 }
 
@@ -39,7 +45,7 @@ export default function Index({ data }) {
 // }
 
 export async function getStaticProps() {
-  const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
+  const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]{..., textColor->{color_code}}`)
 
   const quoteList = await getClient(false).fetch(
     `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}} [0...4]`
@@ -64,7 +70,7 @@ export async function getStaticProps() {
     }`
   )
   const header = await getClient(false).fetch(
-    `*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url}`
+    `*[_type == 'header']{heading, title, subtitle, buttonText, "imageUrl":heroImage.asset->url, textColor->}`
   )
 
   const videos = await getClient(false).fetch(
@@ -76,10 +82,17 @@ export async function getStaticProps() {
       axios.get('http://localhost:3000/api/revalidate')
       console.log('there')
     })
+  // const listener = getClient(false).listen(
+  //   `*[_type == "siteTheme"]`).subscribe(() => { axios.get('http://localhost:3000/api/revalidate') })
 
   const internShips = await getClient(false).fetch(
     `*[_type == "internship"]{name->{name,_id,"image":image.asset->url},story}`
   )
+
+  const navbarTheme = await getClient(false).fetch(
+    `*[_type == "navbarTheme"]{"logo":logo.asset->url, buttonText, logoTextColor->{color_code}, menuTextColor->{color_code}, altText}`
+  )
+
   return {
     props: {
       data: {
@@ -91,6 +104,7 @@ export async function getStaticProps() {
         themeColors,
         header,
         videos,
+        navbarTheme
       },
     },
   }

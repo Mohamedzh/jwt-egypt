@@ -296,20 +296,27 @@ import { RiInstagramFill } from 'react-icons/ri'
 const InspiringStories = ({ data }) => {
   const { stories, themeColors } = data
   return (
-    <div style={{backgroundColor: `${data.themeColors[0].storiesSectionColor.color_code}`}} className="mb-16">
+    <div
+      id="story"
+      style={{
+        backgroundColor: `${data.themeColors[0].storiesSectionColor.color_code}`,
+      }}
+      className="mb-16"
+    >
       <div className="container mx-auto flex justify-center pt-16">
         <div>
-          <p className="pb-3 text-center text-lg font-normal text-gray-500">
-            BUILDING TEAM
-          </p>
-          <h1 className="mx-auto w-5/6 pb-6 text-center text-3xl font-extrabold text-gray-800 sm:w-4/6 xl:text-4xl">
+          
+          <h1 className="mx-auto w-5/6 pb-6 text-center text-3xl font-bold  text-wtTango sm:w-4/6 xl:text-3xl">
             The Talented People Behind the Scenes of the Organization
           </h1>
         </div>
       </div>
-      <div 
-      style={{backgroundColor: `${data.themeColors[0].storiesSectionColor.color_code}`}}
-      className="w-full px-10 pt-10">
+      <div
+        style={{
+          backgroundColor: `${data.themeColors[0].storiesSectionColor.color_code}`,
+        }}
+        className="w-full px-10 pt-10"
+      >
         <div className="container mx-auto">
           <div
             role="list"
