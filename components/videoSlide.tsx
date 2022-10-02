@@ -11,7 +11,7 @@ function VideoSlide({ data }) {
             <div className="carousel w-full">
                 {data.videos.map((video, idx) =>
                     <div key={idx} className="carousel-item relative w-full flex flex-col">
-                        <div className="mb-10" id={`slide ${idx}`}>
+                        <div className="mb-10" id={`videoSlide ${idx}`}>
                             <p className="text-3xl font-bold tracking-tight  text-wtTango sm:text-center">
                                 Video Section
                             </p>
@@ -26,12 +26,12 @@ function VideoSlide({ data }) {
                         </div>
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                             <a
-                                href={`#slide ${(idx === 0 ? data.quoteList.length - 1 : idx - 1)}`}
+                                href={`#videoSlide ${(idx === 0 ? data.quoteList.length - 1 : idx - 1)}`}
                                 className="btn btn-circle">
                                 ❮
                             </a>
                             <a
-                                href={`#slide ${(idx === data.quoteList.length - 1 ? 0 : idx + 1)}`}
+                                href={`#videoSlide ${(idx === data.quoteList.length - 1 ? 0 : idx + 1)}`}
                                 className="btn btn-circle mr-5">
                                 ❯
                             </a>

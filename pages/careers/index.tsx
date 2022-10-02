@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavigationBar from '../../components/NavigationBar'
 import { VacancyType } from '../../types '
 import { getClient } from '../../lib/sanity'
 import * as Yup from 'yup'
 import 'yup-phone'
 import { useFormik } from 'formik'
+import { validateStories } from '../../lib/functions'
+import { useRouter } from 'next/router'
 
 const vacancies = [
   {
@@ -34,12 +36,16 @@ const vacancies = [
 ]
 
 function Careers({ data }) {
+  const router = useRouter()
   const [filteredJobs, setFiltered] = useState<VacancyType[]>(vacancies)
   const filter = (department: string) => {
     if (department === 'Department') {
       setFiltered(vacancies)
     } else setFiltered(vacancies.filter((job) => job.department === department))
   }
+
+  useEffect(() => { validateStories(getClient, { path: router.asPath }) }, [])
+
 
   const formik = useFormik({
     initialValues: {
