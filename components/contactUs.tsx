@@ -9,6 +9,7 @@ import * as Yup from 'yup'
 import 'yup-phone'
 import { BsPerson } from 'react-icons/bs'
 import client, { getClient, previewClient } from '../lib/sanity'
+import Link from 'next/link'
 
 export default function ContactUs({ data }) {
   const address = data.JWTContact[0]
@@ -88,10 +89,12 @@ export default function ContactUs({ data }) {
           <div className="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
             <div className="bg-none py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
               <div className="mx-auto max-w-lg">
-                <h2
-                  style={{ color: `${address.textColor.color_code}` }}
-                  className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                  Get in touch
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl" style={{ color: `${address.textColor.color_code}` }}>
+                  Contact 
+                </h2>
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl" style={{ color: `${address.textColor.color_code}` }}>
+                  Information 
+            
                 </h2>
                 <dl className="mt-8 text-base text-black">
                   <div>
@@ -129,18 +132,24 @@ export default function ContactUs({ data }) {
                         className="black h-6 w-6 flex-shrink-0"
                         aria-hidden="true"
                       />
-                      <span
-                        style={{ color: `${address.textColor.color_code}` }}
-                        className="ml-3">{address.email}</span>
+                      <Link href={`mailto:${address.email}`}>
+                        <a>
+                          <span className="ml-3" style={{ color: `${address.textColor.color_code}` }}>{address.email}</span>
+                        </a>
+                      </Link>
+                      
                     </dd>
                   </div>
                 </dl>
               </div>
             </div>
 
-            <div className="rounded-lg bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
-              <div className="mx-auto max-w-lg p-10 lg:max-w-none">
+            <div className="rounded-3xl bg-white py-4 px-4 sm:px-6 lg:col-span-3 lg:py-10 lg:px-8 xl:pl-12">
+              <div className="mx-auto max-w-lg lg:max-w-none">
                 <form className="grid grid-cols-1 gap-y-6">
+                <h2 className="text-2xl text-center font-bold tracking-tight text-gray-900 sm:text-3xl">
+                  Get In Touch !
+                </h2>
                   <div>
                     <label
                       htmlFor="name"
@@ -245,7 +254,7 @@ export default function ContactUs({ data }) {
                         id="message"
                         name="message"
                         rows={4}
-                        className="block w-full rounded-full  border-gray-300 bg-gray-50 py-3 px-8 text-black placeholder-gray-500 shadow-sm focus:border-black focus:ring-black"
+                        className="block w-full rounded-3xl  border-gray-300 bg-gray-50 py-3 px-8 text-black placeholder-gray-500 shadow-sm focus:border-black focus:ring-black"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.message}

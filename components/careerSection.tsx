@@ -86,6 +86,7 @@ const CareerSection = ({ data }) => {
         Latest vacancies
       </p>
       <div className="overflow-hidden bg-white shadow sm:rounded-md">
+        
         <ul role="list" className="divide-y divide-gray-200">
           {positions.map((position, idx) => (
             <li key={idx}>
@@ -136,6 +137,8 @@ const CareerSection = ({ data }) => {
             </li>
           ))}
         </ul>
+
+
       </div>
       <Link href="/careers">
         <a>

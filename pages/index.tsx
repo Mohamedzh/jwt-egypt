@@ -13,7 +13,6 @@ import { validateHomePage } from '../lib/functions'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-
 export default function Index({ data }) {
   const router = useRouter()
 
@@ -54,7 +53,7 @@ export async function getStaticProps() {
   )
 
   const vacancies = await getClient(false).fetch(
-    `*[_type == "job"]{location, title, type, details}`
+    ` *[_type == "job"]{location, title, type, department->{title}, job_summary, responsibilities, qualifications}`
   )
 
   const stories = await getClient(false).fetch(
