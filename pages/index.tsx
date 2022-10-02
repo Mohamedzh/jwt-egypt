@@ -12,6 +12,7 @@ import { getClient } from '../lib/sanity'
 import { validateHomePage } from '../lib/functions'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Podcast from '../components/podcast'
 
 export default function Index({ data }) {
   const router = useRouter()
@@ -23,6 +24,7 @@ export default function Index({ data }) {
     <div>
       <NavigationBar data={data} />
       <HeroPage data={data} />
+      <Podcast />
       <WomenListSlide data={data} />
       <InspiringStories data={data} />
       <VideoSlide data={data} />
