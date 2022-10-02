@@ -38,24 +38,14 @@ export default {
             type: 'string',
             description: 'Full-time / Part-time'
         }, 
+        
         {
-            name: 'job_summary',
-            title: 'Job Summary',
-            type: 'string',
-            description: 'A brief job description'
-        }, 
-        {
-            name: 'responsibilities',
-            title: 'Responsibilities',
+            name: 'details',
+            title: 'Details',
             type: 'blockContent',
-            description: 'Add content in a list form only!'
-        }, 
-
-        {
-            name: 'qualifications',
-            title: 'Qualifications',
-            type: 'blockContent',
-            description: 'Add content in a list form only!',
+            description: 'More details about the job(qualifications, required skills)',
+            
+            
         },
     ],
 }
