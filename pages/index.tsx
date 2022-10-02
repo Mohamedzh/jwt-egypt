@@ -12,9 +12,7 @@ import VideoSlide from '../components/videoSlide'
 import { getClient } from '../lib/sanity'
 import axios from 'axios'
 
-
 export default function Index({ data }) {
-
   return (
     <>
       <NavigationBar data={data} />
@@ -48,7 +46,7 @@ export async function getStaticProps() {
   )
 
   const vacancies = await getClient(false).fetch(
-    `*[_type == "job"]{location, title, type, details}`
+    ` *[_type == "job"]{location, title, type, department->{title}, job_summary, responsibilities, qualifications}`
   )
 
   const stories = await getClient(false).fetch(
@@ -72,8 +70,12 @@ export async function getStaticProps() {
   const videos = await getClient(false).fetch(
     `*[_type== 'video']{videoName, videoId, description}`
   )
-  const listener = getClient(false).listen(
-    `*[_type == "department"]`).subscribe(() => { axios.get('http://localhost:3000/api/revalidate'); console.log('there') })
+  const listener = getClient(false)
+    .listen(`*[_type == "department"]`)
+    .subscribe(() => {
+      axios.get('http://localhost:3000/api/revalidate')
+      console.log('there')
+    })
 
   const internShips = await getClient(false).fetch(
     `*[_type == "internship"]{name->{name,_id,"image":image.asset->url},story}`

@@ -42,9 +42,13 @@ export type InternShip = {
 }
 
 export interface VacancyType {
-  title: string
-  department: string
-  description: string
+  id: String
+  title: String
+  department: String
+  location: String
+  closeDate: string
+  details: String
+  type: String
 }
 
 export type ThemeColor = {
