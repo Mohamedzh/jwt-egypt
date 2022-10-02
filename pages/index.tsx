@@ -14,7 +14,6 @@ import axios from 'axios'
 import { validateData } from '../lib/functions'
 import { useEffect } from 'react'
 
-
 export default function Index({ data }) {
 
   useEffect(() => {
@@ -53,7 +52,7 @@ export async function getStaticProps() {
   )
 
   const vacancies = await getClient(false).fetch(
-    `*[_type == "job"]{location, title, type, details}`
+    ` *[_type == "job"]{location, title, type, department->{title}, job_summary, responsibilities, qualifications}`
   )
 
   const stories = await getClient(false).fetch(
@@ -77,6 +76,12 @@ export async function getStaticProps() {
   const videos = await getClient(false).fetch(
     `*[_type== 'video']{videoName, videoId, description}`
   )
+  const listener = getClient(false)
+    .listen(`*[_type == "department"]`)
+    .subscribe(() => {
+      axios.get('http://localhost:3000/api/revalidate')
+      console.log('there')
+    })
   // const listener = getClient(false).listen(
   //   `*[_type == "siteTheme"]`).subscribe(() => { axios.get('http://localhost:3000/api/revalidate') })
 

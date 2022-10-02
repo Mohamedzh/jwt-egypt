@@ -33,17 +33,29 @@ export default {
             description: 'The date after which the job posting will be closed for applicants'
         },
         {
-            name: 'details',
-            title: 'Details',
-            type: 'blockContent',
-            description: 'The job details',
-            validation: rule => rule.required()
-        },
-        {
             name: 'type',
             title: 'Type',
             type: 'string',
             description: 'Full-time / Part-time'
-        }
+        }, 
+        {
+            name: 'job_summary',
+            title: 'Job Summary',
+            type: 'string',
+            description: 'A brief job description'
+        }, 
+        {
+            name: 'responsibilities',
+            title: 'Responsibilities',
+            type: 'blockContent',
+            description: 'Add content in a list form only!'
+        }, 
+
+        {
+            name: 'qualifications',
+            title: 'Qualifications',
+            type: 'blockContent',
+            description: 'Add content in a list form only!',
+        },
     ],
 }
