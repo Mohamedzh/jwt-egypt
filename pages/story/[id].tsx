@@ -1,10 +1,15 @@
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import Footer from '../../components/footerTab'
 import NavigationBar from '../../components/NavigationBar'
+import { validateStories } from '../../lib/functions'
 import { getClient } from '../../lib/sanity'
 import { InspStories } from '../../types '
 
 const Story = ({ data }: { data: any }) => {
   const { story } = data
+  const router = useRouter()
+  useEffect(() => { validateStories(getClient, { path: router.asPath }) }, [])
   return (
     <div>
       <NavigationBar data={data} />
@@ -12,7 +17,7 @@ const Story = ({ data }: { data: any }) => {
         <div className="container mx-auto px-6 py-10">
           <div className="lg:-mx-6 lg:flex lg:items-center">
             <img
-              className="h-96 w-full rounded-lg object-cover object-center lg:mx-6 lg:h-[36rem] "
+              className="max-h-96 w-full rounded-lg object-cover object-center lg:mx-6 lg:h-[36rem] "
               src={story[0].name.image}
               alt="alt"
             />

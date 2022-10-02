@@ -7,17 +7,17 @@ import Footer from '../components/footerTab'
 import WomenListSlide from '../components/womenListSlide'
 import InspiringStories from '../components/InspiringStories'
 import CareerSection from '../components/careerSection'
-import NewWomenSlide from '../components/newSlide'
 import VideoSlide from '../components/videoSlide'
 import { getClient } from '../lib/sanity'
-import axios from 'axios'
-import { validateData } from '../lib/functions'
+import { validateHomePage } from '../lib/functions'
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Index({ data }) {
+  const router = useRouter()
 
   useEffect(() => {
-    validateData(getClient)
+    validateHomePage(getClient, { path: router.asPath })
   }, [])
   return (
     <div>
@@ -45,6 +45,7 @@ export default function Index({ data }) {
 // }
 
 export async function getStaticProps() {
+
   const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]{..., textColor->{color_code}}`)
 
   const quoteList = await getClient(false).fetch(
@@ -76,14 +77,6 @@ export async function getStaticProps() {
   const videos = await getClient(false).fetch(
     `*[_type== 'video']{videoName, videoId, description}`
   )
-  const listener = getClient(false)
-    .listen(`*[_type == "department"]`)
-    .subscribe(() => {
-      axios.get('http://localhost:3000/api/revalidate')
-      console.log('there')
-    })
-  // const listener = getClient(false).listen(
-  //   `*[_type == "siteTheme"]`).subscribe(() => { axios.get('http://localhost:3000/api/revalidate') })
 
   const internShips = await getClient(false).fetch(
     `*[_type == "internship"]{name->{name,_id,"image":image.asset->url},story}`
@@ -92,6 +85,7 @@ export async function getStaticProps() {
   const navbarTheme = await getClient(false).fetch(
     `*[_type == "navbarTheme"]{"logo":logo.asset->url, buttonText, logoTextColor->{color_code}, menuTextColor->{color_code}, altText}`
   )
+
 
   return {
     props: {

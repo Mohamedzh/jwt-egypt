@@ -19,7 +19,6 @@ const NavigationBar = ({ data }: { data?: any }) => {
 
   const [logo, setLogo] = useState<string>()
   const router = useRouter()
-  console.log(router.asPath);
 
 
   useEffect(() => {
