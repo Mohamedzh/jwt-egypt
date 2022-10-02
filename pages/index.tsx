@@ -53,7 +53,7 @@ export async function getStaticProps() {
   )
 
   const vacancies = await getClient(false).fetch(
-    ` *[_type == "job"]{location, title, type, department->{title}, job_summary, responsibilities, qualifications}`
+    ` *[_type == "job"]{location, title, type, department->{title}, details}`
   )
 
   const stories = await getClient(false).fetch(
