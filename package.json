@@ -15,12 +15,14 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@coreui/react": "^4.4.0",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.11",
     "@material-tailwind/react": "^1.2.4",
     "@portabletext/react": "^1.0.6",
     "@prisma/client": "^4.4.0",
     "@reduxjs/toolkit": "^1.8.5",
+    "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
     "@tailwindcss/forms": "^0.5.3",
