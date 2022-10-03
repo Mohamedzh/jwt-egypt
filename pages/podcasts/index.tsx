@@ -2,56 +2,37 @@ import React from 'react'
 import Footer from '../../components/footerTab'
 import NavigationBar from '../../components/NavigationBar'
 import { getClient } from '../../lib/sanity'
-import { Howl, Howler } from 'howler';
+import Link from 'next/link';
+
 
 
 
 function Podcast({ data }) {
-    console.log(data.episodes)
-    console.log(data.videoEpisodes)
 
-    // let audio = new Audio(data.podcast[0].fileUrl)
-
-    // var sound = new Howl({
-    //     src: [`${data.podcast[0].fileUrl}`]
-    // });
-
-    // sound.play();
     return (
-        <div
-        // className=" bg-cover h-screen bg-[url('/podcastBg.jpg')]"
-        >
+        <div>
             <NavigationBar data={data} />
             <div className='m-20'>
-                {data.videoEpisodes.map((video, idx) =>
+                {data.podcasts.map((cast, idx) =>
                     <div
-                        className='m-5'
+                        className={`py-10 mx-5 grid grid-cols-2 ${(idx !== 0 ? 'border-t-red-800' : 'border-t-0')} border border-b-0 border-x-0`}
                         key={idx}
                     >
-                        <p className='text-left my-5 text-3xl'>{video.title}</p>
-                        <video
-                            id="my-player"
-                            className="video-js h-96 aspect-video"
-                            controls
-                            preload="auto"
-                            poster=""
-                            data-setup='{}'>
-                            <source src={`${video.fileUrl}`}></source>
-                            {/* <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm"></source>
-                    <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg"></source> */}
-
-                        </video>
-                        <p className='text-left my-5 text-xl'>{video.description}</p>
-
+                        <div>
+                            <p className='text-left my-5 text-3xl'>{cast.title}</p>
+                            <p className='text-left my-5 text-xl'>{cast.description}</p>
+                        </div>
+                        <Link href={`/podcasts/${cast._id}`}>
+                            <a>
+                                <img
+                                    className='mt-5 ml-5'
+                                    src={cast.imgUrl}
+                                />
+                            </a>
+                        </Link>
                     </div>
                 )}
             </div>
-            {/* <button
-                onClick={() => sound.play()
-                }
-            >
-                Click to play
-            </button> */}
             <Footer data={data} />
         </div >
     )
@@ -72,15 +53,12 @@ export async function getStaticProps() {
         `*[_type == "navbarTheme"]{"logo":logo.asset->url, buttonText, logoTextColor->{color_code}, menuTextColor->{color_code}, altText}`
     )
 
-    const podcast = await getClient(false).fetch(
-        `*[_type == "podcast"]{description, "fileUrl": audio.asset->url}`
+    const podcasts = await getClient(false).fetch(
+        `*[_type == "podcasts"] | order(_createdAt asc){_id, description, title, "imgUrl":image.asset->url}`
     )
     const episodes = await getClient(false).fetch(
-        `*[_type == "episodes"]{title, "fileUrl": audio.asset->url}`
-    )
-    const videoEpisodes = await getClient(false).fetch(
-        `*[_type == "videoEpisodes"]{title, "fileUrl": video.asset->url, description}`
+        `*[_type == "episodes"]{type, title, "url":media.asset->url, podcast->{title, "imageUrl":image.asset->url}, description}`
     )
 
-    return { props: { data: { quoteList, themeColors, JWTContact, navbarTheme, podcast, episodes, videoEpisodes } } }
+    return { props: { data: { quoteList, themeColors, JWTContact, navbarTheme, podcasts, episodes } } }
 }

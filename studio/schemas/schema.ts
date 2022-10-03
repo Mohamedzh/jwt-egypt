@@ -21,7 +21,6 @@ import video from './video'
 import internShip from './internShip'
 import podcast from './podcasts'
 import episodes from './episodes'
-import videoEpisodes from './videoEpisodes'
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -44,7 +43,6 @@ export default createSchema({
     internShip,
     podcast,
     episodes,
-    videoEpisodes,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
