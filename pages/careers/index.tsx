@@ -13,6 +13,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import { CCollapse } from '@coreui/react'
 import { useDropzone } from 'react-dropzone'
 import { BsFillFolderFill } from 'react-icons/bs'
+import Dropzone from 'react-dropzone'
 
 function Careers({ data }) {
   const router = useRouter()
@@ -35,25 +36,32 @@ function Careers({ data }) {
     validateStories(getClient, { path: router.asPath })
   }, [])
 
-  const [accepdetFiles, setAcceptedFiles] = useState()
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
+  //   const [cv, setCv] = useState<File[]>([])
+  //   const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
 
-  const resume = acceptedFiles.map((file) => (
-    <div className="flex flex-row pl-4 pt-5">
-      <BsFillFolderFill
-        className="mr-3"
-        style={{
-          fill: `${data.themeColors[0].firstColor.color_code}`,
-        }}
-      />
-      <p className="basis-1/3">
-        {file.name} - {file.size} bytes
-      </p>
-    </div>
-    // /* // <li key={file.name}>
-    // //   {file.name} - {file.size} bytes
-    // // </li> */
-  ))
+  //   useEffect(() => {
+  //     console.log(acceptedFiles)
+  //     setCv(acceptedFiles)
+  //   }, [acceptedFiles])
+
+  //   const cv = JSON.stringify(acceptedFiles[0])
+
+  //   const resume = acceptedFiles.map((file) => (
+  //     <div className="flex flex-row pl-4 pt-5">
+  //       <BsFillFolderFill
+  //         className="mr-3"
+  //         style={{
+  //           fill: `${data.themeColors[0].firstColor.color_code}`,
+  //         }}
+  //       />
+  //       <p className="basis-1/3">
+  //         {file.name} - {file.size} bytes
+  //       </p>
+  //     </div> ))
+  //  <li key={file.name}>
+  //   {file.name} - {file.size} bytes
+  //  </li>
+  //   ))
 
   const formik = useFormik({
     initialValues: {
@@ -63,7 +71,7 @@ function Careers({ data }) {
       LinkedInProfile: '',
       number: '',
       position: '',
-      resume: '',
+      resume: [],
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required('Required'),
@@ -73,7 +81,7 @@ function Careers({ data }) {
         .email('Please enter a valid email address')
         .required('Required'),
       LinkedInProfile: Yup.string().required('Required'),
-      resume: Yup.mixed().required('Required'),
+      //   resume: Yup.string().required('Required'),
       number: Yup.string()
         .phone(
           'Egypt',
@@ -84,10 +92,6 @@ function Careers({ data }) {
     }),
     onSubmit: (values) => {
       console.log(values)
-      console.log(acceptedFiles.length)
-      if (acceptedFiles.length === 0) {
-        alert('enter a resume')
-      }
 
       //api call
       //   formik.resetForm
@@ -384,59 +388,94 @@ function Careers({ data }) {
                       {/* {acceptedFiles.length === 0 ? (
                         <p>Required</p>
                       ) : null} */}
-                      {formik.touched.resume ? (
+                      {formik.touched.resume && formik.errors.resume ? (
                         <p>{formik.errors.resume}</p>
                       ) : null}
                     </div>
 
                     <div className=" flex w-full items-center justify-center ">
                       <label
-                        htmlFor="dropzone-file"
+                        htmlFor="resume"
                         className="bg-grey-500 dark:hover:bg-bray-800 flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-300 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                       >
-                        <div
-                          className="flex flex-col items-center justify-center pt-5 pb-6"
-                          {...getRootProps()}
+                        <Dropzone
+                          //   onDrop={(acceptedFiles) => console.log(acceptedFiles)}
+                          onDrop={(acceptedFiles) => {
+                            return (
+                              <div>
+                                {acceptedFiles.map((file) => (
+                                  <div className="flex flex-row pl-4 pt-5">
+                                    <BsFillFolderFill
+                                      className="mr-3"
+                                      style={{
+                                        fill: `${data.themeColors[0].firstColor.color_code}`,
+                                      }}
+                                    />
+                                    <p className="basis-1/3">
+                                      {file.name} - {file.size} bytes
+                                    </p>
+                                  </div>
+                                ))}
+                               
+                                {formik.setFieldValue('resume', acceptedFiles)}
+                              </div>
+                            )
+                          }}
                         >
-                          <svg
-                            aria-hidden="true"
-                            className="mb-3 h-10 w-10 text-gray-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                            ></path>
-                          </svg>
-                          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                            <span className="font-semibold">
-                              Click to upload
-                            </span>{' '}
-                            or drag and drop
-                          </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">
-                            PDF
-                          </p>
-                          <input
-                            {...getInputProps()}
-                            id="dropzone-file"
-                            type="file"
-                            name="resume"
-                            className="hidden"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.resume}
-                          />
-                        </div>
+                          {({ getRootProps, getInputProps }) => (
+                            <section>
+                              <div
+                                className="flex flex-col items-center justify-center pt-5 pb-6"
+                                {...getRootProps()}
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  className="mb-3 h-10 w-10 text-gray-400"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                                  ></path>
+                                </svg>
+                                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                  <span className="font-semibold">
+                                    Click to upload
+                                  </span>{' '}
+                                  or drag and drop
+                                </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">
+                                  PDF
+                                </p>
+                                <input
+                                  {...getInputProps()}
+                                  id="resume"
+                                  type="file"
+                                  name="resume"
+                                  // className="hidden"
+                                  // onChange={formik.handleChange}
+                                  // onBlur={formik.handleBlur}
+                                  // value={formik.values.resume}
+                                  // onChange={formik.handleChange}
+                                  // {...formik.getFieldProps('inputFile')}
+                                  // onChange={(e)=> formik.setFieldValue('resume', acceptedFiles[0])}
+                                  //   onDrop={(e) =>
+                                  //     formik.setFieldValue('resume', acceptedFiles)
+                                  //   }
+                                />
+                              </div>
+                            </section>
+                          )}
+                        </Dropzone>
                       </label>
                     </div>
 
-                    <div>{resume} </div>
+                    {/* <div>{resume} </div> */}
                   </div>
                 </div>
               </div>
