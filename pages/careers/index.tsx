@@ -71,7 +71,7 @@ function Careers({ data }) {
       LinkedInProfile: '',
       number: '',
       position: '',
-      resume: [],
+      resume: '',
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required('Required'),
@@ -81,7 +81,7 @@ function Careers({ data }) {
         .email('Please enter a valid email address')
         .required('Required'),
       LinkedInProfile: Yup.string().required('Required'),
-      //   resume: Yup.string().required('Required'),
+      resume: Yup.string().required('Required'),
       number: Yup.string()
         .phone(
           'Egypt',
@@ -93,6 +93,13 @@ function Careers({ data }) {
     onSubmit: (values) => {
       console.log(values)
 
+      const api = async (values) => {
+        try {
+            
+        } catch (e) {
+          console.log(e)
+        }
+      }
       //api call
       //   formik.resetForm
       //navigate to top or show a pop up message
@@ -403,7 +410,7 @@ function Careers({ data }) {
                           onDrop={(acceptedFiles) => {
                             return (
                               <div>
-                                {acceptedFiles.map((file) => (
+                                {/* {acceptedFiles.map((file) => (
                                   <div className="flex flex-row pl-4 pt-5">
                                     <BsFillFolderFill
                                       className="mr-3"
@@ -415,14 +422,17 @@ function Careers({ data }) {
                                       {file.name} - {file.size} bytes
                                     </p>
                                   </div>
-                                ))}
+                                ))} */}
 
-                                {formik.setFieldValue('resume', acceptedFiles)}
+                                {formik.setFieldValue(
+                                  'resume',
+                                  acceptedFiles[0]
+                                )}
                               </div>
                             )
                           }}
                         >
-                          {({ getRootProps, getInputProps }) => (
+                          {({ getRootProps, getInputProps, acceptedFiles }) => (
                             <section>
                               <div
                                 className="flex flex-col items-center justify-center pt-5 pb-6"
@@ -468,6 +478,21 @@ function Careers({ data }) {
                                   //     formik.setFieldValue('resume', acceptedFiles)
                                   //   }
                                 />
+                              </div>
+                              <div>
+                                {acceptedFiles.map((file) => (
+                                  <div className="flex ">
+                                    <BsFillFolderFill
+                                      className="mr-3"
+                                      style={{
+                                        fill: `${data.themeColors[0].firstColor.color_code}`,
+                                      }}
+                                    />
+                                    <p className="">
+                                      {file.name} - {file.size} bytes
+                                    </p>
+                                  </div>
+                                ))}
                               </div>
                             </section>
                           )}

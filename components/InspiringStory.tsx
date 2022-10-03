@@ -4,10 +4,6 @@ import { AiFillInstagram } from 'react-icons/ai'
 import { InspStories } from '../types '
 
 const InspiringStory = ({ story }: { story: InspStories }) => {
-  // function urlFor(source: string) {
-  //   const builder = imageUrlBuilder(sanityClient);
-  //   return builder.image(source);
-  // }
 
   return (
     <div

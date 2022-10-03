@@ -7,7 +7,7 @@ import Footer from '../components/footerTab'
 import WomenListSlide from '../components/womenListSlide'
 import InspiringStories from '../components/InspiringStories'
 import CareerSection from '../components/careerSection'
-import VideoSlide from '../components/videoSlide'
+import VideoSlide from '../components/podcastSlide'
 import { getClient } from '../lib/sanity'
 import { validateHomePage } from '../lib/functions'
 import { useEffect } from 'react'
@@ -61,7 +61,9 @@ export async function getStaticProps() {
      videoSectionColor->{color_code},
      storiesSectionColor->{color_code},
      internSectionColor->{color_code},
-     careerSectionColor->{color_code}
+     careerSectionColor->{color_code},
+     footerTextColor->{color_code},
+     sectionTitleColor->{color_code}
     }`
   )
   const header = await getClient(false).fetch(
@@ -81,7 +83,7 @@ export async function getStaticProps() {
   )
 
   const episodes = await getClient(false).fetch(
-    `*[_type == "episodes"] | order(_createdAt asc) {type, _createdAt, title, "url":media.asset->url, "imgUrl":image.asset->url, podcast->{title, "imageUrl":image.asset->url}, description}`
+    `*[_type == "episodes" && type == "video"] | order(_createdAt desc)[0..2] {title, "url":media.asset->url, "imgUrl":image.asset->url, podcast->{title, "imageUrl":image.asset->url}, description}`
   )
 
   return {

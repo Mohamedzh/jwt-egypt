@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
+import { scrollToSection } from '../lib/functions'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -13,8 +14,10 @@ export default function DropDown({ navigation }) {
             <div>
                 <Menu.Button
                     className="focus:shadow-outline flex transform items-center p-1 text-pink-800 transition duration-300 ease-in-out hover:scale-105 hover:text-gray-900 focus:outline-none">
-
-                    <span className="sr-only">Open options</span>
+                    <span
+                        className="sr-only">
+                        Open options
+                    </span>
                     <svg
                         className="h-6 w-6 fill-current"
                         viewBox="0 0 20 20"
@@ -45,6 +48,7 @@ export default function DropDown({ navigation }) {
                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                             'block px-4 py-2 text-sm hover:text-wtDarkCerulian font-semibold cursor-pointer'
                                         )}
+                                        onClick={() => scrollToSection(item.id)}
                                     >
                                         {item.name}
                                     </p>

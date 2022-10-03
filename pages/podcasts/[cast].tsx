@@ -92,7 +92,17 @@ export async function getStaticProps({ params }) {
         `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}}`)
 
     const themeColors = await getClient(false).fetch(
-        `*[_type == "siteTheme"]{firstColor->{color_code}, secondColor->{color_code}}`)
+        `*[_type == "siteTheme"]{firstColor->{color_code},
+             secondColor->{color_code},
+             quotesSectionColor->{color_code},
+             videoSectionColor->{color_code},
+             storiesSectionColor->{color_code},
+             internSectionColor->{color_code},
+             careerSectionColor->{color_code},
+             footerTextColor->{color_code},
+             sectionTitleColor->{color_code}
+            }`
+    )
 
     const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
     const navbarTheme = await getClient(false).fetch(

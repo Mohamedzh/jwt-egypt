@@ -13,8 +13,6 @@ const navigation = [
   { name: 'Contact Us', id: 'contact' },
 ]
 
-
-
 const NavigationBar = ({ data }: { data?: any }) => {
 
   const [logo, setLogo] = useState<string>()
@@ -27,7 +25,6 @@ const NavigationBar = ({ data }: { data?: any }) => {
     }
   }, [])
   return (
-    // <div style={{ background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)` }}></div>
     <nav
       id="header"
       className="fixed top-0 z-30 w-full text-white "
@@ -58,13 +55,11 @@ const NavigationBar = ({ data }: { data?: any }) => {
               {navigation.map((item, idx) =>
                 <li
                   key={idx}
-                  // className="mr-3"
                   style={{ color: `${data.navbarTheme[0].menuTextColor.color_code}` }}
                   className="cursor-pointer hover:underline underline-offset-1 inline-block py-2 px-4 hover:text-gray-800"
                   onClick={() => scrollToSection(item.id)}
                 >
                   {item.name}
-
                 </li>
               )}
             </ul>

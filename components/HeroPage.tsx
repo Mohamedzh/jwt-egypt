@@ -1,17 +1,16 @@
-import style from '../styles/heroPage.module.css'
 
 const HeroPage = ({ data }) => {
 
   return (
     <>
       <div
+        id="hero"
         style={{
           background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
         }}
         className="pt-24"
       >
         <div className="container mx-auto flex flex-col flex-wrap items-center px-14 md:flex-row">
-          {/* Left Col */}
           <div className="flex w-full flex-col items-start justify-center text-center md:w-2/5 md:text-left">
             <p
               style={{ color: `${data.header[0].textColor.color_code}` }}
@@ -28,11 +27,7 @@ const HeroPage = ({ data }) => {
               className="mb-8 text-2xl leading-normal">
               {data.header[0].subtitle}
             </p>
-            {/* <button className="focus:shadow-outline mx-auto my-6 transform rounded-full bg-white py-4 px-8 font-bold text-gray-800 shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:underline focus:outline-none lg:mx-0">
-              {data.header[0].buttonText}
-            </button> */}
           </div>
-          {/* Right Col */}
           <div className="w-full py-6 text-center md:w-3/5">
             <img
               className="z-50 w-full md:w-4/5"

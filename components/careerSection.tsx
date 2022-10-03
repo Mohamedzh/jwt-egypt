@@ -79,7 +79,9 @@ const CareerSection = ({ data }) => {
           <p>Media</p>
         </div>
       </div> */}
-      <p className="m-5 py-6 text-center text-3xl font-bold text-wtTango ">
+      <p
+        style={{ color: `${data.themeColors[0].sectionTitleColor.color_code}` }}
+        className="m-5 py-6 text-center text-3xl font-bold">
         Join our WunderWomen team
       </p>
       <p className="m-5 flex text-left text-lg font-bold text-wtPink">

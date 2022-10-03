@@ -1,6 +1,6 @@
 // import Link from 'next/link'
 import React from 'react'
-import { ImArrowRight, ImQuotesLeft, ImQuotesRight } from 'react-icons/im'
+import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -36,7 +36,8 @@ function WomenListSlide({ data }) {
             key={idx}
           >
             <p
-              className="mb-5 text-3xl font-bold  text-wtTango sm:text-center"
+              style={{ color: `${data.themeColors[0].sectionTitleColor.color_code}` }}
+              className="mb-5 text-3xl text-center font-bold"
             >
               Meet our WunderWomen
             </p>
