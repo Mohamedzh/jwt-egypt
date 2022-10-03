@@ -24,7 +24,6 @@ export default function Index({ data }) {
     <div>
       <NavigationBar data={data} />
       <HeroPage data={data} />
-      <Podcast />
       <WomenListSlide data={data} />
       <InspiringStories data={data} />
       <VideoSlide data={data} />
