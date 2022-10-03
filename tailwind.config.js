@@ -1,3 +1,6 @@
+/**
+ * @type {import('@types/tailwindcss/tailwind-config').TailwindConfig}
+ */
 module.exports = {
   content: [
     './pages/**/*.{html,js,jsx,ts,tsx}',
