@@ -79,7 +79,9 @@ const CareerSection = ({ data }) => {
           <p>Media</p>
         </div>
       </div> */}
-      <p className="m-5 py-6 text-center text-3xl font-bold text-wtTango ">
+      <p
+        style={{ color: `${data.themeColors[0].sectionTitleColor.color_code}` }}
+        className="m-5 py-6 text-center text-3xl font-bold">
         Join our WunderWomen team
       </p>
       <p className="m-5 flex text-left text-lg font-bold text-wtPink">
@@ -91,7 +93,7 @@ const CareerSection = ({ data }) => {
           {positions.map((position, idx) => (
             <li key={idx}>
               <Link href="/careers">
-                <a href="#" className="block hover:bg-gray-50">
+                <a className="block hover:bg-gray-50">
                   <div className="px-4 py-4 sm:px-6">
                     <div className="flex items-center justify-between">
                       <p className="truncate text-sm font-medium text-indigo-600">

@@ -8,7 +8,6 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import 'yup-phone'
 import { BsPerson } from 'react-icons/bs'
-import client, { getClient, previewClient } from '../lib/sanity'
 import Link from 'next/link'
 
 export default function ContactUs({ data }) {
@@ -90,11 +89,11 @@ export default function ContactUs({ data }) {
             <div className="bg-none py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
               <div className="mx-auto max-w-lg">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl" style={{ color: `${address.textColor.color_code}` }}>
-                  Contact 
+                  Contact
                 </h2>
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl" style={{ color: `${address.textColor.color_code}` }}>
-                  Information 
-            
+                  Information
+
                 </h2>
                 <dl className="mt-8 text-base text-black">
                   <div>
@@ -137,7 +136,7 @@ export default function ContactUs({ data }) {
                           <span className="ml-3" style={{ color: `${address.textColor.color_code}` }}>{address.email}</span>
                         </a>
                       </Link>
-                      
+
                     </dd>
                   </div>
                 </dl>
@@ -147,9 +146,9 @@ export default function ContactUs({ data }) {
             <div className="rounded-3xl bg-white py-4 px-4 sm:px-6 lg:col-span-3 lg:py-10 lg:px-8 xl:pl-12">
               <div className="mx-auto max-w-lg lg:max-w-none">
                 <form className="grid grid-cols-1 gap-y-6">
-                <h2 className="text-2xl text-center font-bold tracking-tight text-gray-900 sm:text-3xl">
-                  Get In Touch !
-                </h2>
+                  <h2 className="text-2xl text-center font-bold tracking-tight text-gray-900 sm:text-3xl">
+                    Get In Touch !
+                  </h2>
                   <div>
                     <label
                       htmlFor="name"

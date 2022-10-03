@@ -62,5 +62,21 @@ export default {
             description: "Choose the background color of the career section of the website. (Edit-only field).  To change the color, click on the 3-dots menu on the right and choose 'Replace'",
             validation: (field) => field.required()
         },
+        {
+            name: 'footerTextColor',
+            title: 'Footer text color',
+            type: 'reference',
+            to: [{ type: 'color' }],
+            description: "Choose the text color of the footer section of the website. (Edit-only field).  To change the color, click on the 3-dots menu on the right and choose 'Replace'",
+            validation: (field) => field.required()
+        },
+        {
+            name: 'sectionTitleColor',
+            title: 'Section title color',
+            type: 'reference',
+            to: [{ type: 'color' }],
+            description: "Choose the title color of the sections of the website. (Edit-only field).  To change the color, click on the 3-dots menu on the right and choose 'Replace'",
+            validation: (field) => field.required()
+        },
     ]
 }
