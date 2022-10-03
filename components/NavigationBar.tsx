@@ -7,8 +7,8 @@ import DropDown from './dropdown'
 const navigation = [
   { name: 'WounderWomen', id: 'quote' },
   { name: 'Stories', id: 'story' },
-  { name: 'Media library', id: 'media' },
-  { name: 'Internship', id: 'intern' },
+  { name: 'Podcasts', id: 'media' },
+  { name: 'Interns', id: 'intern' },
   { name: 'Careers', id: 'career' },
   { name: 'Contact Us', id: 'contact' },
 ]
@@ -68,12 +68,6 @@ const NavigationBar = ({ data }: { data?: any }) => {
                 </li>
               )}
             </ul>
-            {/* <button
-            id="navAction"
-            className="focus:shadow-outline mx-auto mt-4 transform rounded-full bg-white py-4 px-8 font-bold text-gray-800 opacity-75 shadow transition duration-300 ease-in-out hover:scale-105 hover:underline focus:outline-none lg:mx-0 lg:mt-0"
-          >
-            Action
-          </button> */}
           </div>
         }
       </div>

@@ -1,7 +1,12 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 import React from 'react'
 import { ImArrowRight, ImQuotesLeft, ImQuotesRight } from 'react-icons/im'
-import { WomenListType } from '../types '
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import { Autoplay, Pagination, Navigation } from "swiper";
 
 function WomenListSlide({ data }) {
   return (
@@ -10,26 +15,37 @@ function WomenListSlide({ data }) {
       style={{
         backgroundColor: `${data.themeColors[0].quotesSectionColor.color_code}`,
       }}
-      className="pt-20"
+      className="pt-20 flex place-content-center"
     >
-      <div className="carousel w-full">
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
         {data.quoteList.map((quote, idx) => (
-          <div
+          <SwiperSlide
             key={idx}
-            className="carousel-item relative flex w-full flex-col"
           >
-            <h1
-              id={`slide ${idx}`}
+            <p
               className="mb-5 text-3xl font-bold  text-wtTango sm:text-center"
             >
               Meet our WunderWomen
-            </h1>
+            </p>
             <div className="">
               <div className="mr-5 rounded-lg">
                 <div className=" grid h-3/4 grid-cols-6 place-items-center">
-                  <div className="col-span-2 flex flex-col items-center px-24 py-10">
+                  <div className="col-span-3 flex flex-col items-center px-24 py-10">
                     <img
-                      className="aspect-auto w-72"
+                      className="aspect-auto w-96"
                       src={quote.person.imageUrl}
                     />
                     <p className="mt-5 text-2xl font-semibold">
@@ -38,44 +54,20 @@ function WomenListSlide({ data }) {
                     <p className=" text-lg ">{quote.person.job_title}</p>
                     <p className="text-lg ">{quote.person.department.title}</p>
                   </div>
-                  <div className="col-span-4 flex w-4/6 flex-col">
+                  <div className="col-span-3 flex w-5/6 flex-col mr-32 mb-20">
                     <ImQuotesLeft className="h-5 w-5" />
-                    <p className="p-1 text-center text-3xl font-semibold italic">
+                    <p className="p-1 self-start text-center text-3xl font-semibold italic">
                       {quote.body}
                     </p>
                     <ImQuotesRight className="h-5 w-5 place-self-end" />
                   </div>
                 </div>
               </div>
-              <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                <a
-                  href={`#slide ${idx === 0 ? data.quoteList.length - 1 : idx - 1
-                    }`}
-                  className="btn btn-circle"
-                >
-                  ❮
-                </a>
-
-                <a
-                  href={`#slide ${idx === data.quoteList.length - 1 ? 0 : idx + 1
-                    }`}
-                  className="btn btn-circle mr-5"
-                >
-                  ❯
-                </a>
-              </div>
             </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
-      {/* <Link href="/quoteslist">
-                <a >
-                    <p className="text-2xl mx-20 text-wtBlue font-bold flex">
-                        See the whole team <ImArrowRight className="mt-1.5 ml-2" />
-                    </p>
-                </a>
-            </Link> */}
-    </div>
+      </Swiper>
+    </div >
   )
 }
 
