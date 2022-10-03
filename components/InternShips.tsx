@@ -1,4 +1,3 @@
-import story from '../studio/schemas/story'
 import { InternShip } from '../types '
 
 const InternShips = ({ data }) => {
@@ -12,12 +11,11 @@ const InternShips = ({ data }) => {
     >
       <div className="container mx-auto w-full p-4 lg:p-12">
         <h1
-          // id={`slide ${idx}`}
           style={{
             marginBottom: '20px',
-            // color: 'black',
+            color: `${data.themeColors[0].sectionTitleColor.color_code}`
           }}
-          className=" font-bold text-center text-3xl text-wtTango"
+          className=" font-bold text-center text-3xl"
         >
           Meet our Interns
         </h1>

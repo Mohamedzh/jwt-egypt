@@ -8,7 +8,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
         // const { path } = req.body
-        console.log(req.body);
 
         // this should be the actual path not a rewritten path
         // e.g. for "/blog/[slug]" this should be "/blog/post-1"
