@@ -86,12 +86,11 @@ const CareerSection = ({ data }) => {
         Latest vacancies
       </p>
       <div className="overflow-hidden bg-white shadow sm:rounded-md">
-
         <ul role="list" className="divide-y divide-gray-200">
           {positions.map((position, idx) => (
             <li key={idx}>
               <Link href="/careers">
-                <a href="#" className="block hover:bg-gray-50">
+                <a className="block hover:bg-gray-50">
                   <div className="px-4 py-4 sm:px-6">
                     <div className="flex items-center justify-between">
                       <p className="truncate text-sm font-medium text-indigo-600">
@@ -139,8 +138,6 @@ const CareerSection = ({ data }) => {
             </li>
           ))}
         </ul>
-
-
       </div>
       <Link href="/careers">
         <a>

@@ -416,7 +416,7 @@ function Careers({ data }) {
                                     </p>
                                   </div>
                                 ))}
-                               
+
                                 {formik.setFieldValue('resume', acceptedFiles)}
                               </div>
                             )

@@ -12,8 +12,6 @@ import { getClient } from '../lib/sanity'
 import { validateHomePage } from '../lib/functions'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-
-
 export default function Index({ data }) {
   const router = useRouter()
 
@@ -32,6 +30,7 @@ export default function Index({ data }) {
       <InternShips data={data} />
 
       <CareerSection data={data} />
+
       <ContactUs data={data} />
       <Footer data={data} />
     </div>
@@ -39,8 +38,9 @@ export default function Index({ data }) {
 }
 
 export async function getStaticProps() {
-
-  const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]{..., textColor->{color_code}}`)
+  const JWTContact = await getClient(false).fetch(
+    `*[_type == "contactUs"]{..., textColor->{color_code}}`
+  )
 
   const quoteList = await getClient(false).fetch(
     `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}} [0...4]`
@@ -96,7 +96,7 @@ export async function getStaticProps() {
         header,
         videos,
         navbarTheme,
-        episodes
+        episodes,
       },
     },
   }
