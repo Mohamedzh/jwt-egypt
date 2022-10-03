@@ -12,7 +12,7 @@ import { getClient } from '../lib/sanity'
 import { validateHomePage } from '../lib/functions'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Podcast from '../components/podcast'
+
 
 export default function Index({ data }) {
   const router = useRouter()
@@ -20,6 +20,7 @@ export default function Index({ data }) {
   useEffect(() => {
     validateHomePage(getClient, { path: router.asPath })
   }, [])
+
   return (
     <div>
       <NavigationBar data={data} />
@@ -36,14 +37,6 @@ export default function Index({ data }) {
     </div>
   )
 }
-
-// export async function getStaticProps({ preview = false }) {
-//   const allPosts = await getAllPostsForHome(preview)
-//   return {
-//     props: { allPosts, preview },
-//     revalidate: 1,
-//   }
-// }
 
 export async function getStaticProps() {
 
@@ -87,6 +80,9 @@ export async function getStaticProps() {
     `*[_type == "navbarTheme"]{"logo":logo.asset->url, buttonText, logoTextColor->{color_code}, menuTextColor->{color_code}, altText}`
   )
 
+  const episodes = await getClient(false).fetch(
+    `*[_type == "episodes"] | order(_createdAt asc) {type, _createdAt, title, "url":media.asset->url, "imgUrl":image.asset->url, podcast->{title, "imageUrl":image.asset->url}, description}`
+  )
 
   return {
     props: {
@@ -99,7 +95,8 @@ export async function getStaticProps() {
         themeColors,
         header,
         videos,
-        navbarTheme
+        navbarTheme,
+        episodes
       },
     },
   }

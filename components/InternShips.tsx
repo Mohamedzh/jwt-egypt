@@ -19,7 +19,7 @@ const InternShips = ({ data }) => {
           }}
           className=" font-bold text-center text-3xl text-wtTango"
         >
-          Meet our Internship
+          Meet our Interns
         </h1>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {internShips.map((internShip: InternShip, idx) => (
