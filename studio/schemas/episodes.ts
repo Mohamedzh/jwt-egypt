@@ -7,11 +7,11 @@ export default {
     type: 'document',
     fields: [
         {
-            name: 'audio',
-            title: 'Audio',
+            name: 'media',
+            title: 'Media',
             type: 'file',
-            accept: 'audio/*',
-            description: 'audio file',
+            // accept: 'audio/*',
+            description: 'audio or video file',
             validation: rule => rule.required()
         },
         {
@@ -34,6 +34,29 @@ export default {
             title: 'Description',
             type: 'string',
             description: 'Episode description',
+            validation: rule => rule.required()
+        },
+        {
+            name: 'type',
+            title: 'Episode type (audio or video)',
+            type: 'string',
+            description: 'Episode title',
+            options: {
+                list: [
+                    { title: 'Audio', value: 'audio' },
+                    { title: 'Video', value: 'video' }
+                ],
+                layout: 'radio' // <-- defaults to 'dropdown'
+            },
+            validation: rule => rule.required()
+        },
+        {
+            name: 'image',
+            title: 'Image',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
             validation: rule => rule.required()
         },
     ],

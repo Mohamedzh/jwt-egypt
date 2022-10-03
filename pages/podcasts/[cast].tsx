@@ -2,32 +2,29 @@ import React from 'react'
 import Footer from '../../components/footerTab'
 import NavigationBar from '../../components/NavigationBar'
 import { getClient } from '../../lib/sanity'
-import { Howl, Howler } from 'howler';
 import ReactAudioPlayer from 'react-audio-player';
+import { TiArrowBack } from 'react-icons/ti'
+import Link from 'next/link';
 
 function Podcast({ data }) {
-    console.log(data.episodes)
-    console.log(data.videoEpisodes)
 
-    // let audio = new Audio(data.podcast[0].fileUrl)
-
-    // var sound = new Howl({
-    //     src: [`${data.podcast[0].fileUrl}`]
-    // });
-
-    // sound.play();
     return (
-        <div
-        // className=" bg-cover h-screen bg-[url('/podcastBg.jpg')]"
-        >
+        <div>
             <NavigationBar data={data} />
-            <div className='m-20'>
-                {data.videoEpisodes.map((video, idx) =>
-                    <div
-                        className='m-5'
-                        key={idx}
-                    >
-                        <p className='text-left my-5 text-3xl'>{video.title}</p>
+            <p className='pt-28 text-6xl text-center font-bold'>{data.podcast[0].title}</p>
+            <Link href='/podcasts'>
+                <a>
+                    <TiArrowBack className='mx-10 h-24 w-24 text-wtMediumRuby' />
+                </a>
+            </Link>
+            <div className='mx-20 mb-20'>
+                {data.episodes.map((media, idx) =>
+                (media.type === "video" ? <div
+                    className='m-5'
+                    key={idx}
+                >
+                    <p className='text-left my-5 text-3xl font-semibold'>{media.title}</p>
+                    <div className='grid grid-cols-2'>
                         <video
                             id="my-player"
                             className="video-js h-96 aspect-video"
@@ -35,38 +32,61 @@ function Podcast({ data }) {
                             preload="auto"
                             poster=""
                             data-setup='{}'>
-                            <source src={`${video.videoUrl}`}></source>
-                            {/* <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm"></source>
-                    <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg"></source> */}
+                            <source src={`${media.url}`}></source>
 
                         </video>
-                        <p className='text-left my-5 text-xl'>{video.description}</p>
-
+                        <p className='text-left mx-10 my-5 text-xl'>{media.description}</p>
                     </div>
+                </div> :
+                    <div
+                        key={idx}
+                        className='grid grid-cols-2'
+                    >
+                        <div>
+                            <p className='text-left my-5 text-3xl'>{media.title}</p>
+                            <ReactAudioPlayer
+                                className='w-96'
+                                src={`${media.url}`}
+                                autoPlay={false}
+                                controls
+                            />
+                            <p className='text-left my-5 text-xl'>{media.description}</p>
+                        </div>
+                        <img
+                            className='h-96 place-self-center'
+                            src={`${media.imgUrl}`}
+                        />
+                    </div>
+                )
                 )}
             </div>
-
-            <div>
-                <ReactAudioPlayer
-                    src="my_audio_file.ogg"
-                    autoPlay
-                    controls
-                />
-            </div>
-            {/* <button
-                onClick={() => sound.play()
-                }
-            >
-                Click to play
-            </button> */}
             <Footer data={data} />
         </div >
     )
 }
-
 export default Podcast
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
+    const podcasts = await getClient(false).fetch(
+        `*[_type == "podcasts"]`
+    )
+    const paths = podcasts.map((cast) => {
+        return {
+            params: {
+                cast: cast._id,
+            },
+        }
+    })
+    return {
+        paths,
+        fallback: false,
+    }
+}
+
+
+export async function getStaticProps({ params }) {
+
+    let id = params.cast
 
     const quoteList = await getClient(false).fetch(
         `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}}`)
@@ -80,14 +100,11 @@ export async function getStaticProps() {
     )
 
     const podcast = await getClient(false).fetch(
-        `*[_type == "podcast"]{description, "fileUrl": audio.asset->url}`
+        `*[_type == "podcasts" && _id == $id]{description, title, "imgUrl":image.asset->url}`, { id }
     )
     const episodes = await getClient(false).fetch(
-        `*[_type == "episodes"]{title, "audioUrl": audio.asset->url}`
-    )
-    const videoEpisodes = await getClient(false).fetch(
-        `*[_type == "videoEpisodes"]{title, "videoUrl": video.asset->url, description}`
+        `*[_type == "episodes" && references(*[_type == "podcasts" && _id == $id]._id)] | order(_createdAt asc) {type, _createdAt, title, "url":media.asset->url, "imgUrl":image.asset->url, podcast->{title, "imageUrl":image.asset->url}, description}`, { id }
     )
 
-    return { props: { data: { quoteList, themeColors, JWTContact, navbarTheme, podcast, episodes, videoEpisodes } } }
+    return { props: { data: { quoteList, themeColors, JWTContact, navbarTheme, podcast, episodes } } }
 }
