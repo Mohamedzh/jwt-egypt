@@ -11,6 +11,7 @@ import { ImArrowRight } from 'react-icons/im'
 import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/20/solid'
 import BlockContent from '@sanity/block-content-to-react'
 import { CCollapse } from '@coreui/react'
+import { useDropzone } from 'react-dropzone'
 
 function Careers({ data }) {
   const router = useRouter()
@@ -33,31 +34,42 @@ function Careers({ data }) {
     validateStories(getClient, { path: router.asPath })
   }, [])
 
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
+
+  console.log(acceptedFiles)
+
+  const resume = acceptedFiles.map((file) => (
+    <li key={file.name}>
+      {file.name} - {file.size} bytes
+    </li>
+  ))
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
       email: '',
       LinkedInProfile: '',
-    //   number: '',
+      number: '',
       position: '',
       resume: '',
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required('Required'),
       lastName: Yup.string().required('Required'),
+      position: Yup.string().required('Required'),
       email: Yup.string()
         .email('Please enter a valid email address')
         .required('Required'),
       LinkedInProfile: Yup.string().required('Required'),
-      resume: Yup.string().required('Required'),
-    //   number: Yup.string()
-    //     .phone(
-    //       'Egypt',
-    //       true,
-    //       'Please enter a valid mobile number starting with your region code (ex. +20 ) '
-    //     )
-    //     .required('Required'),
+      //   resume: Yup.mixed().required('Required'),
+      number: Yup.string()
+        .phone(
+          'Egypt',
+          true,
+          'Please enter a valid mobile number starting with your region code (ex. +20 ) '
+        )
+        .required('Required'),
     }),
     onSubmit: (values) => {
       console.log(values)
@@ -148,9 +160,9 @@ function Careers({ data }) {
                               aria-hidden="true"
                             />
                             <p>
-                              Closing on{' '}
-                              <time dateTime={vacancy.closeDate}>
-                                {vacancy.closeDate}
+                              Closing on
+                              <time dateTime={vacancy.close_date}>
+                                {vacancy.close_date}
                               </time>
                             </p>
                           </div>
@@ -302,6 +314,7 @@ function Careers({ data }) {
                       onBlur={formik.handleBlur}
                       value={formik.values.position}
                     >
+                      <option >choose a position</option>
                       {vacancies.map((vacancy, indx) => (
                         <option
                           key={indx}
@@ -319,6 +332,32 @@ function Careers({ data }) {
                     </div>
                   </div>
 
+                  <div className="col-span-6 sm:col-span-3">
+                    <label
+                      htmlFor="number"
+                      className="ml-px block  pl-4 text-sm font-medium text-gray-700"
+                    >
+                      Phone
+                    </label>
+                    <div className="relative mt-1 rounded-full shadow-sm">
+                      <input
+                        type="text"
+                        name="number"
+                        id="number"
+                        className="block w-full rounded-full border-gray-300 bg-gray-50 pl-4  text-black focus:border-black focus:ring-black sm:text-sm"
+                        placeholder="+201287634938"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.number}
+                      />
+                    </div>
+                    <div className="ml-px block  pl-4 text-sm  text-red-700">
+                      {formik.touched.number ? (
+                        <p>{formik.errors.number}</p>
+                      ) : null}
+                    </div>
+                  </div>
+
                   <div className="col-span-6 sm:col-span-6">
                     <label className="block pl-4 text-sm font-medium text-gray-700">
                       Resume
@@ -328,12 +367,16 @@ function Careers({ data }) {
                         <p>{formik.errors.resume}</p>
                       ) : null}
                     </div>
+
                     <div className=" flex w-full items-center justify-center ">
                       <label
                         htmlFor="dropzone-file"
                         className="bg-grey-500 dark:hover:bg-bray-800 flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-300 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                       >
-                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                        <div
+                          className="flex flex-col items-center justify-center pt-5 pb-6"
+                          {...getRootProps()}
+                        >
                           <svg
                             aria-hidden="true"
                             className="mb-3 h-10 w-10 text-gray-400"
@@ -358,40 +401,35 @@ function Careers({ data }) {
                           <p className="text-xs text-gray-500 dark:text-gray-400">
                             PDF
                           </p>
+                          <input
+                            {...getInputProps()}
+                            id="dropzone-file"
+                            type="file"
+                            name="resume"
+                            className="hidden"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.resume}
+                          />
                         </div>
-                        <input
-                          id="dropzone-file"
-                          type="file"
-                          name="resume"
-                          className="hidden"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.resume}
-                        />
                       </label>
                     </div>
+                    <p>{resume} </p>
                   </div>
                 </div>
               </div>
 
               <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                {/* <button
-                  type="submit"
+                <button
+                  type="button"
                   className="inline-flex justify-center rounded-full border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  //   onClick={() => formik.handleSubmit()}
+                  onClick={() => formik.handleSubmit()}
                 >
                   Apply Now
-                </button> */}
+                </button>
               </div>
             </div>
           </form>
-          <button
-            type="button"
-            className="inline-flex justify-center rounded-full border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            onClick={() => formik.handleSubmit()}
-          >
-            Apply Now
-          </button>
         </div>
       </div>
     </div>
@@ -406,7 +444,7 @@ export async function getStaticProps() {
     `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}}`
   )
   const vacancies = await getClient(false).fetch(
-    ` *[_type == "job"]{location, title, type, department->{title}, details}`
+    ` *[_type == "job"]{location, title, type, department->{title}, details, close_date}`
   )
 
   const stories = await getClient(false).fetch(
