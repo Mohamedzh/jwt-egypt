@@ -12,6 +12,7 @@ import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/20/solid'
 import BlockContent from '@sanity/block-content-to-react'
 import { CCollapse } from '@coreui/react'
 import { useDropzone } from 'react-dropzone'
+import { BsFillFolderFill } from 'react-icons/bs'
 
 function Careers({ data }) {
   const router = useRouter()
@@ -34,14 +35,24 @@ function Careers({ data }) {
     validateStories(getClient, { path: router.asPath })
   }, [])
 
+  const [accepdetFiles, setAcceptedFiles] = useState()
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
 
-  console.log(acceptedFiles)
-
   const resume = acceptedFiles.map((file) => (
-    <li key={file.name}>
-      {file.name} - {file.size} bytes
-    </li>
+    <div className="flex flex-row pl-4 pt-5">
+      <BsFillFolderFill
+        className="mr-3"
+        style={{
+          fill: `${data.themeColors[0].firstColor.color_code}`,
+        }}
+      />
+      <p className="basis-1/3">
+        {file.name} - {file.size} bytes
+      </p>
+    </div>
+    // /* // <li key={file.name}>
+    // //   {file.name} - {file.size} bytes
+    // // </li> */
   ))
 
   const formik = useFormik({
@@ -62,7 +73,7 @@ function Careers({ data }) {
         .email('Please enter a valid email address')
         .required('Required'),
       LinkedInProfile: Yup.string().required('Required'),
-      //   resume: Yup.mixed().required('Required'),
+      resume: Yup.mixed().required('Required'),
       number: Yup.string()
         .phone(
           'Egypt',
@@ -73,6 +84,11 @@ function Careers({ data }) {
     }),
     onSubmit: (values) => {
       console.log(values)
+      console.log(acceptedFiles.length)
+      if (acceptedFiles.length === 0) {
+        alert('enter a resume')
+      }
+
       //api call
       //   formik.resetForm
       //navigate to top or show a pop up message
@@ -314,7 +330,9 @@ function Careers({ data }) {
                       onBlur={formik.handleBlur}
                       value={formik.values.position}
                     >
-                      <option >choose a position</option>
+                      <option disabled={true} value="">
+                        choose a position
+                      </option>
                       {vacancies.map((vacancy, indx) => (
                         <option
                           key={indx}
@@ -363,6 +381,9 @@ function Careers({ data }) {
                       Resume
                     </label>
                     <div className="ml-px block  pl-4 text-sm  text-red-700">
+                      {/* {acceptedFiles.length === 0 ? (
+                        <p>Required</p>
+                      ) : null} */}
                       {formik.touched.resume ? (
                         <p>{formik.errors.resume}</p>
                       ) : null}
@@ -414,7 +435,8 @@ function Careers({ data }) {
                         </div>
                       </label>
                     </div>
-                    <p>{resume} </p>
+
+                    <div>{resume} </div>
                   </div>
                 </div>
               </div>
@@ -424,6 +446,9 @@ function Careers({ data }) {
                   type="button"
                   className="inline-flex justify-center rounded-full border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   onClick={() => formik.handleSubmit()}
+                  style={{
+                    background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
+                  }}
                 >
                   Apply Now
                 </button>
