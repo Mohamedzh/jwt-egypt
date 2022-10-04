@@ -26,7 +26,7 @@ function PodcastSlide({ data }) {
                     }}
                     navigation={true}
                     modules={[Autoplay, Pagination, Navigation]}
-                    className="mySwiper"
+                    className="mySwiper "
                 >
                     {data.episodes.map((episode, idx) =>
                         <SwiperSlide
@@ -36,23 +36,25 @@ function PodcastSlide({ data }) {
                                 <p
                                     id="media"
                                     style={{ color: `${data.themeColors[0].sectionTitleColor.color_code}` }}
-                                    className="text-3xl font-bold tracking-tight sm:text-center">
+                                    className="text-3xl font-bold tracking-tight text-center">
                                     Podcasts
                                 </p>
                             </div>
                             <div>
-                                <p className="text-xl mb-3 font-bold tracking-tight text-gray-900 sm:text-center">
+                                <p className="text-xl mb-3 font-bold tracking-tight text-gray-900 text-center">
                                     {episode.title}
                                 </p>
                             </div>
                             <video
                                 id="my-player"
-                                className="video-js min-w-full aspect-video"
+                                className="video-js lg:min-w-full aspect-video"
                                 controls
                                 preload="auto"
                                 poster=""
                                 data-setup='{}'>
-                                <source src={`${episode.url}`}></source>
+                                <source
+                                    src={`${episode.url}`}>
+                                </source>
                             </video>
                         </SwiperSlide>
                     )}

@@ -43,24 +43,28 @@ function WomenListSlide({ data }) {
             </p>
             <div className="">
               <div className="mr-5 rounded-lg">
-                <div className=" grid h-3/4 grid-cols-6 place-items-center">
-                  <div className="col-span-3 flex flex-col items-center px-24 py-10">
-                    <img
-                      className="aspect-auto w-96"
-                      src={quote.person.imageUrl}
-                    />
-                    <p className="mt-5 text-2xl font-semibold">
-                      {quote.person.name}
-                    </p>
-                    <p className=" text-lg ">{quote.person.job_title}</p>
-                    <p className="text-lg ">{quote.person.department.title}</p>
+                <div className=" grid h-3/4 grid-cols-12 place-items-center">
+                  <div className="lg:col-span-6 col-span-7 flex flex-col items-center mx-5 px-10 lg:px-16 md:px-16 py-10">
+                    <div>
+                      <img
+                        className="aspect-auto w-full"
+                        src={quote.person.imageUrl}
+                      />
+                    </div>
+                    <div>
+                      <p className="mt-5 lg:text-2xl text-sm text-center font-semibold">
+                        {quote.person.name}
+                      </p>
+                      <p className=" lg:text-lg text-sm text-center">{quote.person.job_title}</p>
+                      <p className="lg:text-lg text-sm text-center">{quote.person.department.title}</p>
+                    </div>
                   </div>
-                  <div className="col-span-3 flex w-5/6 flex-col mr-32 mb-20">
-                    <ImQuotesLeft className="h-5 w-5" />
-                    <p className="p-1 self-start text-center text-3xl font-semibold italic">
+                  <div className="lg:col-span-6 col-span-5 flex w-full flex-col mr-12 md:mr-32 lg:mr-32 lg:mb-20">
+                    <ImQuotesLeft className="lg:h-5 lg:w-5 w-2 h-2" />
+                    <p className="p-1 self-start text-center lg:text-3xl text-sm font-semibold italic">
                       {quote.body}
                     </p>
-                    <ImQuotesRight className="h-5 w-5 place-self-end" />
+                    <ImQuotesRight className="lg:h-5 lg:w-5 w-2 h-2 place-self-end" />
                   </div>
                 </div>
               </div>
