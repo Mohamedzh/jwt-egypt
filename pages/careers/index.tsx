@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import NavigationBar from '../../components/NavigationBar'
 import { VacancyType } from '../../types '
 import { getClient } from '../../lib/sanity'
@@ -14,6 +14,7 @@ import { CCollapse } from '@coreui/react'
 import { useDropzone } from 'react-dropzone'
 import { BsFillFolderFill } from 'react-icons/bs'
 import Dropzone from 'react-dropzone'
+import { supabase } from '../../lib/supabaseClient'
 
 function Careers({ data }) {
   const router = useRouter()
@@ -36,39 +37,35 @@ function Careers({ data }) {
     validateStories(getClient, { path: router.asPath })
   }, [])
 
-  //   const [cv, setCv] = useState<File[]>([])
-  //   const { acceptedFiles, getRootProps, getInputProps } = useDropzone()
-
-  //   useEffect(() => {
-  //     console.log(acceptedFiles)
-  //     setCv(acceptedFiles)
-  //   }, [acceptedFiles])
-
-  //   const cv = JSON.stringify(acceptedFiles[0])
-
-  //   const resume = acceptedFiles.map((file) => (
-  //     <div className="flex flex-row pl-4 pt-5">
-  //       <BsFillFolderFill
-  //         className="mr-3"
-  //         style={{
-  //           fill: `${data.themeColors[0].firstColor.color_code}`,
-  //         }}
-  //       />
-  //       <p className="basis-1/3">
-  //         {file.name} - {file.size} bytes
-  //       </p>
-  //     </div> ))
-  //  <li key={file.name}>
-  //   {file.name} - {file.size} bytes
-  //  </li>
-  //   ))
+  const applicationApi = async (values) => {
+    try {
+      const { resume } = values
+      const { data: resumeUrl, error: error1 } = await supabase.storage
+        .from('resume-url')
+        .upload(`${Date.now()}_${values.firstName}`, resume)
+      console.log(values.resume.name)
+      console.log(error1)
+      console.log(resumeUrl)
+      // const { data, error } = await supabase.from('Application').upsert({
+      //   firstName: `${values.firstName}`,
+      //   lastName: `${values.lastName}`,
+      //   email: `${values.email}`,
+      //   linkedInProfile: `${values.linkedInProfile}`,
+      //   number: `${values.number}`,
+      //   position: `${values.position}`,
+      //   resume: `${resumeUrl}`,
+      // })
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
       email: '',
-      LinkedInProfile: '',
+      linkedInProfile: '',
       number: '',
       position: '',
       resume: '',
@@ -80,7 +77,7 @@ function Careers({ data }) {
       email: Yup.string()
         .email('Please enter a valid email address')
         .required('Required'),
-      LinkedInProfile: Yup.string().required('Required'),
+
       resume: Yup.string().required('Required'),
       number: Yup.string()
         .phone(
@@ -92,14 +89,7 @@ function Careers({ data }) {
     }),
     onSubmit: (values) => {
       console.log(values)
-
-      const api = async (values) => {
-        try {
-            
-        } catch (e) {
-          console.log(e)
-        }
-      }
+      applicationApi(values)
       //api call
       //   formik.resetForm
       //navigate to top or show a pop up message
@@ -146,11 +136,11 @@ function Careers({ data }) {
                   <div
                     id={`job${idx}`}
                     key={idx}
-                    className="m-4 overflow-hidden bg-white shadow hover:bg-gray-50 sm:rounded-3xl"
+                    className="m-4 overflow-hidden bg-gray-50 shadow hover:bg-gray-100 sm:rounded-3xl"
                     onClick={() => scrollToSection(`job${idx}`)}
                   >
                     <div
-                      className=" collapse-plus collapse m-3 block hover:bg-gray-50"
+                      className=" collapse-plus collapse m-3 block bg-gray-50 hover:bg-gray-100"
                       tabIndex={0}
                     >
                       <div className=" collapse-title px-4 py-4 sm:px-6">
@@ -207,12 +197,14 @@ function Careers({ data }) {
         </div>
 
         <div>
-          <form
-            className="grid grid-cols-1 gap-y-6"
-            // onSubmit={formik.handleSubmit}
-          >
+          <form className="grid grid-cols-1 gap-y-6">
             <div className="overflow-hidden shadow sm:rounded-3xl">
-              <div className="bg-white px-4 py-5 sm:p-6">
+              <div
+                className="bg-white px-4 py-5 sm:p-6"
+                style={{
+                  background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
+                }}
+              >
                 <p className="pr-10 text-center text-2xl font-semibold">
                   Application
                 </p>
@@ -220,7 +212,7 @@ function Careers({ data }) {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="firstName"
-                      className="ml-px block  pl-4 text-sm font-medium text-gray-700"
+                      className="ml-px block  pl-4 text-sm font-medium text-black"
                     >
                       First Name
                     </label>
@@ -246,7 +238,7 @@ function Careers({ data }) {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="lastName"
-                      className="ml-px block  pl-4 text-sm font-medium text-gray-700"
+                      className="ml-px block  pl-4 text-sm font-medium text-black"
                     >
                       Last Name
                     </label>
@@ -272,7 +264,7 @@ function Careers({ data }) {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="email"
-                      className="block pl-4 text-sm font-medium text-gray-700"
+                      className="block pl-4 text-sm font-medium text-black"
                     >
                       Email
                     </label>
@@ -298,8 +290,8 @@ function Careers({ data }) {
 
                   <div className="col-span-6 sm:col-span-3">
                     <label
-                      htmlFor="LinkedInProfile"
-                      className="block pl-4 text-sm font-medium text-gray-700"
+                      htmlFor="linkedInProfile"
+                      className="block pl-4 text-sm font-medium text-black"
                     >
                       LinkedIn Profile
                     </label>
@@ -309,26 +301,21 @@ function Careers({ data }) {
                       </span>
                       <input
                         type="text"
-                        name="LinkedInProfile"
-                        id="LinkedInProfile"
+                        name="linkedInProfile"
+                        id="linkedInProfile"
                         className="block w-full flex-1 rounded-none rounded-r-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder="www.linkedIn.com"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.LinkedInProfile}
+                        value={formik.values.linkedInProfile}
                       />
-                    </div>
-                    <div className="ml-px block  pl-4 text-sm  text-red-700">
-                      {formik.touched.LinkedInProfile ? (
-                        <p>{formik.errors.LinkedInProfile}</p>
-                      ) : null}
                     </div>
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="position"
-                      className="block pl-4 text-sm font-medium text-gray-700"
+                      className="block pl-4 text-sm font-medium text-black"
                     >
                       Position
                     </label>
@@ -364,7 +351,7 @@ function Careers({ data }) {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="number"
-                      className="ml-px block  pl-4 text-sm font-medium text-gray-700"
+                      className="ml-px block  pl-4 text-sm font-medium text-black"
                     >
                       Phone
                     </label>
@@ -388,13 +375,10 @@ function Careers({ data }) {
                   </div>
 
                   <div className="col-span-6 sm:col-span-6">
-                    <label className="block pl-4 text-sm font-medium text-gray-700">
+                    <label className="block pl-4 text-sm font-medium text-black">
                       Resume
                     </label>
                     <div className="ml-px block  pl-4 text-sm  text-red-700">
-                      {/* {acceptedFiles.length === 0 ? (
-                        <p>Required</p>
-                      ) : null} */}
                       {formik.touched.resume && formik.errors.resume ? (
                         <p>{formik.errors.resume}</p>
                       ) : null}
@@ -403,35 +387,28 @@ function Careers({ data }) {
                     <div className=" flex w-full items-center justify-center ">
                       <label
                         htmlFor="resume"
-                        className="bg-grey-500 dark:hover:bg-bray-800 flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-300 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                        className="bg-grey-500 dark:hover:bg-bray-800 flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-300 hover:bg-gray-100 dark:border-gray-600 dark:bg-black dark:hover:border-gray-500 dark:hover:bg-gray-600"
                       >
                         <Dropzone
-                          //   onDrop={(acceptedFiles) => console.log(acceptedFiles)}
-                          onDrop={(acceptedFiles) => {
+                          onDrop={useCallback((acceptedFiles) => {
                             return (
                               <div>
-                                {/* {acceptedFiles.map((file) => (
-                                  <div className="flex flex-row pl-4 pt-5">
-                                    <BsFillFolderFill
-                                      className="mr-3"
-                                      style={{
-                                        fill: `${data.themeColors[0].firstColor.color_code}`,
-                                      }}
-                                    />
-                                    <p className="basis-1/3">
-                                      {file.name} - {file.size} bytes
-                                    </p>
-                                  </div>
-                                ))} */}
-
-                                {formik.setFieldValue(
-                                  'resume',
-                                  acceptedFiles[0]
-                                )}
+                                {acceptedFiles.map((file) => {
+                                  const reader = new FileReader()
+                                  reader.readAsDataURL(file)
+                                  formik.setFieldValue('resume', file)
+                                  return file
+                                })}
                               </div>
                             )
-                          }}
+                          }, [])}
                         >
+                          {/* <div> */}
+                          {/* {formik.setFieldValue(
+                          'resume',
+                          acceptedFiles[0]
+                        )} */}
+                          {/* </div> */}
                           {({ getRootProps, getInputProps, acceptedFiles }) => (
                             <section>
                               <div
@@ -467,16 +444,6 @@ function Careers({ data }) {
                                   id="resume"
                                   type="file"
                                   name="resume"
-                                  // className="hidden"
-                                  // onChange={formik.handleChange}
-                                  // onBlur={formik.handleBlur}
-                                  // value={formik.values.resume}
-                                  // onChange={formik.handleChange}
-                                  // {...formik.getFieldProps('inputFile')}
-                                  // onChange={(e)=> formik.setFieldValue('resume', acceptedFiles[0])}
-                                  //   onDrop={(e) =>
-                                  //     formik.setFieldValue('resume', acceptedFiles)
-                                  //   }
                                 />
                               </div>
                               <div>
@@ -499,13 +466,11 @@ function Careers({ data }) {
                         </Dropzone>
                       </label>
                     </div>
-
-                    {/* <div>{resume} </div> */}
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+              <div className="bg-gray-100 px-4 py-3 text-right sm:px-6">
                 <button
                   type="button"
                   className="inline-flex justify-center rounded-full border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"

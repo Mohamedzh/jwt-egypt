@@ -2,63 +2,66 @@ import Link from 'next/link'
 import { ImArrowRight } from 'react-icons/im'
 import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/20/solid'
 
-const positions = [
-  {
-    id: 1,
-    title: 'Back End Developer',
-    type: 'Full-time',
-    location: 'Remote',
-    department: 'Engineering',
-    closeDate: '2020-01-07',
-    closeDateFull: 'January 7, 2020',
-  },
-  {
-    id: 2,
-    title: 'Front End Developer',
-    type: 'Full-time',
-    location: 'Remote',
-    department: 'Engineering',
-    closeDate: '2020-01-07',
-    closeDateFull: 'January 7, 2020',
-  },
-  {
-    id: 3,
-    title: 'User Interface Designer',
-    type: 'Full-time',
-    location: 'Remote',
-    department: 'Design',
-    closeDate: '2020-01-14',
-    closeDateFull: 'January 14, 2020',
-  },
-]
-const vacancies = [
-  {
-    title: 'web developer',
-    department: 'IT',
-    description:
-      'Junior web developer required with experience in react and nextjs',
-  },
-  {
-    title: 'business development specialist',
-    department: 'marketing',
-    description:
-      'BD specialist needed with 5-7 years experience in the same position',
-  },
-  {
-    title: 'HR specialist',
-    department: 'HR',
-    description:
-      'HR specialist needed with past experience in a multinational company',
-  },
-  {
-    title: 'account manager',
-    department: 'Accounting',
-    description:
-      'account manager needed to perform accounting operations in the accounting department',
-  },
-]
+// const positions = [
+//   {
+//     id: 1,
+//     title: 'Back End Developer',
+//     type: 'Full-time',
+//     location: 'Remote',
+//     department: 'Engineering',
+//     closeDate: '2020-01-07',
+//     closeDateFull: 'January 7, 2020',
+//   },
+//   {
+//     id: 2,
+//     title: 'Front End Developer',
+//     type: 'Full-time',
+//     location: 'Remote',
+//     department: 'Engineering',
+//     closeDate: '2020-01-07',
+//     closeDateFull: 'January 7, 2020',
+//   },
+//   {
+//     id: 3,
+//     title: 'User Interface Designer',
+//     type: 'Full-time',
+//     location: 'Remote',
+//     department: 'Design',
+//     closeDate: '2020-01-14',
+//     closeDateFull: 'January 14, 2020',
+//   },
+// ]
+// const vacancies = [
+//   {
+//     title: 'web developer',
+//     department: 'IT',
+//     description:
+//       'Junior web developer required with experience in react and nextjs',
+//   },
+//   {
+//     title: 'business development specialist',
+//     department: 'marketing',
+//     description:
+//       'BD specialist needed with 5-7 years experience in the same position',
+//   },
+//   {
+//     title: 'HR specialist',
+//     department: 'HR',
+//     description:
+//       'HR specialist needed with past experience in a multinational company',
+//   },
+//   {
+//     title: 'account manager',
+//     department: 'Accounting',
+//     description:
+//       'account manager needed to perform accounting operations in the accounting department',
+//   },
+// ]
 
 const CareerSection = ({ data }) => {
+  const jobVacancies = data.vacancies
+
+
   return (
     <div
       id="career"
@@ -89,7 +92,7 @@ const CareerSection = ({ data }) => {
       </p>
       <div className="overflow-hidden bg-white shadow sm:rounded-md">
         <ul role="list" className="divide-y divide-gray-200">
-          {positions.map((position, idx) => (
+          {jobVacancies.map((position, idx) => (
             <li key={idx}>
               <Link href="/careers">
                 <a className="block hover:bg-gray-50">
@@ -111,7 +114,7 @@ const CareerSection = ({ data }) => {
                             className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                             aria-hidden="true"
                           />
-                          {position.department}
+                          {position.department.title}
                         </p>
                         <p className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
                           <MapPinIcon
@@ -128,8 +131,8 @@ const CareerSection = ({ data }) => {
                         />
                         <p>
                           Closing on{' '}
-                          <time dateTime={position.closeDate}>
-                            {position.closeDateFull}
+                          <time dateTime={position.close_date}>
+                            {position.close_date}
                           </time>
                         </p>
                       </div>
