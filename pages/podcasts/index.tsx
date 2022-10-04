@@ -15,7 +15,7 @@ function Podcast({ data }) {
             <div className='m-20'>
                 {data.podcasts.map((cast, idx) =>
                     <div
-                        className={`py-10 mx-5 grid grid-cols-2 ${(idx !== 0 ? 'border-t-red-800' : 'border-t-0')} border border-b-0 border-x-0`}
+                        className={`py-10 mx-5 grid grid-cols-2 `}
                         key={idx}
                     >
                         <div>
