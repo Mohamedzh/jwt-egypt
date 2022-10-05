@@ -12,18 +12,19 @@ datasource db {
 
 model ContactUs {
   id       Int    @id @default(autoincrement())
-  fullname String
-  email    String @unique
-  tel      String
+  name String
+  email    String 
+  number      String
   message  String
 }
 
 model Application {
   id        Int    @id @default(autoincrement())
-  firstname String
-  lastname  String
-  email     String @unique
-  linkedin  String @unique
+  firstName String
+  lastName  String
+  email     String 
+  number      String
+  linkedInProfile  String? @unique 
   resume    String
-  job       String
+  position       String
 }

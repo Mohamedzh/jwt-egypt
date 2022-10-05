@@ -9,10 +9,27 @@ import * as Yup from 'yup'
 import 'yup-phone'
 import { BsPerson } from 'react-icons/bs'
 import Link from 'next/link'
+import { supabase } from '../lib/supabaseClient'
 
 export default function ContactUs({ data }) {
   const address = data.JWTContact[0]
-  // console.log(address)
+
+  const contactUsApi = async (values) => {
+    try {
+      const { data: data2, error: error3 } = await supabase
+        .from('ContactUs')
+        .upsert({
+          name: `${values.name}`,
+          email: `${values.email}`,
+          number: `${values.number}`,
+          message: `${values.message}`,
+        })
+        console.log(data2)
+        console.log(error3)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -37,6 +54,7 @@ export default function ContactUs({ data }) {
     }),
     onSubmit: (values) => {
       // console.log(values)
+      contactUsApi(values)
       //api call
       // formik.resetForm
       //navigate to top or show a pop up message
@@ -88,26 +106,31 @@ export default function ContactUs({ data }) {
           <div className="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
             <div className="bg-none py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
               <div className="mx-auto max-w-lg">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl" style={{ color: `${address.textColor.color_code}` }}>
+                <h2
+                  className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
+                  style={{ color: `${address.textColor.color_code}` }}
+                >
                   Contact
                 </h2>
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl" style={{ color: `${address.textColor.color_code}` }}>
+                <h2
+                  className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
+                  style={{ color: `${address.textColor.color_code}` }}
+                >
                   Information
-
                 </h2>
                 <dl className="mt-8 text-base text-black">
                   <div>
                     <dt className="sr-only">Postal address</dt>
                     <dd>
-                      <p
-                        style={{ color: `${address.textColor.color_code}` }}
-                      >{address.address} </p>
-                      <p
-                        style={{ color: `${address.textColor.color_code}` }}
-                      >{address.governorate}Governorate</p>
-                      <p
-                        style={{ color: `${address.textColor.color_code}` }}
-                      >{address.postalCode}</p>
+                      <p style={{ color: `${address.textColor.color_code}` }}>
+                        {address.address}{' '}
+                      </p>
+                      <p style={{ color: `${address.textColor.color_code}` }}>
+                        {address.governorate}Governorate
+                      </p>
+                      <p style={{ color: `${address.textColor.color_code}` }}>
+                        {address.postalCode}
+                      </p>
                     </dd>
                   </div>
                   <div className="mt-6">
@@ -120,7 +143,10 @@ export default function ContactUs({ data }) {
                       />
                       <span
                         style={{ color: `${address.textColor.color_code}` }}
-                        className="ml-3">{address.phone}</span>
+                        className="ml-3"
+                      >
+                        {address.phone}
+                      </span>
                     </dd>
                   </div>
                   <div className="mt-3">
@@ -133,10 +159,14 @@ export default function ContactUs({ data }) {
                       />
                       <Link href={`mailto:${address.email}`}>
                         <a>
-                          <span className="ml-3" style={{ color: `${address.textColor.color_code}` }}>{address.email}</span>
+                          <span
+                            className="ml-3"
+                            style={{ color: `${address.textColor.color_code}` }}
+                          >
+                            {address.email}
+                          </span>
                         </a>
                       </Link>
-
                     </dd>
                   </div>
                 </dl>
@@ -146,7 +176,7 @@ export default function ContactUs({ data }) {
             <div className="rounded-3xl bg-white py-4 px-4 sm:px-6 lg:col-span-3 lg:py-10 lg:px-8 xl:pl-12">
               <div className="mx-auto max-w-lg lg:max-w-none">
                 <form className="grid grid-cols-1 gap-y-6">
-                  <h2 className="text-2xl text-center font-bold tracking-tight text-gray-900 sm:text-3xl">
+                  <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                     Get In Touch !
                   </h2>
                   <div>
