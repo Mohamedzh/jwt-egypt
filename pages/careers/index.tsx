@@ -44,17 +44,16 @@ function Careers({ data }) {
         .from('resume-url')
         .upload(`${Date.now()}_${values.firstName}`, resume)
       console.log(values.resume.name)
-   
 
-       
       const url = resumeUrl.Key.split('/')
-      const newUrl = url[url.length -1]
+      const newUrl = url[url.length - 1]
       const { publicURL } = supabase.storage
         .from('resume-url')
         .getPublicUrl(`${newUrl}`)
-    
 
-        const { data: data2, error: error3 } = await supabase.from('Application').upsert({
+      const { data: data2, error: error3 } = await supabase
+        .from('Application')
+        .upsert({
           firstName: `${values.firstName}`,
           lastName: `${values.lastName}`,
           email: `${values.email}`,
@@ -63,8 +62,7 @@ function Careers({ data }) {
           position: `${values.position}`,
           resume: `${publicURL}`,
         })
-        console.log(data2)
-        console.log(error3)
+      
     } catch (e) {
       console.log(e)
     }
@@ -98,11 +96,8 @@ function Careers({ data }) {
         .required('Required'),
     }),
     onSubmit: (values) => {
-      console.log(values)
       applicationApi(values)
-      //api call
-      //   formik.resetForm
-      //navigate to top or show a pop up message
+      formik.resetForm
     },
   })
 
@@ -150,7 +145,7 @@ function Careers({ data }) {
                     onClick={() => scrollToSection(`job${idx}`)}
                   >
                     <div
-                      className=" collapse collapse-plus m-3 block bg-gray-50 hover:bg-gray-100"
+                      className=" collapse-plus collapse m-3 block bg-gray-50 hover:bg-gray-100"
                       tabIndex={0}
                     >
                       <div className=" collapse-title px-4 py-4 sm:px-6">
