@@ -21,6 +21,10 @@ export default function Index({ data }) {
 
   return (
     <div>
+      <Head>
+        <title>WunderWomen Egypt</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <NavigationBar data={data} />
       <HeroPage data={data} />
       <WomenListSlide data={data} />

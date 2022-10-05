@@ -15,11 +15,12 @@ function PodcastSlide({ data }) {
                 style={{ backgroundColor: `${data.themeColors[0].videoSectionColor.color_code}`, height: '600px' }}
                 className='flex place-content-center'>
                 <Swiper
+                    aria-orientation='horizontal'
                     spaceBetween={30}
                     centeredSlides={true}
                     autoplay={{
                         delay: 2500,
-                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true
                     }}
                     pagination={{
                         clickable: true,
@@ -47,7 +48,10 @@ function PodcastSlide({ data }) {
                             </div>
                             <video
                                 id="my-player"
-                                className="video-js lg:min-w-full aspect-video"
+                                className="video-js w-min h-96 lg:w-full lg:h-auto"
+                                onClick={() => console.log(false)}
+                                onAnimationStart={() => console.log('click to play')}
+
                                 controls
                                 preload="auto"
                                 poster=""
@@ -67,7 +71,7 @@ function PodcastSlide({ data }) {
                     <ImArrowRight className="mt-1.5 ml-2" />
                 </a>
             </Link>
-        </div>
+        </div >
     )
 }
 
