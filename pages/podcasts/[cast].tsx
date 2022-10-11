@@ -14,20 +14,20 @@ function Podcast({ data }) {
             <p className='pt-28 text-6xl text-center font-bold'>{data.podcast[0].title}</p>
             <Link href='/podcasts'>
                 <a>
-                    <TiArrowBack className='mx-10 h-24 w-24 text-wtMediumRuby' />
+                    <TiArrowBack className='mx-10 h-14 w-14 md:h-24 md:w-24 text-wtMediumRuby' />
                 </a>
             </Link>
-            <div className='mx-20 mb-20'>
+            <div className='mx-10 md:mx-20 lg:mx-20 mb-20'>
                 {data.episodes.map((media, idx) =>
                 (media.type === "video" ? <div
-                    className='m-5'
+                    className='md:m-5 lg:m-5'
                     key={idx}
                 >
                     <p className='text-left my-5 text-3xl font-semibold'>{media.title}</p>
-                    <div className='grid grid-cols-2'>
+                    <div className='grid md:grid-cols-2 lg:grid-cols-2'>
                         <video
                             id="my-player"
-                            className="video-js h-96 aspect-video"
+                            className="video-js md:h-96 lg:h-96 aspect-video"
                             controls
                             preload="auto"
                             poster=""
@@ -35,17 +35,18 @@ function Podcast({ data }) {
                             <source src={`${media.url}`}></source>
 
                         </video>
-                        <p className='text-left mx-10 my-5 text-xl'>{media.description}</p>
+                        <p className='text-left md:mx-10 lg:mx-10 my-5 text-xl'>{media.description}</p>
                     </div>
-                </div> :
+                </div>
+                    :
                     <div
                         key={idx}
-                        className='grid grid-cols-2'
+                        className='grid md:grid-cols-2 lg:grid-cols-2'
                     >
                         <div>
                             <p className='text-left my-5 text-3xl'>{media.title}</p>
                             <ReactAudioPlayer
-                                className='w-96'
+                                className='md:w-96 lg:md:w-96'
                                 src={`${media.url}`}
                                 autoPlay={false}
                                 controls
@@ -53,7 +54,7 @@ function Podcast({ data }) {
                             <p className='text-left my-5 text-xl'>{media.description}</p>
                         </div>
                         <img
-                            className='h-96 place-self-center'
+                            className='h-96 place-self-center hidden lg:block md:block'
                             src={`${media.imgUrl}`}
                         />
                     </div>

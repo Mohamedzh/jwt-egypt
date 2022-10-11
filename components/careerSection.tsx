@@ -2,62 +2,6 @@ import Link from 'next/link'
 import { ImArrowRight } from 'react-icons/im'
 import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/20/solid'
 
-// const positions = [
-//   {
-//     id: 1,
-//     title: 'Back End Developer',
-//     type: 'Full-time',
-//     location: 'Remote',
-//     department: 'Engineering',
-//     closeDate: '2020-01-07',
-//     closeDateFull: 'January 7, 2020',
-//   },
-//   {
-//     id: 2,
-//     title: 'Front End Developer',
-//     type: 'Full-time',
-//     location: 'Remote',
-//     department: 'Engineering',
-//     closeDate: '2020-01-07',
-//     closeDateFull: 'January 7, 2020',
-//   },
-//   {
-//     id: 3,
-//     title: 'User Interface Designer',
-//     type: 'Full-time',
-//     location: 'Remote',
-//     department: 'Design',
-//     closeDate: '2020-01-14',
-//     closeDateFull: 'January 14, 2020',
-//   },
-// ]
-// const vacancies = [
-//   {
-//     title: 'web developer',
-//     department: 'IT',
-//     description:
-//       'Junior web developer required with experience in react and nextjs',
-//   },
-//   {
-//     title: 'business development specialist',
-//     department: 'marketing',
-//     description:
-//       'BD specialist needed with 5-7 years experience in the same position',
-//   },
-//   {
-//     title: 'HR specialist',
-//     department: 'HR',
-//     description:
-//       'HR specialist needed with past experience in a multinational company',
-//   },
-//   {
-//     title: 'account manager',
-//     department: 'Accounting',
-//     description:
-//       'account manager needed to perform accounting operations in the accounting department',
-//   },
-// ]
-
 const CareerSection = ({ data }) => {
   const jobVacancies = data.vacancies
 
@@ -68,7 +12,7 @@ const CareerSection = ({ data }) => {
       style={{
         backgroundColor: `${data.themeColors[0].careerSectionColor.color_code}`,
       }}
-      className="px-20 pb-5"
+      className="md:px-20 lg:px-20 px-5 pb-5"
     >
       {/* <div className="collapse mx-20 my-10">
         <input type="checkbox" className="peer" />

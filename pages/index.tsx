@@ -20,7 +20,7 @@ export default function Index({ data }) {
   }, [])
 
   return (
-    <div>
+    <div className='snap-y snap-mandatory'>
       <Head>
         <title>WunderWomen Egypt</title>
         <link rel="icon" href="/favicon.ico" />

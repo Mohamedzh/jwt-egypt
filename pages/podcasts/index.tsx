@@ -12,10 +12,10 @@ function Podcast({ data }) {
     return (
         <div>
             <NavigationBar data={data} />
-            <div className='m-20'>
+            <div className='my-10 md:m-20 lg:m-20'>
                 {data.podcasts.map((cast, idx) =>
                     <div
-                        className={`py-10 mx-5 grid grid-cols-2 `}
+                        className={`py-3 ${idx === 0 ? 'pt-10' : ''} lg:py-10 mx-5 grid md:grid-cols-2 lg:grid-cols-2`}
                         key={idx}
                     >
                         <div>
@@ -25,7 +25,7 @@ function Podcast({ data }) {
                         <Link href={`/podcasts/${cast._id}`}>
                             <a>
                                 <img
-                                    className='mt-5 ml-5'
+                                    className='mt-5 lg:ml-5'
                                     src={cast.imgUrl}
                                 />
                             </a>
@@ -45,8 +45,8 @@ export async function getStaticProps() {
     const quoteList = await getClient(false).fetch(
         `*[_type == "quote"]{body, person->{department->{title}, name, "imageUrl":image.asset->url, job_title}, color-> {name, color_code}}`)
 
-        const themeColors = await getClient(false).fetch(
-            `*[_type == "siteTheme"]{firstColor->{color_code},
+    const themeColors = await getClient(false).fetch(
+        `*[_type == "siteTheme"]{firstColor->{color_code},
              secondColor->{color_code},
              quotesSectionColor->{color_code},
              videoSectionColor->{color_code},
@@ -56,7 +56,7 @@ export async function getStaticProps() {
              footerTextColor->{color_code},
              sectionTitleColor->{color_code}
             }`
-          )
+    )
 
     const JWTContact = await getClient(false).fetch(`*[_type == "contactUs"]`)
     const navbarTheme = await getClient(false).fetch(
