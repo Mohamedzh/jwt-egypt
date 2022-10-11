@@ -24,8 +24,8 @@ export default function ContactUs({ data }) {
           number: `${values.number}`,
           message: `${values.message}`,
         })
-        console.log(data2)
-        console.log(error3)
+      console.log(data2)
+      console.log(error3)
     } catch (error) {
       console.log(error)
     }
@@ -63,7 +63,9 @@ export default function ContactUs({ data }) {
 
   return (
     <>
-      <div id="contact" className="wavyBorderTop ">
+      <div
+        id="contact"
+        className="wavyBorderTop ">
         <svg
           style={{
             backgroundColor: `${data.themeColors[0].careerSectionColor.color_code}`,
@@ -111,13 +113,10 @@ export default function ContactUs({ data }) {
                   style={{ color: `${address.textColor.color_code}` }}
                 >
                   Contact
-                </h2>
-                <h2
-                  className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
-                  style={{ color: `${address.textColor.color_code}` }}
-                >
+                  <br></br>
                   Information
                 </h2>
+                
                 <dl className="mt-8 text-base text-black">
                   <div>
                     <dt className="sr-only">Postal address</dt>

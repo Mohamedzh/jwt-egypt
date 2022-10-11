@@ -1,7 +1,7 @@
 import { IoMdColorWand } from 'react-icons/io'
 export default {
     name: 'siteTheme',
-    title: 'Website Theme',
+    title: 'Website Theme (EDIT)',
     icon: IoMdColorWand,
     type: 'document',
     __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],

@@ -8,7 +8,7 @@ const InspiringStories = ({ data }) => {
       style={{
         backgroundColor: `${data.themeColors[0].storiesSectionColor.color_code}`,
       }}
-      className="mb-16"
+      className="mb-16 scroll-mt-16"
     >
       <div className="container mx-auto flex justify-center pt-16">
         <div>
