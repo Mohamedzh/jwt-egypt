@@ -16,9 +16,14 @@ import { BsFillFolderFill } from 'react-icons/bs'
 import Dropzone from 'react-dropzone'
 import { supabase } from '../../lib/supabaseClient'
 import { Menu, Transition } from '@headlessui/react'
+import { useAppSelector } from "../../redux/hooks";
+
 
 function Careers({ data }) {
   const router = useRouter()
+
+  const career = useAppSelector((state) => state.career.career);
+  console.log(career)
 
   const vacancies = data.vacancies
   const allDepartments = data.department
@@ -55,7 +60,7 @@ function Careers({ data }) {
 
       const url = resumeUrl.Key.split('/')
       const newUrl = url[url.length - 1]
-      const { publicURL : publicURL2} = supabase.storage
+      const { publicURL: publicURL2 } = supabase.storage
         .from('resume-url')
         .getPublicUrl(`${newUrl}`)
 
@@ -163,7 +168,7 @@ function Careers({ data }) {
                       className="  m-3 block bg-gray-50 hover:bg-gray-100"
                       tabIndex={0}
                     >
-                      <details className="">
+                      <details>
                         {/* title */}
                         {/* <summary className="bg-inherit px-5 py-3 text-lg cursor-pointer"> */}
                         <summary className="cursor-pointer  px-4 py-4 sm:px-6">
