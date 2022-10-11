@@ -8,6 +8,7 @@ const InternShips = ({ data }) => {
       style={{
         backgroundColor: `${data.themeColors[0].internSectionColor.color_code}`,
       }}
+      className="scroll-mt-16"
     >
       <div className="container mx-auto w-full p-4 lg:p-12">
         <h1

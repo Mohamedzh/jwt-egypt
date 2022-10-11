@@ -1,7 +1,7 @@
 import { FaLocationArrow } from 'react-icons/fa'
 export default {
   name: 'contactUs',
-  title: 'Contact Us',
+  title: 'Contact Us (EDIT)',
   icon: FaLocationArrow,
   type: 'document',
   __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],

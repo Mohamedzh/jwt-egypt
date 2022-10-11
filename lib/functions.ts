@@ -95,5 +95,5 @@ export const validateCareers = (
 export const scrollToSection = (element: string) => {
   document
     .getElementById(element)
-    .scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+    .scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'center' })
 }

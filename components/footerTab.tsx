@@ -65,14 +65,15 @@ export default function Footer({ data }: { data?: any }) {
                 </a>
               </Link>
             ))}
+
           </div>
           <div className='flex justify-end'>
             <p
               style={{ color: `${data.themeColors[0].footerTextColor.color_code}` }}
-              className="mt-8 text-center text-base self-center mr-40">
+              className="mt-8 text-center text-base self-center md:mr-40 lg:mr-40">
               &copy; 2022 WUNDERMAN THOMPSON. All rights reserved.
             </p>
-            <div className='flex place-content-end'>
+            <div className=' place-content-end'>
               <p
                 className='cursor-pointer'
                 onClick={() => window.scrollTo({
@@ -83,7 +84,7 @@ export default function Footer({ data }: { data?: any }) {
                 }
               >
                 <MdKeyboardArrowUp
-                  className='text-white h-16 w-16 ml-48'
+                  className='text-white h-16 w-16 animate-pulse md:ml-48 lg:ml-48'
                 />
               </p>
             </div>

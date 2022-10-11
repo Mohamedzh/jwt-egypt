@@ -12,13 +12,22 @@ import { getClient } from '../lib/sanity'
 import { validateHomePage } from '../lib/functions'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useAppSelector } from '../redux/hooks'
 import Podcasts2 from '../components/PodCast2'
 
 export default function Index({ data }) {
   const router = useRouter()
-
+  const position = useAppSelector(state => state.position)
   useEffect(() => {
     validateHomePage(getClient, { path: router.asPath })
+  }, [])
+
+  useEffect(() => {
+    scrollBy({
+      top: -position,
+      left: 100,
+      behavior: 'smooth'
+    })
   }, [])
 
   return (
@@ -93,6 +102,9 @@ export async function getStaticProps() {
     `*[_type == "episodes" && type == "video"] | order(_createdAt desc)[0..2] {title, "url":media.asset->url, "imgUrl":image.asset->url, podcast->{title, "imageUrl":image.asset->url}, description}`
   )
 
+  const audioEpisodes = await getClient(false).fetch(
+    `*[_type == "episodes" && type == "audio"] | order(_createdAt desc)[0..2] {title, "url":media.asset->url, "imgUrl":image.asset->url, podcast->{title, "imageUrl":image.asset->url}, description}`
+  )
   return {
     props: {
       data: {
@@ -106,6 +118,7 @@ export async function getStaticProps() {
         videos,
         navbarTheme,
         episodes,
+        audioEpisodes
       },
     },
   }

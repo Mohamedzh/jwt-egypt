@@ -3,7 +3,7 @@ import { BsCardHeading } from 'react-icons/bs'
 export default {
     name: 'header',
     type: 'document',
-    title: 'Header',
+    title: 'Header (EDIT)',
     icon: BsCardHeading,
     __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
     fields: [
