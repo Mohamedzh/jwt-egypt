@@ -3,7 +3,7 @@ import { BsCardHeading } from 'react-icons/bs'
 export default {
     name: 'navbarTheme',
     type: 'document',
-    title: 'Navbar',
+    title: 'Navbar (EDIT)',
     icon: BsCardHeading,
     __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
     fields: [

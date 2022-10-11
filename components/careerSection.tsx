@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import { ImArrowRight } from 'react-icons/im'
 import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/20/solid'
+import { useDispatch } from 'react-redux'
+import { getPosition } from '../redux/positionSlice'
 
 const CareerSection = ({ data }) => {
   const jobVacancies = data.vacancies
-
+  const dispatch = useDispatch()
 
   return (
     <div
@@ -12,7 +14,7 @@ const CareerSection = ({ data }) => {
       style={{
         backgroundColor: `${data.themeColors[0].careerSectionColor.color_code}`,
       }}
-      className="md:px-20 lg:px-20 px-5 pb-5"
+      className="md:px-20 lg:px-20 px-5 pb-5 scroll-mt-16"
     >
       {/* <div className="collapse mx-20 my-10">
         <input type="checkbox" className="peer" />
@@ -89,7 +91,9 @@ const CareerSection = ({ data }) => {
         </ul>
       </div>
       <Link href="/careers">
-        <a>
+        <a
+          onClick={() => dispatch(getPosition(document.body.getBoundingClientRect().top))}
+        >
           <p className="m-5 flex text-left text-base font-bold text-wtMediumRuby">
             Explore more career opportunities{' '}
             <ImArrowRight className="mt-1.5 ml-2" />

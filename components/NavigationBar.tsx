@@ -18,7 +18,6 @@ const NavigationBar = ({ data }: { data?: any }) => {
   const [logo, setLogo] = useState<string>()
   const router = useRouter()
 
-
   useEffect(() => {
     if (data.navbarTheme[0].altText) {
       setLogo(data.navbarTheme[0].altText)

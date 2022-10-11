@@ -6,14 +6,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation } from "swiper"
 import Link from 'next/link';
+import { getPosition } from '../redux/positionSlice';
+import { useDispatch } from 'react-redux';
 
 function PodcastSlide({ data }) {
-
+    const dispatch = useDispatch()
     return (
-        <div className='my-20'
+        <div className='md:my-20 lg:my-20 scroll-mt-28'
+            id="media"
         >
             <div
-                id="media"
                 style={{ backgroundColor: `${data.themeColors[0].videoSectionColor.color_code}`, height: '600px' }}
                 className='flex place-content-center'>
                 <Swiper
@@ -68,6 +70,7 @@ function PodcastSlide({ data }) {
             </div>
             <Link href='/podcasts'>
                 <a
+                    onClick={() => dispatch(getPosition(document.body.getBoundingClientRect().top))}
                     className='m-3 text-2xl font-semibold text-wtMediumRuby flex'>
                     Explore our podcasts
                     <ImArrowRight className="mt-1.5 ml-2" />
