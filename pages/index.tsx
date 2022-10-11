@@ -12,6 +12,8 @@ import { getClient } from '../lib/sanity'
 import { validateHomePage } from '../lib/functions'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Podcasts2 from '../components/PodCast2'
+
 export default function Index({ data }) {
   const router = useRouter()
 
@@ -20,7 +22,7 @@ export default function Index({ data }) {
   }, [])
 
   return (
-    <div className='snap-y snap-mandatory'>
+    <div className="snap-y snap-mandatory">
       <Head>
         <title>WunderWomen Egypt</title>
         <link rel="icon" href="/favicon.ico" />
@@ -29,7 +31,8 @@ export default function Index({ data }) {
       <HeroPage data={data} />
       <WomenListSlide data={data} />
       <InspiringStories data={data} />
-      <VideoSlide data={data} />
+      {/* <VideoSlide data={data} /> */}
+      <Podcasts2 data={data}/>
 
       <InternShips data={data} />
 
