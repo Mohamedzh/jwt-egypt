@@ -24,7 +24,8 @@ model Application {
   lastName  String
   email     String 
   number      String
-  linkedInProfile  String? @unique 
+  linkedInProfile  String?
   resume    String
   position       String
+  coverLetter String
 }
