@@ -10,8 +10,10 @@ import Link from 'next/link';
 function PodcastSlide({ data }) {
 
     return (
-        <div className='my-20'>
+        <div className='my-20'
+        >
             <div
+                id="media"
                 style={{ backgroundColor: `${data.themeColors[0].videoSectionColor.color_code}`, height: '600px' }}
                 className='flex place-content-center'>
                 <Swiper
@@ -35,7 +37,7 @@ function PodcastSlide({ data }) {
                         >
                             <div className="mb-10">
                                 <p
-                                    id="media"
+
                                     style={{ color: `${data.themeColors[0].sectionTitleColor.color_code}` }}
                                     className="text-3xl font-bold tracking-tight text-center">
                                     Podcasts
