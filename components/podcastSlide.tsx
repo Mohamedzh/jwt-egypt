@@ -39,7 +39,6 @@ function PodcastSlide({ data }) {
                         >
                             <div className="mb-10">
                                 <p
-
                                     style={{ color: `${data.themeColors[0].sectionTitleColor.color_code}` }}
                                     className="text-3xl font-bold tracking-tight text-center">
                                     Podcasts

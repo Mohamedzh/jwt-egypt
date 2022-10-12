@@ -13,18 +13,35 @@ import CardActionArea from '@mui/material/CardActionArea'
 import CardActions from '@mui/material/CardActions'
 import Button from '@mui/material/Button'
 import MuiPlayer from './MuiPlayer'
+import ReactAudioPlayer from 'react-audio-player'
+import Link from 'next/link'
+import { ImArrowRight } from 'react-icons/im'
+import { useDispatch } from 'react-redux';
+import { getPosition } from '../redux/positionSlice'
+
+
 
 export default function MediaControlCard({ data }) {
-  const { episodes } = data
+  const { episodes, audioEpisodes } = data
   const theme = useTheme()
+  console.log(episodes);
+  const dispatch = useDispatch()
 
   return (
-    <div className="container mx-auto grid w-full grid-cols-2 gap-8 p-4 lg:p-12">
-      <div>
+    <div className="container mx-auto w-full mb-20 scroll-mt-28"
+      style={{ backgroundColor: `${data.themeColors[0].videoSectionColor.color_code}`, height: '450px' }}
+      id="media"
+    >
+      <p
+        style={{ color: `${data.themeColors[0].sectionTitleColor.color_code}` }}
+        className="text-3xl font-bold tracking-tight text-center">
+        Podcasts
+      </p>
+      <div className="container mx-auto grid w-full grid-cols-2 gap-8 p-4 lg:p-12">
+        <div>
           <div className="">
-            {/* <p className="my-5 text-left text-xl md:mx-10 lg:mx-10">
-          Explore our podcasts
-        </p> */}
+            <p className='text-2xl font-semibold text-center m-2'>{episodes[0].podcast.title}</p>
+            <p className='text-lg font-semibold text-center m-2'>{episodes[0].title}</p>
             <video
               id=""
               className="video-js aspect-video w-full md:h-64 lg:h-64"
@@ -36,52 +53,35 @@ export default function MediaControlCard({ data }) {
               <source src={`${episodes[0].url}`}></source>
             </video>
           </div>
-        
-      </div>
 
-      <div>
-        <Card sx={{ display: 'flex' }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography component="div" variant="h5">
-                Live From Space
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                color="text.secondary"
-                component="div"
-              >
-                Mac Miller
-              </Typography>
-            </CardContent>
-            <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-              <IconButton aria-label="previous">
-                {theme.direction === 'rtl' ? (
-                  <SkipNextIcon />
-                ) : (
-                  <SkipPreviousIcon />
-                )}
-              </IconButton>
-              <IconButton aria-label="play/pause">
-                <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-              </IconButton>
-              <IconButton aria-label="next">
-                {theme.direction === 'rtl' ? (
-                  <SkipPreviousIcon />
-                ) : (
-                  <SkipNextIcon />
-                )}
-              </IconButton>
-            </Box>
-          </Box>
-          <CardMedia
-            component="img"
-            sx={{ width: 390 }}
-            image="/assets/media-audio.webp"
-            alt="Live from space album cover"
-          />
-        </Card>
+        </div>
+
+        <div>
+          <Card sx={{ display: 'flex', justifyContent: 'center' }}>
+            <div className='flex flex-col place-items-center'>
+              <p className='text-2xl font-semibold text-center m-2'>{audioEpisodes[0].podcast.title}</p>
+              <p className='text-lg font-semibold text-center m-2'>{audioEpisodes[0].title}</p>
+              <img
+                className='w-32 hidden md:block lg:block'
+                src={audioEpisodes[0].imgUrl}></img>
+              <ReactAudioPlayer
+                className='md:w-96 lg:md:w-96 m-5 w-32 my-7 md:my-4'
+                src={`${audioEpisodes[0].url}`}
+                autoPlay={false}
+                controls
+              />
+            </div>
+          </Card>
+        </div>
       </div>
+      <Link href='/podcasts'>
+        <a
+          onClick={() => dispatch(getPosition(document.body.getBoundingClientRect().top))}
+          className='m-3 text-2xl font-semibold text-wtMediumRuby flex'>
+          Explore our podcasts
+          <ImArrowRight className="mt-1.5 ml-2" />
+        </a>
+      </Link>
     </div>
   )
 }
