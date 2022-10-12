@@ -214,9 +214,9 @@ function Careers({ data }) {
                                 aria-hidden="true"
                               />
                               <p>
-                                Closing on
+                                Closing on 
                                 <time dateTime={vacancy.close_date}>
-                                  {vacancy.close_date}
+                                   {` ${vacancy.close_date}`}
                                 </time>
                               </p>
                             </div>

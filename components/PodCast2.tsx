@@ -24,12 +24,11 @@ import { getPosition } from '../redux/positionSlice'
 export default function MediaControlCard({ data }) {
   const { episodes, audioEpisodes } = data
   const theme = useTheme()
-  console.log(episodes);
   const dispatch = useDispatch()
 
   return (
     <div className="container mx-auto w-full mb-20 scroll-mt-28"
-      style={{ backgroundColor: `${data.themeColors[0].videoSectionColor.color_code}`, height: '450px' }}
+      style={{ backgroundColor: `${data.themeColors[0].videoSectionColor.color_code}`, height: '95vh' }}
       id="media"
     >
       <p
@@ -37,7 +36,7 @@ export default function MediaControlCard({ data }) {
         className="text-3xl font-bold tracking-tight text-center">
         Podcasts
       </p>
-      <div className="container mx-auto grid w-full grid-cols-2 gap-8 p-4 lg:p-12">
+      <div className="container mx-auto grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 p-4 lg:p-12">
         <div>
           <div className="">
             <p className='text-2xl font-semibold text-center m-2'>{episodes[0].podcast.title}</p>
@@ -62,10 +61,10 @@ export default function MediaControlCard({ data }) {
               <p className='text-2xl font-semibold text-center m-2'>{audioEpisodes[0].podcast.title}</p>
               <p className='text-lg font-semibold text-center m-2'>{audioEpisodes[0].title}</p>
               <img
-                className='w-32 hidden md:block lg:block'
+                className='md:w-32 lg:w-32 w-12 '
                 src={audioEpisodes[0].imgUrl}></img>
               <ReactAudioPlayer
-                className='md:w-96 lg:md:w-96 m-5 w-32 my-7 md:my-4'
+                className='md:w-96 lg:md:w-96 m-5 my-7 md:my-4'
                 src={`${audioEpisodes[0].url}`}
                 autoPlay={false}
                 controls
@@ -77,7 +76,7 @@ export default function MediaControlCard({ data }) {
       <Link href='/podcasts'>
         <a
           onClick={() => dispatch(getPosition(document.body.getBoundingClientRect().top))}
-          className='m-3 text-2xl font-semibold text-wtMediumRuby flex'>
+          className='m-3 text-xl font-semibold text-wtMediumRuby flex'>
           Explore our podcasts
           <ImArrowRight className="mt-1.5 ml-2" />
         </a>
