@@ -3,6 +3,8 @@ import { ImArrowRight } from 'react-icons/im'
 import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/20/solid'
 import { useDispatch } from 'react-redux'
 import { getPosition } from '../redux/positionSlice'
+import { getCareer } from '../redux/careerSlice'
+import { scrollToSection, validateStories } from '../lib/functions'
 
 const CareerSection = ({ data }) => {
   const jobVacancies = data.vacancies
@@ -14,7 +16,7 @@ const CareerSection = ({ data }) => {
       style={{
         backgroundColor: `${data.themeColors[0].careerSectionColor.color_code}`,
       }}
-      className="md:px-20 lg:px-20 px-5 pb-5 scroll-mt-16"
+      className="scroll-mt-16 px-5 pb-5 md:px-20 lg:px-20"
     >
       {/* <div className="collapse mx-20 my-10">
         <input type="checkbox" className="peer" />
@@ -30,7 +32,8 @@ const CareerSection = ({ data }) => {
       </div> */}
       <p
         style={{ color: `${data.themeColors[0].sectionTitleColor.color_code}` }}
-        className="m-5 py-6 text-center text-3xl font-bold">
+        className="m-5 py-6 text-center text-3xl font-bold"
+      >
         Join our WunderWomen team
       </p>
       <p className="m-5 flex text-left text-lg font-bold text-wtPink">
@@ -39,8 +42,13 @@ const CareerSection = ({ data }) => {
       <div className="overflow-hidden bg-white shadow sm:rounded-md">
         <ul role="list" className="divide-y divide-gray-200">
           {jobVacancies.map((position, idx) => (
-            <li key={idx}>
-              <Link href="/careers">
+            <li
+              key={idx}
+              onClick={() => {
+                dispatch(getCareer(position.title))
+              }}
+            >
+              <Link href={`/careers/`}>
                 <a className="block hover:bg-gray-50">
                   <div className="px-4 py-4 sm:px-6">
                     <div className="flex items-center justify-between">
@@ -92,7 +100,9 @@ const CareerSection = ({ data }) => {
       </div>
       <Link href="/careers">
         <a
-          onClick={() => dispatch(getPosition(document.body.getBoundingClientRect().top))}
+          onClick={() =>
+            dispatch(getPosition(document.body.getBoundingClientRect().top))
+          }
         >
           <p className="m-5 flex text-left text-base font-bold text-wtMediumRuby">
             Explore more career opportunities{' '}
