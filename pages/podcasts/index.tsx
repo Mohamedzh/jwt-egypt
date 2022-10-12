@@ -30,6 +30,11 @@ function Podcast({ data }) {
                                 />
                             </a>
                         </Link>
+                        <Link href={`/podcasts/${cast._id}`}>
+                            <a className=' font-bold text-wtImperial hover:text-wtTango'>
+                                View all episodes...
+                            </a>
+                        </Link>
                     </div>
                 )}
             </div>
