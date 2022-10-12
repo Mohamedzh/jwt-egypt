@@ -12,10 +12,12 @@ const InspiringStories = ({ data }) => {
     >
       <div className="container mx-auto flex justify-center pt-16">
         <div>
-
           <h1
-            style={{ color: `${data.themeColors[0].sectionTitleColor.color_code}` }}
-            className="mx-auto w-5/6 pb-6 text-center text-3xl font-bold sm:w-4/6 xl:text-3xl">
+            style={{
+              color: `${data.themeColors[0].sectionTitleColor.color_code}`,
+            }}
+            className="mx-auto w-5/6 pb-6 text-center text-3xl font-bold sm:w-4/6 xl:text-3xl"
+          >
             The Talented People Behind the Scenes of the Organization
           </h1>
         </div>
