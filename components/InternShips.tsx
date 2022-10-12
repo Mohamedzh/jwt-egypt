@@ -31,7 +31,7 @@ const InternShips = ({ data }) => {
                   Feature 1 & Feature 2
                 </p> */}
 
-                <svg
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="ml-2 h-4 w-4"
                   fill="none"
@@ -44,7 +44,7 @@ const InternShips = ({ data }) => {
                     strokeLinejoin="round"
                     d="M9 5l7 7-7 7"
                   />
-                </svg>
+                </svg> */}
               </div>
 
               <h2 className="mt-4 text-3xl font-semibold text-slate-800">
