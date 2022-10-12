@@ -27,7 +27,7 @@ export default function MediaControlCard({ data }) {
   const dispatch = useDispatch()
 
   return (
-    <div className="container mx-auto w-full mb-20 scroll-mt-28"
+    <div className=" mx-auto w-full mb-20 lg:mb-10 scroll-mt-28"
       style={{ backgroundColor: `${data.themeColors[0].videoSectionColor.color_code}`, height: '95vh' }}
       id="media"
     >
@@ -76,7 +76,7 @@ export default function MediaControlCard({ data }) {
       <Link href='/podcasts'>
         <a
           onClick={() => dispatch(getPosition(document.body.getBoundingClientRect().top))}
-          className='m-3 text-xl font-semibold text-wtMediumRuby flex'>
+          className='m-3 ml-20 text-xl font-semibold text-wtMediumRuby flex'>
           Explore our podcasts
           <ImArrowRight className="mt-1.5 ml-2" />
         </a>

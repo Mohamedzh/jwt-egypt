@@ -10,16 +10,16 @@ const InternShips = ({ data }) => {
       }}
       className="scroll-mt-16"
     >
+      <h1
+        style={{
+          marginBottom: '20px',
+          color: `${data.themeColors[0].sectionTitleColor.color_code}`
+        }}
+        className=" font-bold text-center text-3xl pt-32 md:pt-0"
+      >
+        Meet our Interns
+      </h1>
       <div className="container mx-auto w-full p-4 lg:p-12">
-        <h1
-          style={{
-            marginBottom: '20px',
-            color: `${data.themeColors[0].sectionTitleColor.color_code}`
-          }}
-          className=" font-bold text-center text-3xl"
-        >
-          Meet our Interns
-        </h1>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {internShips.map((internShip: InternShip, idx) => (
             <div
