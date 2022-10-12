@@ -20,6 +20,7 @@ import { useAppSelector } from '../../redux/hooks'
 
 function Careers({ data }) {
   const router = useRouter()
+  console.log(data.career[0].formTextColor);
 
   const career = useAppSelector((state) => state.career.career)
   console.log(career)
@@ -214,9 +215,9 @@ function Careers({ data }) {
                                 aria-hidden="true"
                               />
                               <p>
-                                Closing on 
+                                Closing on
                                 <time dateTime={vacancy.close_date}>
-                                   {` ${vacancy.close_date}`}
+                                  {` ${vacancy.close_date}`}
                                 </time>
                               </p>
                             </div>
@@ -262,14 +263,17 @@ function Careers({ data }) {
                     background: `linear-gradient(90deg, ${data.themeColors[0].firstColor.color_code} 0%, ${data.themeColors[0].secondColor.color_code} 100%)`,
                   }}
                 >
-                  <p className="pr-10 text-center text-2xl font-semibold">
+                  <p
+                    style={{ color: `${data.career[0].formTextColor.color_code}` }}
+                    className="pr-10 text-center text-2xl font-semibold">
                     Application
                   </p>
                   <div className="grid grid-cols-6 gap-6 py-5 ">
                     <div className="col-span-6 sm:col-span-3">
                       <label
+                        style={{ color: `${data.career[0].formTextColor.color_code}` }}
                         htmlFor="firstName"
-                        className="ml-px block  pl-4 text-sm font-medium text-black"
+                        className="ml-px block  pl-4 text-sm font-medium"
                       >
                         First Name
                       </label>
@@ -294,8 +298,9 @@ function Careers({ data }) {
 
                     <div className="col-span-6 sm:col-span-3">
                       <label
+                        style={{ color: `${data.career[0].formTextColor.color_code}` }}
                         htmlFor="lastName"
-                        className="ml-px block  pl-4 text-sm font-medium text-black"
+                        className="ml-px block  pl-4 text-sm font-medium"
                       >
                         Last Name
                       </label>
@@ -320,8 +325,9 @@ function Careers({ data }) {
 
                     <div className="col-span-6 sm:col-span-3">
                       <label
+                        style={{ color: `${data.career[0].formTextColor.color_code}` }}
                         htmlFor="email"
-                        className="block pl-4 text-sm font-medium text-black"
+                        className="block pl-4 text-sm font-medium"
                       >
                         Email
                       </label>
@@ -347,8 +353,9 @@ function Careers({ data }) {
 
                     <div className="col-span-6 sm:col-span-3">
                       <label
+                        style={{ color: `${data.career[0].formTextColor.color_code}` }}
                         htmlFor="linkedInProfile"
-                        className="block pl-4 text-sm font-medium text-black"
+                        className="block pl-4 text-sm font-medium"
                       >
                         LinkedIn Profile
                       </label>
@@ -371,8 +378,9 @@ function Careers({ data }) {
 
                     <div className="col-span-6 sm:col-span-3">
                       <label
+                        style={{ color: `${data.career[0].formTextColor.color_code}` }}
                         htmlFor="position"
-                        className="block pl-4 text-sm font-medium text-black"
+                        className="block pl-4 text-sm font-medium"
                       >
                         Position
                       </label>
@@ -407,8 +415,9 @@ function Careers({ data }) {
 
                     <div className="col-span-6 sm:col-span-3">
                       <label
+                        style={{ color: `${data.career[0].formTextColor.color_code}` }}
                         htmlFor="number"
-                        className="ml-px block  pl-4 text-sm font-medium text-black"
+                        className="ml-px block  pl-4 text-sm font-medium"
                       >
                         Phone
                       </label>
@@ -432,7 +441,9 @@ function Careers({ data }) {
                     </div>
 
                     <div className="col-span-6 sm:col-span-3">
-                      <label className="block pl-4 text-sm font-medium text-black">
+                      <label
+                        style={{ color: `${data.career[0].formTextColor.color_code}` }}
+                        className="block pl-4 text-sm font-medium">
                         Resume
                       </label>
                       <div className="ml-px block  pl-4 text-sm  text-red-700">
@@ -522,12 +533,14 @@ function Careers({ data }) {
                     </div>
 
                     <div className="col-span-6 sm:col-span-3">
-                      <label className="block pl-4 text-sm font-medium text-black">
+                      <label
+                        style={{ color: `${data.career[0].formTextColor.color_code}` }}
+                        className="block pl-4 text-sm font-medium">
                         Cover Letter
                       </label>
                       <div className="ml-px block  pl-4 text-sm  text-red-700">
                         {formik.touched.coverLetter &&
-                        formik.errors.coverLetter ? (
+                          formik.errors.coverLetter ? (
                           <p>{formik.errors.coverLetter}</p>
                         ) : null}
                       </div>
@@ -661,6 +674,10 @@ export async function getStaticProps() {
   const department = await getClient(false).fetch(
     `*[_type == "department"]{title}`
   )
+
+  const career = await getClient(false).fetch(
+    `*[_type == "careersPage"]{formTextColor->{color_code}}`
+  )
   return {
     props: {
       data: {
@@ -671,6 +688,7 @@ export async function getStaticProps() {
         themeColors,
         department,
         navbarTheme,
+        career
       },
     },
   }
