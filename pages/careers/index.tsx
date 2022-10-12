@@ -16,13 +16,12 @@ import { BsFillFolderFill } from 'react-icons/bs'
 import Dropzone from 'react-dropzone'
 import { supabase } from '../../lib/supabaseClient'
 import { Menu, Transition } from '@headlessui/react'
-import { useAppSelector } from "../../redux/hooks";
-
+import { useAppSelector } from '../../redux/hooks'
 
 function Careers({ data }) {
   const router = useRouter()
 
-  const career = useAppSelector((state) => state.career.career);
+  const career = useAppSelector((state) => state.career.career)
   console.log(career)
 
   const vacancies = data.vacancies
@@ -30,7 +29,7 @@ function Careers({ data }) {
 
   const [filteredJobs, setFiltered] = useState<any[]>(vacancies)
 
-  const [jobChosen, setJobChosen] = useState()
+  const [jobChosen, setJobChosen] = useState('')
 
   const filter = (department: string) => {
     if (department === 'Department') {
@@ -43,6 +42,9 @@ function Careers({ data }) {
 
   useEffect(() => {
     validateStories(getClient, { path: router.asPath })
+    if (career != '') {
+      scrollToSection(`${career}`)
+    }
   }, [])
 
   const applicationApi = async (values) => {
@@ -94,14 +96,20 @@ function Careers({ data }) {
       email: '',
       linkedInProfile: '',
       number: '',
-      position: '',
+      position: jobChosen,
       resume: '',
       coverLetter: '',
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required('Required'),
       lastName: Yup.string().required('Required'),
+
+      // position: Yup.string().when('position', (position) => {
+      //   if (position == '') return Yup.string().required()
+      // }),
+
       position: Yup.string().required('Required'),
+
       email: Yup.string()
         .email('Please enter a valid email address')
         .required('Required'),
@@ -118,6 +126,7 @@ function Careers({ data }) {
     }),
     onSubmit: (values) => {
       applicationApi(values)
+      console.log(values)
       formik.resetForm
     },
   })
@@ -160,15 +169,15 @@ function Careers({ data }) {
               <div role="list" className="divide-y divide-gray-200">
                 {filteredJobs.map((vacancy, idx) => (
                   <div
-                    id={`job${idx}`}
+                    id={`${vacancy.title}`}
                     key={idx}
-                    className="m-4 overflow-hidden bg-gray-50 shadow hover:bg-gray-100 sm:rounded-3xl"
+                    className="m-4 overflow-hidden bg-gray-50 shadow hover:bg-gray-100 sm:rounded-3xl scroll-mt-32"
                   >
                     <div
                       className="  m-3 block bg-gray-50 hover:bg-gray-100"
                       tabIndex={0}
                     >
-                      <details>
+                      <details {...(vacancy.title == career && { open: true })} >
                         {/* title */}
                         {/* <summary className="bg-inherit px-5 py-3 text-lg cursor-pointer"> */}
                         <summary className="cursor-pointer  px-4 py-4 sm:px-6">
@@ -223,7 +232,7 @@ function Careers({ data }) {
                               className="inline-flex justify-center rounded-full border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                               onClick={() => {
                                 setJobChosen(vacancy.title)
-
+                                formik.setFieldValue('position', vacancy.title)
                                 scrollToSection('applicationForm')
                               }}
                               style={{
@@ -376,7 +385,7 @@ function Careers({ data }) {
                         onBlur={formik.handleBlur}
                         value={formik.values.position}
                       >
-                        <option selected={jobChosen} value={jobChosen}>
+                        <option selected value={jobChosen}>
                           {jobChosen}
                         </option>
                         {vacancies.map((vacancy, indx) => (

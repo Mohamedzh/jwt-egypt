@@ -4,6 +4,7 @@ import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/20/solid'
 import { useDispatch } from 'react-redux'
 import { getPosition } from '../redux/positionSlice'
 import { getCareer } from '../redux/careerSlice'
+import { scrollToSection, validateStories } from '../lib/functions'
 
 const CareerSection = ({ data }) => {
   const jobVacancies = data.vacancies
@@ -41,7 +42,12 @@ const CareerSection = ({ data }) => {
       <div className="overflow-hidden bg-white shadow sm:rounded-md">
         <ul role="list" className="divide-y divide-gray-200">
           {jobVacancies.map((position, idx) => (
-            <li key={idx} onClick={() => dispatch(getCareer(position.title))}>
+            <li
+              key={idx}
+              onClick={() => {
+                dispatch(getCareer(position.title))
+              }}
+            >
               <Link href={`/careers/`}>
                 <a className="block hover:bg-gray-50">
                   <div className="px-4 py-4 sm:px-6">
