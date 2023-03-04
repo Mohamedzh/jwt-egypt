@@ -8,7 +8,8 @@
     "fmt": "prettier --ignore-path .gitignore --write --cache .",
     "postinstall": "(cd studio && npx @sanity/cli install)",
     "start:sanity": "npm --prefix studio run start",
-    "start:web": "next start"
+    "start:web": "next start",
+    "export": "npm run build && next export -o _static"
   },
   "prettier": {
     "semi": false,
